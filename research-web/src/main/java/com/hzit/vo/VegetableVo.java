@@ -1,4 +1,4 @@
-package com.hzit.dao.vo;
+package com.hzit.vo;
 
 /**
  * 
@@ -100,4 +100,15 @@ public class VegetableVo {
     public Integer getVLevel(){
     	return VLevel;
     }
+
+	@Override
+	public String toString() {
+		return "VegetableVo{" +
+				"VId=" + VId +
+				", VType='" + VType + '\'' +
+				", VName='" + VName + '\'' +
+				", VParent=" + VParent +
+				", VLevel=" + VLevel +
+				'}';
+	}
 }

@@ -16,7 +16,7 @@ public class Comment {
 	/**
 	 *  评论时间
 	 */
-	private java.util.Date CTime;
+	private String CTime;
 	/**
 	 *  评论人
 	 */
@@ -55,7 +55,7 @@ public class Comment {
 	 * 评论时间
 	 * @param CTime
 	 */
-	public void setCTime(java.util.Date CTime){
+	public void setCTime(String CTime){
 		this.CTime = CTime;
 	}
 	
@@ -63,7 +63,7 @@ public class Comment {
      * 评论时间
      * @return
      */	
-    public java.util.Date getCTime(){
+    public String getCTime(){
     	return CTime;
     }
 	/**
@@ -81,4 +81,14 @@ public class Comment {
     public String getCPeople(){
     	return CPeople;
     }
+
+	@Override
+	public String toString() {
+		return "Comment{" +
+				"CId=" + CId +
+				", CUuid='" + CUuid + '\'' +
+				", CTime='" + CTime + '\'' +
+				", CPeople='" + CPeople + '\'' +
+				'}';
+	}
 }

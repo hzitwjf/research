@@ -100,4 +100,15 @@ public class Vegetable {
     public Integer getVLevel(){
     	return VLevel;
     }
+
+	@Override
+	public String toString() {
+		return "Vegetable{" +
+				"VId=" + VId +
+				", VType='" + VType + '\'' +
+				", VName='" + VName + '\'' +
+				", VParent=" + VParent +
+				", VLevel=" + VLevel +
+				'}';
+	}
 }

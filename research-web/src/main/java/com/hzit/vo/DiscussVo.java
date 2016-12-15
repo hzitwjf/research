@@ -1,4 +1,4 @@
-package com.hzit.dao.vo;
+package com.hzit.vo;
 
 /**
  * 
@@ -100,4 +100,15 @@ public class DiscussVo {
     public String getDResult(){
     	return DResult;
     }
+
+	@Override
+	public String toString() {
+		return "DiscussVo{" +
+				"DId=" + DId +
+				", CUuid='" + CUuid + '\'' +
+				", VId=" + VId +
+				", PId=" + PId +
+				", DResult='" + DResult + '\'' +
+				'}';
+	}
 }

@@ -100,4 +100,15 @@ public class Discuss {
     public String getDResult(){
     	return DResult;
     }
+
+	@Override
+	public String toString() {
+		return "Discuss{" +
+				"DId=" + DId +
+				", CUuid='" + CUuid + '\'' +
+				", VId=" + VId +
+				", PId=" + PId +
+				", DResult='" + DResult + '\'' +
+				'}';
+	}
 }

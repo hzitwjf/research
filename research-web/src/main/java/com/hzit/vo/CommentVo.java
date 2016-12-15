@@ -1,4 +1,4 @@
-package com.hzit.dao.vo;
+package com.hzit.vo;
 
 /**
  * 
@@ -16,7 +16,7 @@ public class CommentVo {
 	/**
 	 *  评论时间
 	 */
-	private java.util.Date CTime;
+	private String CTime;
 	/**
 	 *  评论人
 	 */
@@ -55,7 +55,7 @@ public class CommentVo {
 	 * 评论时间
 	 * @param CTime
 	 */
-	public void setCTime(java.util.Date CTime){
+	public void setCTime(String CTime){
 		this.CTime = CTime;
 	}
 	
@@ -63,7 +63,7 @@ public class CommentVo {
      * 评论时间
      * @return java.util.Date
      */	
-    public java.util.Date getCTime(){
+    public String getCTime(){
     	return CTime;
     }
 	/**
@@ -81,4 +81,14 @@ public class CommentVo {
     public String getCPeople(){
     	return CPeople;
     }
+
+	@Override
+	public String toString() {
+		return "CommentVo{" +
+				"CId=" + CId +
+				", CUuid='" + CUuid + '\'' +
+				", CTime='" + CTime + '\'' +
+				", CPeople='" + CPeople + '\'' +
+				'}';
+	}
 }

@@ -1,4 +1,4 @@
-package com.hzit.dao.vo;
+package com.hzit.vo;
 
 /**
  * 
@@ -62,4 +62,13 @@ public class ProblemVo {
     public Integer getPModule(){
     	return PModule;
     }
+
+	@Override
+	public String toString() {
+		return "ProblemVo{" +
+				"PId=" + PId +
+				", PContent='" + PContent + '\'' +
+				", PModule=" + PModule +
+				'}';
+	}
 }

@@ -62,4 +62,13 @@ public class Problem {
     public Integer getPModule(){
     	return PModule;
     }
+
+	@Override
+	public String toString() {
+		return "Problem{" +
+				"PId=" + PId +
+				", PContent='" + PContent + '\'' +
+				", PModule=" + PModule +
+				'}';
+	}
 }
