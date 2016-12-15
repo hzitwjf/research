@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.CommentMapper">
+
+    <sql id="commentBaseColumnSql">
+        c_id,
+        c_uuid,
+        c_time,
+        c_people
+    </sql>
+
+    <sql id="commentBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CId)">
+                    c_id = #{map.CId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CUuid)">
+                    AND c_uuid = #{map.CUuid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CTime)">
+                    AND c_time = #{map.CTime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CPeople)">
+                    AND c_people = #{map.CPeople}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertComment" parameterType="com.hzit.dao.entity.Comment">
+        INSERT INTO comment(
+        <include refid="commentBaseColumnSql"/>
+        )VALUES(
+            #{CId},
+            #{CUuid},
+            #{CTime},
+            #{CPeople}
+        )
+    </insert>
+
+    
+    <delete id="deleteCommentByCId" parameterType="Integer">
+        DELETE FROM comment WHERE c_id = #{CId}
+    </delete>
+
+    <update id="updateComment" parameterType="com.hzit.dao.entity.Comment">
+        UPDATE comment
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CUuid)">
+                c_uuid = #{CUuid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CTime)">
+                c_time = #{CTime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CPeople)">
+                c_people = #{CPeople} ,
+            </if>
+        </set>
+        WHERE c_id = #{CId}
+    </update>
+
+    <select id="searchCommentByParams" parameterType="map" resultMap="commentMap">
+        SELECT
+        <include refid="commentBaseColumnSql"/>
+        FROM comment
+        <include refid="commentBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Comment" id="commentMap">
+        <id column="c_id" property="CId"/>
+        <result column="c_uuid" property="CUuid"/>
+        <result column="c_time" property="CTime"/>
+        <result column="c_people" property="CPeople"/>
+    </resultMap>
+
+</mapper>

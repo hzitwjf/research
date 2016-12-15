@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.DiscussMapper">
+
+    <sql id="discussBaseColumnSql">
+        d_id,
+        c_uuid,
+        v_id,
+        p_id,
+        d_result
+    </sql>
+
+    <sql id="discussBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.DId)">
+                    d_id = #{map.DId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CUuid)">
+                    AND c_uuid = #{map.CUuid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VId)">
+                    AND v_id = #{map.VId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PId)">
+                    AND p_id = #{map.PId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.DResult)">
+                    AND d_result = #{map.DResult}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertDiscuss" parameterType="com.hzit.dao.entity.Discuss">
+        INSERT INTO discuss(
+        <include refid="discussBaseColumnSql"/>
+        )VALUES(
+            #{DId},
+            #{CUuid},
+            #{VId},
+            #{PId},
+            #{DResult}
+        )
+    </insert>
+
+    
+    <delete id="deleteDiscussByDId" parameterType="Integer">
+        DELETE FROM discuss WHERE d_id = #{DId}
+    </delete>
+
+    <update id="updateDiscuss" parameterType="com.hzit.dao.entity.Discuss">
+        UPDATE discuss
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CUuid)">
+                c_uuid = #{CUuid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VId)">
+                v_id = #{VId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PId)">
+                p_id = #{PId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(DResult)">
+                d_result = #{DResult} ,
+            </if>
+        </set>
+        WHERE d_id = #{DId}
+    </update>
+
+    <select id="searchDiscussByParams" parameterType="map" resultMap="discussMap">
+        SELECT
+        <include refid="discussBaseColumnSql"/>
+        FROM discuss
+        <include refid="discussBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Discuss" id="discussMap">
+        <id column="d_id" property="DId"/>
+        <result column="c_uuid" property="CUuid"/>
+        <result column="v_id" property="VId"/>
+        <result column="p_id" property="PId"/>
+        <result column="d_result" property="DResult"/>
+    </resultMap>
+
+</mapper>

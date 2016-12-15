@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.ProblemMapper">
+
+    <sql id="problemBaseColumnSql">
+        p_id,
+        p_content,
+        p_module
+    </sql>
+
+    <sql id="problemBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PId)">
+                    p_id = #{map.PId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PContent)">
+                    AND p_content = #{map.PContent}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PModule)">
+                    AND p_module = #{map.PModule}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertProblem" parameterType="com.hzit.dao.entity.Problem">
+        INSERT INTO problem(
+        <include refid="problemBaseColumnSql"/>
+        )VALUES(
+            #{PId},
+            #{PContent},
+            #{PModule}
+        )
+    </insert>
+
+    
+    <delete id="deleteProblemByPId" parameterType="Integer">
+        DELETE FROM problem WHERE p_id = #{PId}
+    </delete>
+
+    <update id="updateProblem" parameterType="com.hzit.dao.entity.Problem">
+        UPDATE problem
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PContent)">
+                p_content = #{PContent} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PModule)">
+                p_module = #{PModule} ,
+            </if>
+        </set>
+        WHERE p_id = #{PId}
+    </update>
+
+    <select id="searchProblemByParams" parameterType="map" resultMap="problemMap">
+        SELECT
+        <include refid="problemBaseColumnSql"/>
+        FROM problem
+        <include refid="problemBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Problem" id="problemMap">
+        <id column="p_id" property="PId"/>
+        <result column="p_content" property="PContent"/>
+        <result column="p_module" property="PModule"/>
+    </resultMap>
+
+</mapper>

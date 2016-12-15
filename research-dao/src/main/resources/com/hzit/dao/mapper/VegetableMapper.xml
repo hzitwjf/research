@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.VegetableMapper">
+
+    <sql id="vegetableBaseColumnSql">
+        v_id,
+        v_type,
+        v_name,
+        v_parent,
+        v_level
+    </sql>
+
+    <sql id="vegetableBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VId)">
+                    v_id = #{map.VId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VType)">
+                    AND v_type = #{map.VType}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VName)">
+                    AND v_name = #{map.VName}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VParent)">
+                    AND v_parent = #{map.VParent}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VLevel)">
+                    AND v_level = #{map.VLevel}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertVegetable" parameterType="com.hzit.dao.entity.Vegetable">
+        INSERT INTO vegetable(
+        <include refid="vegetableBaseColumnSql"/>
+        )VALUES(
+            #{VId},
+            #{VType},
+            #{VName},
+            #{VParent},
+            #{VLevel}
+        )
+    </insert>
+
+    
+    <delete id="deleteVegetableByVId" parameterType="Integer">
+        DELETE FROM vegetable WHERE v_id = #{VId}
+    </delete>
+
+    <update id="updateVegetable" parameterType="com.hzit.dao.entity.Vegetable">
+        UPDATE vegetable
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VType)">
+                v_type = #{VType} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VName)">
+                v_name = #{VName} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VParent)">
+                v_parent = #{VParent} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VLevel)">
+                v_level = #{VLevel} ,
+            </if>
+        </set>
+        WHERE v_id = #{VId}
+    </update>
+
+    <select id="searchVegetableByParams" parameterType="map" resultMap="vegetableMap">
+        SELECT
+        <include refid="vegetableBaseColumnSql"/>
+        FROM vegetable
+        <include refid="vegetableBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Vegetable" id="vegetableMap">
+        <id column="v_id" property="VId"/>
+        <result column="v_type" property="VType"/>
+        <result column="v_name" property="VName"/>
+        <result column="v_parent" property="VParent"/>
+        <result column="v_level" property="VLevel"/>
+    </resultMap>
+
+</mapper>
