@@ -16,6 +16,22 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`research` /*!40100 DEFAULT CHARACTER SE
 
 USE `research`;
 
+/*Table structure for table `answer` */
+
+DROP TABLE IF EXISTS `answer`;
+
+CREATE TABLE `answer` (
+  `aw_id` int(11) NOT NULL auto_increment COMMENT '答案ID',
+  `aw_content` varchar(100) default NULL COMMENT '答案内容',
+  `aw_sc` int(11) default NULL COMMENT '答案分数',
+  `pr_id` int(11) default NULL COMMENT '所属题目',
+  PRIMARY KEY  (`aw_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `answer` */
+
+insert  into `answer`(`aw_id`,`aw_content`,`aw_sc`,`pr_id`) values (1,'男',2,1),(2,'女',2,1),(3,'非常满意',5,2),(4,'满意',3,2),(5,'不满意',2,2),(6,'偏多',3,3),(7,'刚好',5,3),(8,'偏少',2,3),(9,'偏多',3,4),(10,'刚好',5,4),(11,'偏少',2,4),(12,'非常满意',5,5),(13,'满意',3,5),(14,'不满意',2,5),(15,'麻辣',2,6),(16,'中辣',2,6),(17,'微辣',2,6),(18,'不辣',2,6);
+
 /*Table structure for table `comment` */
 
 DROP TABLE IF EXISTS `comment`;
