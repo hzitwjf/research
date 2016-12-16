@@ -1,7 +1,9 @@
 package testresearch;
 
 import com.hzit.StartSpring;
+import com.hzit.dao.entity.Problem;
 import com.hzit.dao.entity.Vegetable;
+import com.hzit.services.ProblemServices;
 import com.hzit.services.VegetableServices;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +18,13 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(StartSpring.class)
-public class TestVegetableServicesImpl {
+public class TestProblemServicesImpl {
     @Autowired
-    private VegetableServices vegetableServices;
+    private ProblemServices problemServices;
     @Test
-    public void findAllVegetables(){
-        List<Vegetable> vegetableList=vegetableServices.findAllVegetable(null);
-       vegetableList.forEach(vegetable -> System.out.println(vegetable.toString()));
-        for (Vegetable vegetable : vegetableList){
-            System.out.println(vegetable.getVName());
+    public void findAllProblems(){
+            List<Problem> problemList=problemServices.findAllProblem(null);
+            problemList.forEach(problem -> System.out.println(problem.toString()));
         }
     }
-}
+

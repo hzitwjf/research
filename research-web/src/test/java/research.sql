@@ -41,6 +41,7 @@ CREATE TABLE `comment` (
   `c_uuid` varchar(64) default NULL COMMENT '评论业务ID',
   `c_time` date default NULL COMMENT '评论时间',
   `c_people` varchar(20) default NULL COMMENT '评论人',
+  `c_count` int(11) default NULL COMMENT '评论人出现的次数',
   PRIMARY KEY  (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -75,7 +76,7 @@ CREATE TABLE `problem` (
 
 /*Data for the table `problem` */
 
-insert  into `problem`(`p_id`,`p_content`,`p_module`) values (1,'您的性别?',0),(2,'食品的味道?',0),(3,'菜的分量?',0),(4,'饭的分量?',0),(5,'食品的样式?',0),(6,'您对食品味道的期望?',0),(7,'您的其他建议或意见?',0);
+insert  into `problem`(`p_id`,`p_content`,`p_module`) values (1,'1、您的性别?',0),(2,'2、食品的味道?',0),(3,'3、菜的分量?',0),(4,'4、饭的分量?',0),(5,'5、食品的样式?',0),(6,'6、您对食品味道的期望?',0),(7,'7、您的其他建议或意见?',0);
 
 /*Table structure for table `vegetable` */
 

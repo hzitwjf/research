@@ -7,7 +7,8 @@
         c_id,
         c_uuid,
         c_time,
-        c_people
+        c_people,
+        c_count
     </sql>
 
     <sql id="commentBaseWhereSql">
@@ -22,7 +23,10 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cTime)">
                     AND c_time = #{map.cTime}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CPeople)">
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cPeople)">
+                    AND c_people = #{map.cPeople}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cCount)">
                     AND c_people = #{map.cPeople}
                 </if>
             </where>
@@ -36,7 +40,8 @@
             #{cId},
             #{cUuid},
             #{cTime},
-            #{cPeople}
+            #{cPeople},
+            #{cCount}
         )
     </insert>
 
@@ -57,6 +62,9 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cPeople)">
                 c_people = #{cPeople} ,
             </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cCount)">
+                c_people = #{cCount} ,
+            </if>
         </set>
         WHERE c_id = #{cId}
     </update>
@@ -73,6 +81,7 @@
         <result column="c_uuid" property="cUuid"/>
         <result column="c_time" property="cTime"/>
         <result column="c_people" property="cPeople"/>
+        <result column="c_count" property="cCount"/>
     </resultMap>
 
 </mapper>

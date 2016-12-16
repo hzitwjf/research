@@ -28,6 +28,7 @@
        </c:if>
      </c:forEach>
    </table>--%>
+<h2>一、对以往餐点的评选</h2>
   <c:forEach items="${vagetableList}" var="uv">
   <c:if test="${uv.VParent==0}">
   <h3> <a href="#">${uv.VType}</a></h3>
@@ -51,6 +52,22 @@
   </ul>
   </c:if>
   </c:forEach>
+  <h2>二、对总体的评估</h2>
+
+
+<table>
+  <c:forEach items="${problem}" var="p">
+        <tr><td>${p.PContent}</td></tr>
+    <tr>
+      <c:forEach items="${answer}" var="a">
+        <c:if test="${p.PId==a.prId}">
+         <td width="150px"><input type="radio" value="${a.awContent}" name="radio">${a.awContent}</td>
+        </c:if>
+      </c:forEach>
+    </tr>
+  </c:forEach>
+</table>
+  <div><textarea cols="60" rows="10">dsadada</textarea></div>
   </body>
 </html>
 <%--

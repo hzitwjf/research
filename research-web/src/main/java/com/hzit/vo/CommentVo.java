@@ -22,20 +22,24 @@ public class CommentVo {
 	 */
 	private String cPeople;
 	/**
+	 *  评论人出现的次数
+	 */
+	private String cCount;
+	/**
 	 * 评论ID
 	 * @param cId
 	 */
 	public void setCId(Integer cId){
 		this.cId = cId;
 	}
-	
-    /**
-     * 评论ID
-     * @return Integer
-     */	
-    public Integer getCId(){
-    	return cId;
-    }
+
+	/**
+	 * 评论ID
+	 * @return Integer
+	 */
+	public Integer getCId(){
+		return cId;
+	}
 	/**
 	 * 评论业务ID
 	 * @param cUuid
@@ -43,14 +47,14 @@ public class CommentVo {
 	public void setCUuid(String cUuid){
 		this.cUuid = cUuid;
 	}
-	
-    /**
-     * 评论业务ID
-     * @return String
-     */	
-    public String getCUuid(){
-    	return cUuid;
-    }
+
+	/**
+	 * 评论业务ID
+	 * @return String
+	 */
+	public String getCUuid(){
+		return cUuid;
+	}
 	/**
 	 * 评论时间
 	 * @param cTime
@@ -58,14 +62,14 @@ public class CommentVo {
 	public void setCTime(String cTime){
 		this.cTime = cTime;
 	}
-	
-    /**
-     * 评论时间
-     * @return java.util.Date
-     */	
-    public String getCTime(){
-    	return cTime;
-    }
+
+	/**
+	 * 评论时间
+	 * @return java.util.Date
+	 */
+	public String getCTime(){
+		return cTime;
+	}
 	/**
 	 * 评论人
 	 * @param cPeople
@@ -73,22 +77,38 @@ public class CommentVo {
 	public void setCPeople(String cPeople){
 		this.cPeople = cPeople;
 	}
-	
-    /**
-     * 评论人
-     * @return String
-     */	
-    public String getCPeople(){
-    	return cPeople;
-    }
+
+	/**
+	 * 评论人
+	 * @return String
+	 */
+	public String getCPeople(){
+		return cPeople;
+	}
+
+	/**
+	 * 评论人出现的次数
+	 * @return cCount
+	 */
+	public String getcCount() {
+		return cCount;
+	}
+	/**
+	 * 评论人出现的次数
+	 * @param cCount
+	 */
+	public void setcCount(String cCount) {
+		this.cCount = cCount;
+	}
 
 	@Override
 	public String toString() {
-		return "CommentVo{" +
+		return "Comment{" +
 				"cId=" + cId +
 				", cUuid='" + cUuid + '\'' +
 				", cTime='" + cTime + '\'' +
 				", cPeople='" + cPeople + '\'' +
+				", cCount='" + cCount + '\'' +
 				'}';
 	}
 }

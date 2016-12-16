@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wjf13 on 2016/12/15.
@@ -16,7 +17,7 @@ public class VegetableServicesImpl implements VegetableServices {
     @Autowired
     private VegetableMapper vegetableMapper;
     @Override
-    public List<Vegetable> findAllVegetable() {
+    public List<Vegetable> findAllVegetable(Map map) {
         List<Vegetable> vegetableList=vegetableMapper.searchVegetableByParams(null);
         return vegetableList;
     }

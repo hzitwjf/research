@@ -22,6 +22,10 @@ public class Comment {
 	 */
 	private String cPeople;
 	/**
+	 *  评论人出现的次数
+	 */
+	private String cCount;
+	/**
 	 * 评论ID
 	 * @param cId
 	 */
@@ -82,6 +86,21 @@ public class Comment {
 		return cPeople;
 	}
 
+	/**
+	 * 评论人出现的次数
+	 * @return cCount
+	 */
+	public String getcCount() {
+		return cCount;
+	}
+	/**
+	 * 评论人出现的次数
+	 * @param cCount
+	 */
+	public void setcCount(String cCount) {
+		this.cCount = cCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment{" +
@@ -89,6 +108,7 @@ public class Comment {
 				", cUuid='" + cUuid + '\'' +
 				", cTime='" + cTime + '\'' +
 				", cPeople='" + cPeople + '\'' +
+				", cCount='" + cCount + '\'' +
 				'}';
 	}
 }
