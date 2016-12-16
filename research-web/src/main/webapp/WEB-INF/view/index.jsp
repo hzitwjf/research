@@ -6,30 +6,32 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <title></title>
   </head>
   <body>
-   <%--<table border="1px;" style="margin-left: auto;margin-right: auto">
+<%--   <table border="1px;" style="margin-left: auto;margin-right: auto">
      <tr>
        <th width="400px">菜品</th>
        <th width="100px">最喜欢</th>
        <th width="100px">最不喜欢</th>
      </tr>
      <c:forEach items="${vagetableList}" var="v1">
-       <c:if test="${v1.VLevel==3}">
+       <c:if test="${v1.vLevel==3}">
          <tr>
-           <th>${v1.VName}</th>
+           <th>${v1.vName}</th>
            <td><input type="radio" value="最喜欢"></td>
            <td><input type="radio" value="最不喜欢"></td>
          </tr>
        </c:if>
      </c:forEach>
    </table>--%>
-  <
+${vagetableList}
+  <c:forEach items="${vagetableList}" var="v">
+    ${v.vType}
+  </c:forEach>
   </body>
 </html>
 <%--

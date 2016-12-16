@@ -12,7 +12,7 @@ public interface VegetableMapper {
 
 	void insertVegetable(Vegetable vegetable);
 
-	void deleteVegetableByVId(Integer VId);
+	void deleteVegetableByVId(Integer vId);
 
 	void updateVegetable(Vegetable vegetable);
 

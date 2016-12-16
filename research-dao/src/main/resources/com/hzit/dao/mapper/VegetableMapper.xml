@@ -14,20 +14,20 @@
     <sql id="vegetableBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VId)">
-                    v_id = #{map.VId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vId)">
+                    v_id = #{map.vId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VType)">
-                    AND v_type = #{map.VType}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vType)">
+                    AND v_type = #{map.vType}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VName)">
-                    AND v_name = #{map.VName}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vName)">
+                    AND v_name = #{map.vName}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VParent)">
-                    AND v_parent = #{map.VParent}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vParent)">
+                    AND v_parent = #{map.vParent}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VLevel)">
-                    AND v_level = #{map.VLevel}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vLevel)">
+                    AND v_level = #{map.vLevel}
                 </if>
             </where>
         </if>
@@ -37,36 +37,36 @@
         INSERT INTO vegetable(
         <include refid="vegetableBaseColumnSql"/>
         )VALUES(
-            #{VId},
-            #{VType},
-            #{VName},
-            #{VParent},
-            #{VLevel}
+            #{vId},
+            #{vType},
+            #{vName},
+            #{vParent},
+            #{vLevel}
         )
     </insert>
 
     
     <delete id="deleteVegetableByVId" parameterType="Integer">
-        DELETE FROM vegetable WHERE v_id = #{VId}
+        DELETE FROM vegetable WHERE v_id = #{vId}
     </delete>
 
     <update id="updateVegetable" parameterType="com.hzit.dao.entity.Vegetable">
         UPDATE vegetable
         <set>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VType)">
-                v_type = #{VType} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(vType)">
+                v_type = #{vType} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VName)">
-                v_name = #{VName} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(vName)">
+                v_name = #{vName} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VParent)">
-                v_parent = #{VParent} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(vParent)">
+                v_parent = #{vParent} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VLevel)">
-                v_level = #{VLevel} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(vLevel)">
+                v_level = #{vLevel} ,
             </if>
         </set>
-        WHERE v_id = #{VId}
+        WHERE v_id = #{vId}
     </update>
 
     <select id="searchVegetableByParams" parameterType="map" resultMap="vegetableMap">
