@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.AnswerMapper">
+
+    <sql id="answerBaseColumnSql">
+        aw_id,
+        aw_content,
+        aw_sc,
+        pr_id
+    </sql>
+
+    <sql id="answerBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.awId)">
+                    aw_id = #{map.awId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.awContent)">
+                    AND aw_content = #{map.awContent}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.awSc)">
+                    AND aw_sc = #{map.awSc}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.prId)">
+                    AND pr_id = #{map.prId}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertAnswer" parameterType="com.hzit.dao.entity.Answer">
+        INSERT INTO answer(
+        <include refid="answerBaseColumnSql"/>
+        )VALUES(
+            #{awId},
+            #{awContent},
+            #{awSc},
+            #{prId}
+        )
+    </insert>
+
+    
+    <delete id="deleteAnswerByAwId" parameterType="Integer">
+        DELETE FROM answer WHERE aw_id = #{awId}
+    </delete>
+
+    <update id="updateAnswer" parameterType="com.hzit.dao.entity.Answer">
+        UPDATE answer
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(awContent)">
+                aw_content = #{awContent} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(awSc)">
+                aw_sc = #{awSc} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(prId)">
+                pr_id = #{prId} ,
+            </if>
+        </set>
+        WHERE aw_id = #{awId}
+    </update>
+
+    <select id="searchAnswerByParams" parameterType="map" resultMap="answerMap">
+        SELECT
+        <include refid="answerBaseColumnSql"/>
+        FROM answer
+        <include refid="answerBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Answer" id="answerMap">
+        <id column="aw_id" property="awId"/>
+        <result column="aw_content" property="awContent"/>
+        <result column="aw_sc" property="awSc"/>
+        <result column="pr_id" property="prId"/>
+    </resultMap>
+
+</mapper>

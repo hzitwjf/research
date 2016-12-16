@@ -23,6 +23,9 @@ public class TestVegetableServicesImpl {
     @Test
     public void findAll(){
         List<Vegetable> vegetableList=vegetableServices.findAllVegetable();
-        vegetableList.forEach(vegetable -> System.out.println(vegetable.toString()));
+       // vegetableList.forEach(vegetable -> System.out.println(vegetable.toString()));
+        for (Vegetable vegetable : vegetableList){
+            System.out.println(vegetable.getVName());
+        }
     }
 }

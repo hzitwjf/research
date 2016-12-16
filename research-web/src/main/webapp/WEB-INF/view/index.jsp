@@ -28,9 +28,28 @@
        </c:if>
      </c:forEach>
    </table>--%>
-${vagetableList}
-  <c:forEach items="${vagetableList}" var="v">
-    ${v.vType}
+  <c:forEach items="${vagetableList}" var="uv">
+  <c:if test="${uv.VParent==0}">
+  <h3 <a href="#">${uv.VType}</a></h3>
+  <ul>
+    <c:forEach items="${vagetableList}" var="uvo">
+      <c:if test="${uvo.VParent==uv.VId}">
+        <li><a href="#">${uvo.VType}</a></li>
+        <ul>
+          <c:forEach items="${vagetableList}" var="u">
+            <c:if test="${u.VParent==uvo.VId}">
+              <li><a href="#">${u.VName}</a> </li>
+              <li>
+                <input type="radio" value="最喜欢吃" name="radio"> 最喜欢吃
+                <input type="radio" value="最不喜欢吃" name="radio"> 最不喜欢吃
+              </li>
+            </c:if>
+          </c:forEach>
+        </ul>
+      </c:if>
+    </c:forEach>
+  </ul>
+  </c:if>
   </c:forEach>
   </body>
 </html>
