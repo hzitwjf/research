@@ -13,17 +13,17 @@
     <sql id="commentBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CId)">
-                    c_id = #{map.CId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cId)">
+                    c_id = #{map.cId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CUuid)">
-                    AND c_uuid = #{map.CUuid}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cUuid)">
+                    AND c_uuid = #{map.cUuid}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CTime)">
-                    AND c_time = #{map.CTime}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cTime)">
+                    AND c_time = #{map.cTime}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CPeople)">
-                    AND c_people = #{map.CPeople}
+                    AND c_people = #{map.cPeople}
                 </if>
             </where>
         </if>
@@ -33,32 +33,32 @@
         INSERT INTO comment(
         <include refid="commentBaseColumnSql"/>
         )VALUES(
-            #{CId},
-            #{CUuid},
-            #{CTime},
-            #{CPeople}
+            #{cId},
+            #{cUuid},
+            #{cTime},
+            #{cPeople}
         )
     </insert>
 
     
     <delete id="deleteCommentByCId" parameterType="Integer">
-        DELETE FROM comment WHERE c_id = #{CId}
+        DELETE FROM comment WHERE c_id = #{cId}
     </delete>
 
     <update id="updateComment" parameterType="com.hzit.dao.entity.Comment">
         UPDATE comment
         <set>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CUuid)">
-                c_uuid = #{CUuid} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cUuid)">
+                c_uuid = #{cUuid} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CTime)">
-                c_time = #{CTime} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cTime)">
+                c_time = #{cTime} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CPeople)">
-                c_people = #{CPeople} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cPeople)">
+                c_people = #{cPeople} ,
             </if>
         </set>
-        WHERE c_id = #{CId}
+        WHERE c_id = #{cId}
     </update>
 
     <select id="searchCommentByParams" parameterType="map" resultMap="commentMap">

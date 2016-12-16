@@ -14,20 +14,20 @@
     <sql id="discussBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.DId)">
-                    d_id = #{map.DId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dId)">
+                    d_id = #{map.dId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.CUuid)">
-                    AND c_uuid = #{map.CUuid}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cUuid)">
+                    AND c_uuid = #{map.cUuid}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.VId)">
-                    AND v_id = #{map.VId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vId)">
+                    AND v_id = #{map.vId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PId)">
-                    AND p_id = #{map.PId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pId)">
+                    AND p_id = #{map.pId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.DResult)">
-                    AND d_result = #{map.DResult}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dResult)">
+                    AND d_result = #{map.dResult}
                 </if>
             </where>
         </if>
@@ -37,36 +37,36 @@
         INSERT INTO discuss(
         <include refid="discussBaseColumnSql"/>
         )VALUES(
-            #{DId},
-            #{CUuid},
-            #{VId},
-            #{PId},
-            #{DResult}
+            #{dId},
+            #{cUuid},
+            #{vId},
+            #{pId},
+            #{dResult}
         )
     </insert>
 
     
     <delete id="deleteDiscussByDId" parameterType="Integer">
-        DELETE FROM discuss WHERE d_id = #{DId}
+        DELETE FROM discuss WHERE d_id = #{dId}
     </delete>
 
     <update id="updateDiscuss" parameterType="com.hzit.dao.entity.Discuss">
         UPDATE discuss
         <set>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(CUuid)">
-                c_uuid = #{CUuid} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cUuid)">
+                c_uuid = #{cUuid} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(VId)">
-                v_id = #{VId} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(vId)">
+                v_id = #{vId} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PId)">
-                p_id = #{PId} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(pId)">
+                p_id = #{pId} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(DResult)">
-                d_result = #{DResult} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(dResult)">
+                d_result = #{dResult} ,
             </if>
         </set>
-        WHERE d_id = #{DId}
+        WHERE d_id = #{dId}
     </update>
 
     <select id="searchDiscussByParams" parameterType="map" resultMap="discussMap">

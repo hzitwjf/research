@@ -12,14 +12,14 @@
     <sql id="problemBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PId)">
-                    p_id = #{map.PId}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pId)">
+                    p_id = #{map.pId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PContent)">
-                    AND p_content = #{map.PContent}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pContent)">
+                    AND p_content = #{map.pContent}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.PModule)">
-                    AND p_module = #{map.PModule}
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pModule)">
+                    AND p_module = #{map.pModule}
                 </if>
             </where>
         </if>
@@ -29,28 +29,28 @@
         INSERT INTO problem(
         <include refid="problemBaseColumnSql"/>
         )VALUES(
-            #{PId},
-            #{PContent},
-            #{PModule}
+            #{pId},
+            #{pContent},
+            #{pModule}
         )
     </insert>
 
     
     <delete id="deleteProblemByPId" parameterType="Integer">
-        DELETE FROM problem WHERE p_id = #{PId}
+        DELETE FROM problem WHERE p_id = #{pId}
     </delete>
 
     <update id="updateProblem" parameterType="com.hzit.dao.entity.Problem">
         UPDATE problem
         <set>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PContent)">
-                p_content = #{PContent} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(pContent)">
+                p_content = #{pContent} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(PModule)">
-                p_module = #{PModule} ,
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(pModule)">
+                p_module = #{pModule} ,
             </if>
         </set>
-        WHERE p_id = #{PId}
+        WHERE p_id = #{pId}
     </update>
 
     <select id="searchProblemByParams" parameterType="map" resultMap="problemMap">
