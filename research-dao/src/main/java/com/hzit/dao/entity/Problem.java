@@ -8,67 +8,67 @@ public class Problem {
 	/**
 	 *  题目ID
 	 */
-	private Integer PId;
+	private Integer pId;
 	/**
 	 *  问题内容
 	 */
-	private String PContent;
+	private String pContent;
 	/**
 	 *  所属模块0代表餐饮 1代表讲师 2代表班主任
 	 */
-	private Integer PModule;
+	private Integer pModule;
 	/**
 	 * 题目ID
-	 * @param PId
+	 * @param pId
 	 */
-	public void setPId(Integer PId){
-		this.PId = PId;
+	public void setPId(Integer pId){
+		this.pId = pId;
 	}
-	
-    /**
-     * 题目ID
-     * @return
-     */	
-    public Integer getPId(){
-    	return PId;
-    }
+
+	/**
+	 * 题目ID
+	 * @return Integer
+	 */
+	public Integer getPId(){
+		return pId;
+	}
 	/**
 	 * 问题内容
-	 * @param PContent
+	 * @param pContent
 	 */
-	public void setPContent(String PContent){
-		this.PContent = PContent;
+	public void setPContent(String pContent){
+		this.pContent = pContent;
 	}
-	
-    /**
-     * 问题内容
-     * @return
-     */	
-    public String getPContent(){
-    	return PContent;
-    }
+
+	/**
+	 * 问题内容
+	 * @return String
+	 */
+	public String getPContent(){
+		return pContent;
+	}
 	/**
 	 * 所属模块0代表餐饮 1代表讲师 2代表班主任
-	 * @param PModule
+	 * @param pModule
 	 */
-	public void setPModule(Integer PModule){
-		this.PModule = PModule;
+	public void setPModule(Integer pModule){
+		this.pModule = pModule;
 	}
-	
-    /**
-     * 所属模块0代表餐饮 1代表讲师 2代表班主任
-     * @return
-     */	
-    public Integer getPModule(){
-    	return PModule;
-    }
+
+	/**
+	 * 所属模块0代表餐饮 1代表讲师 2代表班主任
+	 * @return Integer
+	 */
+	public Integer getPModule(){
+		return pModule;
+	}
 
 	@Override
 	public String toString() {
 		return "Problem{" +
-				"PId=" + PId +
-				", PContent='" + PContent + '\'' +
-				", PModule=" + PModule +
+				"pId=" + pId +
+				", pContent='" + pContent + '\'' +
+				", pModule=" + pModule +
 				'}';
 	}
 }

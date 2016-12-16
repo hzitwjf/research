@@ -77,11 +77,11 @@
     </select>
 
     <resultMap type="com.hzit.dao.entity.Vegetable" id="vegetableMap">
-        <id column="v_id" property="VId"/>
-        <result column="v_type" property="VType"/>
-        <result column="v_name" property="VName"/>
-        <result column="v_parent" property="VParent"/>
-        <result column="v_level" property="VLevel"/>
+        <id column="v_id" property="vId"/>
+        <result column="v_type" property="vType"/>
+        <result column="v_name" property="vName"/>
+        <result column="v_parent" property="vParent"/>
+        <result column="v_level" property="vLevel"/>
     </resultMap>
 
 </mapper>

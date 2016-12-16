@@ -77,11 +77,11 @@
     </select>
 
     <resultMap type="com.hzit.dao.entity.Discuss" id="discussMap">
-        <id column="d_id" property="DId"/>
-        <result column="c_uuid" property="CUuid"/>
-        <result column="v_id" property="VId"/>
-        <result column="p_id" property="PId"/>
-        <result column="d_result" property="DResult"/>
+        <id column="d_id" property="dId"/>
+        <result column="c_uuid" property="cUuid"/>
+        <result column="v_id" property="vId"/>
+        <result column="p_id" property="pId"/>
+        <result column="d_result" property="dResult"/>
     </resultMap>
 
 </mapper>

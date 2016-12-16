@@ -69,10 +69,10 @@
     </select>
 
     <resultMap type="com.hzit.dao.entity.Comment" id="commentMap">
-        <id column="c_id" property="CId"/>
-        <result column="c_uuid" property="CUuid"/>
-        <result column="c_time" property="CTime"/>
-        <result column="c_people" property="CPeople"/>
+        <id column="c_id" property="cId"/>
+        <result column="c_uuid" property="cUuid"/>
+        <result column="c_time" property="cTime"/>
+        <result column="c_people" property="cPeople"/>
     </resultMap>
 
 </mapper>

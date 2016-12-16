@@ -61,9 +61,9 @@
     </select>
 
     <resultMap type="com.hzit.dao.entity.Problem" id="problemMap">
-        <id column="p_id" property="PId"/>
-        <result column="p_content" property="PContent"/>
-        <result column="p_module" property="PModule"/>
+        <id column="p_id" property="pId"/>
+        <result column="p_content" property="pContent"/>
+        <result column="p_module" property="pModule"/>
     </resultMap>
 
 </mapper>

@@ -8,25 +8,25 @@ public class CommentVo {
 	/**
 	 *  评论ID
 	 */
-	private Integer CId;
+	private Integer cId;
 	/**
 	 *  评论业务ID
 	 */
-	private String CUuid;
+	private String cUuid;
 	/**
 	 *  评论时间
 	 */
-	private String CTime;
+	private String cTime;
 	/**
 	 *  评论人
 	 */
-	private String CPeople;
+	private String cPeople;
 	/**
 	 * 评论ID
-	 * @param CId
+	 * @param cId
 	 */
-	public void setCId(Integer CId){
-		this.CId = CId;
+	public void setCId(Integer cId){
+		this.cId = cId;
 	}
 	
     /**
@@ -34,14 +34,14 @@ public class CommentVo {
      * @return Integer
      */	
     public Integer getCId(){
-    	return CId;
+    	return cId;
     }
 	/**
 	 * 评论业务ID
-	 * @param CUuid
+	 * @param cUuid
 	 */
-	public void setCUuid(String CUuid){
-		this.CUuid = CUuid;
+	public void setCUuid(String cUuid){
+		this.cUuid = cUuid;
 	}
 	
     /**
@@ -49,14 +49,14 @@ public class CommentVo {
      * @return String
      */	
     public String getCUuid(){
-    	return CUuid;
+    	return cUuid;
     }
 	/**
 	 * 评论时间
-	 * @param CTime
+	 * @param cTime
 	 */
-	public void setCTime(String CTime){
-		this.CTime = CTime;
+	public void setCTime(String cTime){
+		this.cTime = cTime;
 	}
 	
     /**
@@ -64,14 +64,14 @@ public class CommentVo {
      * @return java.util.Date
      */	
     public String getCTime(){
-    	return CTime;
+    	return cTime;
     }
 	/**
 	 * 评论人
-	 * @param CPeople
+	 * @param cPeople
 	 */
-	public void setCPeople(String CPeople){
-		this.CPeople = CPeople;
+	public void setCPeople(String cPeople){
+		this.cPeople = cPeople;
 	}
 	
     /**
@@ -79,16 +79,16 @@ public class CommentVo {
      * @return String
      */	
     public String getCPeople(){
-    	return CPeople;
+    	return cPeople;
     }
 
 	@Override
 	public String toString() {
 		return "CommentVo{" +
-				"CId=" + CId +
-				", CUuid='" + CUuid + '\'' +
-				", CTime='" + CTime + '\'' +
-				", CPeople='" + CPeople + '\'' +
+				"cId=" + cId +
+				", cUuid='" + cUuid + '\'' +
+				", cTime='" + cTime + '\'' +
+				", cPeople='" + cPeople + '\'' +
 				'}';
 	}
 }

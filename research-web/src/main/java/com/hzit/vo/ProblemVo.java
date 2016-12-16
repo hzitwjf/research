@@ -8,21 +8,21 @@ public class ProblemVo {
 	/**
 	 *  题目ID
 	 */
-	private Integer PId;
+	private Integer pId;
 	/**
 	 *  问题内容
 	 */
-	private String PContent;
+	private String pContent;
 	/**
 	 *  所属模块0代表餐饮 1代表讲师 2代表班主任
 	 */
-	private Integer PModule;
+	private Integer pModule;
 	/**
 	 * 题目ID
-	 * @param PId
+	 * @param pId
 	 */
-	public void setPId(Integer PId){
-		this.PId = PId;
+	public void setPId(Integer pId){
+		this.pId = pId;
 	}
 	
     /**
@@ -30,14 +30,14 @@ public class ProblemVo {
      * @return Integer
      */	
     public Integer getPId(){
-    	return PId;
+    	return pId;
     }
 	/**
 	 * 问题内容
-	 * @param PContent
+	 * @param pContent
 	 */
-	public void setPContent(String PContent){
-		this.PContent = PContent;
+	public void setPContent(String pContent){
+		this.pContent = pContent;
 	}
 	
     /**
@@ -45,14 +45,14 @@ public class ProblemVo {
      * @return String
      */	
     public String getPContent(){
-    	return PContent;
+    	return pContent;
     }
 	/**
 	 * 所属模块0代表餐饮 1代表讲师 2代表班主任
-	 * @param PModule
+	 * @param pModule
 	 */
-	public void setPModule(Integer PModule){
-		this.PModule = PModule;
+	public void setPModule(Integer pModule){
+		this.pModule = pModule;
 	}
 	
     /**
@@ -60,15 +60,14 @@ public class ProblemVo {
      * @return Integer
      */	
     public Integer getPModule(){
-    	return PModule;
+    	return pModule;
     }
-
 	@Override
 	public String toString() {
 		return "ProblemVo{" +
-				"PId=" + PId +
-				", PContent='" + PContent + '\'' +
-				", PModule=" + PModule +
+				"pId=" + pId +
+				", pContent='" + pContent + '\'' +
+				", pModule=" + pModule +
 				'}';
 	}
 }

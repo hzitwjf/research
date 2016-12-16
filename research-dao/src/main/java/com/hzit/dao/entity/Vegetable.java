@@ -8,29 +8,29 @@ public class Vegetable {
 	/**
 	 *  菜品ID
 	 */
-	private Integer VId;
+	private Integer vId;
 	/**
 	 *  菜品类型
 	 */
-	private String VType;
+	private String vType;
 	/**
 	 *  菜品名称
 	 */
-	private String VName;
+	private String vName;
 	/**
 	 *  菜品父模块
 	 */
-	private Integer VParent;
+	private Integer vParent;
 	/**
 	 *  菜品等级
 	 */
-	private Integer VLevel;
+	private Integer vLevel;
 	/**
 	 * 菜品ID
-	 * @param VId
+	 * @param vId
 	 */
-	public void setVId(Integer VId){
-		this.VId = VId;
+	public void setVId(Integer vId){
+		this.vId = vId;
 	}
 	
     /**
@@ -38,14 +38,14 @@ public class Vegetable {
      * @return
      */	
     public Integer getVId(){
-    	return VId;
+    	return vId;
     }
 	/**
 	 * 菜品类型
-	 * @param VType
+	 * @param vType
 	 */
-	public void setVType(String VType){
-		this.VType = VType;
+	public void setVType(String vType){
+		this.vType = vType;
 	}
 	
     /**
@@ -53,14 +53,14 @@ public class Vegetable {
      * @return
      */	
     public String getVType(){
-    	return VType;
+    	return vType;
     }
 	/**
 	 * 菜品名称
-	 * @param VName
+	 * @param vName
 	 */
-	public void setVName(String VName){
-		this.VName = VName;
+	public void setVName(String vName){
+		this.vName = vName;
 	}
 	
     /**
@@ -68,14 +68,14 @@ public class Vegetable {
      * @return
      */	
     public String getVName(){
-    	return VName;
+    	return vName;
     }
 	/**
 	 * 菜品父模块
-	 * @param VParent
+	 * @param vParent
 	 */
-	public void setVParent(Integer VParent){
-		this.VParent = VParent;
+	public void setVParent(Integer vParent){
+		this.vParent = vParent;
 	}
 	
     /**
@@ -83,14 +83,14 @@ public class Vegetable {
      * @return
      */	
     public Integer getVParent(){
-    	return VParent;
+    	return vParent;
     }
 	/**
 	 * 菜品等级
-	 * @param VLevel
+	 * @param vLevel
 	 */
-	public void setVLevel(Integer VLevel){
-		this.VLevel = VLevel;
+	public void setVLevel(Integer vLevel){
+		this.vLevel = vLevel;
 	}
 	
     /**
@@ -98,17 +98,17 @@ public class Vegetable {
      * @return
      */	
     public Integer getVLevel(){
-    	return VLevel;
+    	return vLevel;
     }
 
 	@Override
 	public String toString() {
 		return "Vegetable{" +
-				"VId=" + VId +
-				", VType='" + VType + '\'' +
-				", VName='" + VName + '\'' +
-				", VParent=" + VParent +
-				", VLevel=" + VLevel +
+				"vId=" + vId +
+				", vType='" + vType + '\'' +
+				", vName='" + vName + '\'' +
+				", vParent=" + vParent +
+				", vLevel=" + vLevel +
 				'}';
 	}
 }

@@ -8,29 +8,29 @@ public class Discuss {
 	/**
 	 *  评论详情Id
 	 */
-	private Integer DId;
+	private Integer dId;
 	/**
 	 *  评论的业务id
 	 */
-	private String CUuid;
+	private String cUuid;
 	/**
 	 *  评论的菜品id
 	 */
-	private Integer VId;
+	private Integer vId;
 	/**
 	 *  评论的题目ID
 	 */
-	private Integer PId;
+	private Integer pId;
 	/**
 	 *  评论结果
 	 */
-	private String DResult;
+	private String dResult;
 	/**
 	 * 评论详情Id
-	 * @param DId
+	 * @param dId
 	 */
-	public void setDId(Integer DId){
-		this.DId = DId;
+	public void setDId(Integer dId){
+		this.dId = dId;
 	}
 	
     /**
@@ -38,14 +38,14 @@ public class Discuss {
      * @return
      */	
     public Integer getDId(){
-    	return DId;
+    	return dId;
     }
 	/**
 	 * 评论的业务id
-	 * @param CUuid
+	 * @param cUuid
 	 */
-	public void setCUuid(String CUuid){
-		this.CUuid = CUuid;
+	public void setCUuid(String cUuid){
+		this.cUuid = cUuid;
 	}
 	
     /**
@@ -53,14 +53,14 @@ public class Discuss {
      * @return
      */	
     public String getCUuid(){
-    	return CUuid;
+    	return cUuid;
     }
 	/**
 	 * 评论的菜品id
-	 * @param VId
+	 * @param vId
 	 */
-	public void setVId(Integer VId){
-		this.VId = VId;
+	public void setVId(Integer vId){
+		this.vId = vId;
 	}
 	
     /**
@@ -68,14 +68,14 @@ public class Discuss {
      * @return
      */	
     public Integer getVId(){
-    	return VId;
+    	return vId;
     }
 	/**
 	 * 评论的题目ID
-	 * @param PId
+	 * @param pId
 	 */
-	public void setPId(Integer PId){
-		this.PId = PId;
+	public void setPId(Integer pId){
+		this.pId = pId;
 	}
 	
     /**
@@ -83,14 +83,14 @@ public class Discuss {
      * @return
      */	
     public Integer getPId(){
-    	return PId;
+    	return pId;
     }
 	/**
 	 * 评论结果
-	 * @param DResult
+	 * @param dResult
 	 */
-	public void setDResult(String DResult){
-		this.DResult = DResult;
+	public void setDResult(String dResult){
+		this.dResult = dResult;
 	}
 	
     /**
@@ -98,17 +98,17 @@ public class Discuss {
      * @return
      */	
     public String getDResult(){
-    	return DResult;
+    	return dResult;
     }
 
 	@Override
 	public String toString() {
 		return "Discuss{" +
-				"DId=" + DId +
-				", CUuid='" + CUuid + '\'' +
-				", VId=" + VId +
-				", PId=" + PId +
-				", DResult='" + DResult + '\'' +
+				"dId=" + dId +
+				", cUuid='" + cUuid + '\'' +
+				", vId=" + vId +
+				", pId=" + pId +
+				", dResult='" + dResult + '\'' +
 				'}';
 	}
 }
