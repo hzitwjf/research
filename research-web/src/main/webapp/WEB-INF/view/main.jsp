@@ -46,8 +46,8 @@
                     <textarea cols="60" rows="10">德玛西亚</textarea>
                 </div>
             </div>
-            <div class="wrap_btn_bottom">提交</div>
-
+            <%--<div class="wrap_btn_bottom">提交</div>--%>
+            <input type="submit" class="wrap_btn_bottom" value="提交">
         </form>
 
     </div>

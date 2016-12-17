@@ -33,7 +33,7 @@
         <small>为了更好的满足大家的用餐需求，请大家结合自己的实际情况勾选填写。</small>
     </div>
   </header>
-
+<form action="/index.jsp">
   <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
       <div class="am-cf am-padding">
@@ -157,8 +157,9 @@
                                                   </tr>
                                               </c:forEach>
                                           </table>
+                                          <textarea cols="60" rows="10">德玛西亚</textarea>
                                           <div id="combo-main-echarts"  render="true" >
-                                              <textarea cols="60" rows="10">德玛西亚</textarea>
+                                             <input type="submit" value="提交">
                                           </div>
                                       </div>
                                   </div>
@@ -171,6 +172,7 @@
           </div>
     </div>
   </div>
+</form>
   <script src="../dist/jquery.min.js"></script>
   <script src="../dist/amazeui.min.js"></script>
   <script src="../dist/echarts.min.js"></script>
