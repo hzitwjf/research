@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>以餐饮评选</title>
+  <title>餐饮评选</title>
   <meta name="description" content="demo">
   <meta name="keywords" content="demo">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -58,12 +58,12 @@
                                            <c:forEach items="${vagetableList}" var="uvo">
                                                <c:if test="${uvo.VParent==uv.VId}">
                                                    <c:if test="${uvo.VParent==1}">
-                                                       <li><a href="#">${uvo.VType}</a></li>
+                                                       <li><a href="javascript:void(0)">${uvo.VType}</a></li>
                                                            <ul>
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                         <c:if test="${u.VType=='肉' or u.VType=='鸡鸭鱼'}">
-                                                                           <li><a href="#">${u.VName}</a> </li>
+                                                                           <li><a href="javascript:void(0)">${u.VName}</a> </li>
                                                                            <li>
                                                                                <input type="checkbox" value="最喜欢吃"> 最喜欢吃
                                                                                <input type="checkbox" value="最不喜欢吃"> 最不喜欢吃
@@ -103,12 +103,12 @@
                                            <c:forEach items="${vagetableList}" var="uvo">
                                                <c:if test="${uvo.VParent==uv.VId}">
                                                    <c:if test="${uvo.VParent==22}">
-                                                        <li><a href="#">${uvo.VType}</a></li>
+                                                        <li><a href="javascript:void(0)">${uvo.VType}</a></li>
                                                            <ul>
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                            <c:if test="${u.VType=='青瓜' or u.VType=='土豆'}">
-                                                                               <li><a href="#">${u.VName}</a> </li>
+                                                                               <li><a href="javascript:void(0)">${u.VName}</a> </li>
                                                                                <li>
                                                                                    <input type="checkbox" value="最喜欢吃"> 最喜欢吃
                                                                                    <input type="checkbox" value="最不喜欢吃"> 最不喜欢吃
@@ -147,7 +147,7 @@
                                       <div style="margin-left: auto;margin-right: auto;width: 800px; ">
                                           <table>
                                               <c:forEach items="${problem}" var="p">
-                                                  <tr><td>${p.PContent}</td></tr>
+                                                  <tr><th>${p.PContent}</th></tr>
                                                   <tr>
                                                       <c:forEach items="${answer}" var="a">
                                                           <c:if test="${p.PId==a.prId}">
