@@ -21,23 +21,13 @@ import java.util.List;
  * Created by Administrator on 2016/12/15.
  */
 @Controller
-public class RestaurantController {
+public class RestaurantController extends BaseController{
     @Autowired
     private VegetableServices vegetableServices;
     @Autowired
     private ProblemServices problemServices;
     @Autowired
     private AnswerService answerService;
-    @RequestMapping("showAll")
-    public String showAllVegettables(ModelMap modelMap){
-        List<Vegetable> vegetableList=vegetableServices.findAllVegetable(null);
-        modelMap.put("vagetableList",vegetableList);
-        List<Problem> problemList=problemServices.findAllProblem(null);
-        modelMap.put("problem",problemList);
-        List<Answer> answerList=answerService.findAllAnswer(null);
-        modelMap.put("answer",answerList);
-        return "index";
-    }
     @RequestMapping("ip")
     @ResponseBody
     public String ip(HttpSession session,HttpServletRequest request){
@@ -56,17 +46,37 @@ public class RestaurantController {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        session.setAttribute("ip",ip);
+        session.setAttribute("ip", ip);
         return ip;
     }
-    @RequestMapping("toDemo")
-    public String  toDemo(ModelMap modelMap){
+    @RequestMapping("showAllVegetables")
+    public String showAllVegetables(ModelMap modelMap){
         List<Vegetable> vegetableList=vegetableServices.findAllVegetable(null);
         modelMap.put("vagetableList",vegetableList);
         List<Problem> problemList=problemServices.findAllProblem(null);
         modelMap.put("problem",problemList);
         List<Answer> answerList=answerService.findAllAnswer(null);
         modelMap.put("answer",answerList);
-        return "demo";
+        return "showAllVegetablesAndProblem";
+    }
+    @RequestMapping("toShowAllVegetables")
+    public String toShow(){
+        return "redirect:/showAllVegetables";
+    }
+    @RequestMapping("vegetablesProblems")
+    public String  vegetablesProblems(ModelMap modelMap){
+        List<Problem> problemList=problemServices.findAllProblem(null);
+        modelMap.put("problem",problemList);
+        List<Answer> answerList=answerService.findAllAnswer(null);
+        modelMap.put("answer",answerList);
+        return "main";
+    }
+    @RequestMapping("toVegetablesProblems")
+    public String toVegetablesProblems(){
+        return "redirect:/vegetablesProblems";
+    }
+    @RequestMapping("toCuccess")
+    public String toCuccess(){
+        return "cuccess";
     }
 }

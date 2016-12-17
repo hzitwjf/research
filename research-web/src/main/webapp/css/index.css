@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+.wrap_nav{
+    width:960px;
+    height:50px;
+    background-color:#f0f7ff;
+    line-height:50px;
+    margin-top:-4px;
+}
+.wrap_nav p{
+    padding:0 10px;
+}
+.wrap_show{
+    width:960px;
+    height:6px;
+    background-color:#AECEFD;
+}

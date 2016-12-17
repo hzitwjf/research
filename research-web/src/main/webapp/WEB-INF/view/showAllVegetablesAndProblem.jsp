@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>以就餐</title>
+  <title>以餐饮评选</title>
   <meta name="description" content="demo">
   <meta name="keywords" content="demo">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">

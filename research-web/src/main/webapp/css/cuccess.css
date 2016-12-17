@@ -1,0 +1,19 @@
+body{
+    background-image:url(../img/bg.jpg);
+    font-family: "microsoft yahei";
+    color:#333;
+}
+.cuccess{
+    width:348px;
+    margin:180px auto;
+    position: relative;
+}
+.cuccess_text{
+    position: absolute;
+    top:10px;
+    left:120px;
+}
+.cuccess_text p{
+    line-height:10px;
+    font-weight:bold;
+}

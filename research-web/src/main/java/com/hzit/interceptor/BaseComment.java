@@ -15,11 +15,11 @@ public class BaseComment implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         System.out.println("拦截器启动啦");
         HttpSession session=request.getSession();
-        if (request.getHeader("x-forwarded-for") == null) {
+        /*if (request.getHeader("x-forwarded-for") == null) {
             session.setAttribute("remoteAddr",request.getRemoteAddr());
         }else {
             session.setAttribute("header", request.getHeader("x-forwarded-for"));
-        }
+        }*/
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -30,6 +30,10 @@ public class BaseComment implements HandlerInterceptor {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
+        if (ip==null){
+            response.sendRedirect("/index.jsp");
+            return false;
+        }
         session.setAttribute("ip",ip);
         return true;
     }
@@ -37,10 +41,7 @@ public class BaseComment implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         HttpSession session=httpServletRequest.getSession();
-        Object o1= session.getAttribute("remoteAddr");
-        Object o2= session.getAttribute("header");
-        System.out.println(o1+"\r\n"+o2);
-        System.out.println("ip"+session.getAttribute("ip"));
+        System.out.println("IP是："+session.getAttribute("ip"));
     }
 
     @Override
