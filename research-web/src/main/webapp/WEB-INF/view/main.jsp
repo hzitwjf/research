@@ -27,24 +27,22 @@
     <div class="wrap_show"></div>
     <div class="wrap_"></div>
     <div class="wrap_main">
-        <form action="toCuccess" method="post">
+        <form action="doSomeComment" method="post">
             <h2>一、对总体的评估</h2>
             <div style="margin-left: auto;margin-right: auto;width: 800px; ">
-                <table>
-                    <c:forEach items="${problem}" var="p">
-                        <tr><td>${p.PContent}</td></tr>
-                        <tr>
-                            <c:forEach items="${answer}" var="a">
-                                <c:if test="${p.PId==a.prId}">
-                                    <td width="150px"><input type="checkbox" value="${a.awContent}">${a.awContent}</td>
-                                </c:if>
-                            </c:forEach>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <div id="combo-main-echarts"  render="true" >
-                    <textarea cols="60" rows="10">德玛西亚</textarea>
-                </div>
+                    <table>
+                        <c:forEach items="${problem}" var="p">
+                            <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</td></tr>
+                            <tr>
+                                <c:forEach items="${answer}" var="a">
+                                    <c:if test="${p.PId==a.prId}">
+                                        <td width="160px"><input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px">${a.awContent}</td>
+                                    </c:if>
+                                </c:forEach>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                <textarea cols="60" rows="10" name="analyst">做的很好，暂无意见！</textarea>
             </div>
             <%--<div class="wrap_btn_bottom">提交</div>--%>
             <input type="submit" class="wrap_btn_bottom" value="提交">

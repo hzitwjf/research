@@ -88,7 +88,7 @@ public class RestaurantController extends BaseController{
         return "redirect:/doAllComment";
     }
     @RequestMapping("doAllComment")
-    public Object knowIp(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){
+    public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){
         //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
         List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
         List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
@@ -129,5 +129,23 @@ public class RestaurantController extends BaseController{
        modelMap.put("vegetableVos",vegetableVos);
         modelMap.put("problemVos",problemVos);
         return "SurveyDetails";
+    }
+    @RequestMapping("doSomeComment")
+    public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap) {
+        List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
+        for (int j = 0; analyst != null && j < analyst.length; j++) {
+            ProblemVo problemVo = new ProblemVo();
+            if (j % 2 == 0) {
+                problemVo.setPId(Integer.parseInt(analyst[j]));
+                problemVo.setpAnswer(analyst[j + 1]);
+                Problem problem = problemServices.findOneProblem(problemVo.getPId());
+                problemVo.setPContent(problem.getPContent());
+                problemVos.add(problemVo);
+            } else {
+                System.out.println("");
+            }
+        }
+        modelMap.put("problemVos",problemVos);
+        return "showVegetablesProblems";
     }
 }
