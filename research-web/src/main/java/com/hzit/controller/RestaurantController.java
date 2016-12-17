@@ -79,13 +79,13 @@ public class RestaurantController extends BaseController{
     public String toVegetablesProblems(){
         return "redirect:/vegetablesProblems";
     }
-    @RequestMapping("toCuccess")
+    @RequestMapping("Success")
     public String toCuccess(){
         return "cuccess";
     }
-    @RequestMapping("toComment")
-    public String toComment(){
-        return "redirect:/doAllComment";
+    @RequestMapping("toSuccess")
+    public String toSuccess(){
+        return "redirect:/Success";
     }
     @RequestMapping("doAllComment")
     public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){

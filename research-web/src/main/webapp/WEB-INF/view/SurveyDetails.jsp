@@ -27,7 +27,7 @@
 <div class="admin">
     <div class="content-page">
         <!-- Start content -->
-        <form action="#" method="post">
+        <form action="toSuccess" method="post">
             <div class="content">
                 <div class="am-g">
                     <div class="am-u-sm-6">

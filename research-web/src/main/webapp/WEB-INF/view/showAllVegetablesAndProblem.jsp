@@ -24,6 +24,7 @@
   <meta name="apple-mobile-web-app-title" content="demo" />
   <link rel="stylesheet" href="../dist/amazeui.min.css"/>
   <link rel="stylesheet" href="/docs/demo.css"/>
+    <link rel="stylesheet" href="/assets/css/amazeui.css" />
 </head>
 <body>
 
@@ -149,7 +150,7 @@
                                                   <tr>
                                                       <c:forEach items="${answer}" var="a">
                                                           <c:if test="${p.PId==a.prId}">
-                                                              <td width="100px"><input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px">${a.awContent}</td>
+                                                              <td width="150px"><input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px">${a.awContent}</td>
                                                           </c:if>
                                                       </c:forEach>
                                                   </tr>
@@ -157,7 +158,7 @@
                                           </table>
                                           <textarea cols="60" rows="10" name="analyst">做的很好，暂无意见！</textarea>
                                           <div id="combo-main-echarts"  render="true" >
-                                              <input type="submit" value="提交问卷">
+                                              <input type="submit" value="提交问卷" class="am-btn am-btn-primary">
                                           </div>
                                       <%--</div>--%>
                                   </div>

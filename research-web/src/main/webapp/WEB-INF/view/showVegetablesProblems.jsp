@@ -35,7 +35,7 @@
     <div class="wrap_show"></div>
     <div class="wrap_"></div>
     <div class="wrap_main">
-        <form action="toCuccess" method="post">
+        <form action="toSuccess" method="post">
             <h2>一、对总体的评估</h2>
                 <div class="am-u-sm-14">
                     <div class="card-box">
