@@ -33,7 +33,7 @@
         <small>为了更好的满足大家的用餐需求，请大家结合自己的实际情况勾选填写。</small>
     </div>
   </header>
-<form action="doComment" method="post">
+<form action="doAllComment" method="post">
   <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
       <div class="am-cf am-padding">
@@ -132,7 +132,7 @@
             </div>
 
               <div class="am-g">
-                  <div class="am-u-md-5">
+                  <div class="am-u-md-4">
                       <div class="am-panel am-panel-default">
                           <div class="am-panel-hd">
                               <h4 class="am-panel-title" data-am-collapse="{ target: '#combo'}">
@@ -155,9 +155,9 @@
                                                   </tr>
                                               </c:forEach>
                                           </table>
-                                          <textarea cols="60" rows="10" name="analyst">德玛西亚</textarea>
+                                          <textarea cols="60" rows="10" name="analyst">做的很好，暂无意见！</textarea>
                                           <div id="combo-main-echarts"  render="true" >
-                                             <input type="submit" value="提交">
+                                              <input type="submit" value="提交问卷">
                                           </div>
                                       <%--</div>--%>
                                   </div>
@@ -166,7 +166,6 @@
                       </div>
                   </div>
               </div>
-
           </div>
     </div>
   </div>

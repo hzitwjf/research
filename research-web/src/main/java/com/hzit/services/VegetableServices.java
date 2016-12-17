@@ -10,4 +10,5 @@ import java.util.Map;
  */
 public interface VegetableServices {
     List<Vegetable> findAllVegetable(Map map);
+    Vegetable findOneVegetable(Integer vId);
 }

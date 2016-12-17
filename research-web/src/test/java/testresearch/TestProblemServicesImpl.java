@@ -26,5 +26,10 @@ public class TestProblemServicesImpl {
             List<Problem> problemList=problemServices.findAllProblem(null);
             problemList.forEach(problem -> System.out.println(problem.toString()));
         }
+    @Test
+    public void findOneProblems(){
+        Problem problem=problemServices.findOneProblem(1);
+        System.out.println(problem.toString());
+    }
     }
 

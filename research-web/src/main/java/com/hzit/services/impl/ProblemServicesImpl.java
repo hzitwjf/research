@@ -6,6 +6,7 @@ import com.hzit.services.ProblemServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,10 +16,18 @@ import java.util.Map;
 @Service
 public class ProblemServicesImpl implements ProblemServices {
     @Autowired
-    private ProblemMapper problemMapperl;
+    private ProblemMapper problemMapper;
     @Override
     public List<Problem> findAllProblem(Map map) {
-        List<Problem> problemList=problemMapperl.searchProblemByParams(null);
+        List<Problem> problemList=problemMapper.searchProblemByParams(null);
         return problemList;
+    }
+
+    @Override
+    public Problem findOneProblem(Integer pId) {
+        Map map=new HashMap();
+        map.put("pId",pId);
+        List<Problem> problem=problemMapper.searchProblemByParams(map);
+        return problem.get(0);
     }
 }

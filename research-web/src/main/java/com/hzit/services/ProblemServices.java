@@ -10,4 +10,5 @@ import java.util.Map;
  */
 public interface ProblemServices {
     List<Problem> findAllProblem(Map map);
+    Problem findOneProblem(Integer pId);
 }

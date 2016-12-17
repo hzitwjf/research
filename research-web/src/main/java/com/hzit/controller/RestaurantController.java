@@ -85,15 +85,14 @@ public class RestaurantController extends BaseController{
     }
     @RequestMapping("toComment")
     public String toComment(){
-        return "redirect:/doComment";
+        return "redirect:/doAllComment";
     }
     @RequestMapping("doAllComment")
-    @ResponseBody
-    public Object knowIp(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,HttpSession session){
+    public Object knowIp(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){
         //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
         List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
         List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
-        List list=new ArrayList();
+        //List list=new ArrayList();
         for (int i=0;vegetables !=null && i<vegetables.length;i++){
             /*System.out.println(vegetables[i]);
             list.add(vegetables[i]);*/
@@ -101,27 +100,34 @@ public class RestaurantController extends BaseController{
             if (i%2==0){
                 vegetableVo.setVId(Integer.parseInt(vegetables[i]));
                 vegetableVo.setvDiscuss(vegetables[i+1]);
-                System.out.println(vegetableVo.toString());
+                Vegetable vegetable=vegetableServices.findOneVegetable(vegetableVo.getVId());
+                vegetableVo.setVName(vegetable.getVName());
+                //System.out.println(vegetableVo.toString());
                 vegetableVos.add(vegetableVo);
             }else {
                 System.out.println("");
             }
         }
         for (int j=0;analyst !=null && j<analyst.length;j++){
-            /*System.out.println(analyst[j]);
-            list.add(analyst[j]);*/
+            //System.out.println(analyst[j]);
+            //list.add(analyst[j]);
             ProblemVo problemVo=new ProblemVo();
             if (j%2==0){
                 problemVo.setPId(Integer.parseInt(analyst[j]));
-                problemVo.setpAnswer(analyst[j]+1);
-                System.out.println(problemVo.toString());
+                problemVo.setpAnswer(analyst[j+1]);
+                //System.out.println(problemVo.getpAnswer());
+                Problem problem=problemServices.findOneProblem(problemVo.getPId());
+                problemVo.setPContent(problem.getPContent());
+                //System.out.println(problemVo.toString());
                 problemVos.add(problemVo);
             }else {
                 System.out.println("");
             }
         }
-        list.add(vegetableVos);
-        list.add(problemVos);
-        return list;
+        //list.add(vegetableVos);
+        //list.add(problemVos);
+       modelMap.put("vegetableVos",vegetableVos);
+        modelMap.put("problemVos",problemVos);
+        return "SurveyDetails";
     }
 }

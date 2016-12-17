@@ -6,6 +6,7 @@ import com.hzit.services.VegetableServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,5 +21,13 @@ public class VegetableServicesImpl implements VegetableServices {
     public List<Vegetable> findAllVegetable(Map map) {
         List<Vegetable> vegetableList=vegetableMapper.searchVegetableByParams(null);
         return vegetableList;
+    }
+
+    @Override
+    public Vegetable findOneVegetable(Integer vId) {
+        Map map=new HashMap();
+        map.put("vId",vId);
+        List<Vegetable> vegetableList=vegetableMapper.searchVegetableByParams(map);
+        return vegetableList.get(0);
     }
 }

@@ -12,7 +12,7 @@
     <sql id="problemBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pId)">
+                <if test="map.pId!=null">
                     p_id = #{map.pId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pContent)">

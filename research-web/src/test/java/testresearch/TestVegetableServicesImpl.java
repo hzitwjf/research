@@ -28,4 +28,9 @@ public class TestVegetableServicesImpl {
             System.out.println(vegetable.getVName());
         }
     }
+    @Test
+    public void findOneVegetable(){
+        Vegetable vegetable=vegetableServices.findOneVegetable(3);
+        System.out.println(vegetable.toString());
+    }
 }
