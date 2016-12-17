@@ -79,13 +79,9 @@ public class RestaurantController extends BaseController{
     public String toVegetablesProblems(){
         return "redirect:/vegetablesProblems";
     }
-    @RequestMapping("Success")
-    public String toCuccess(){
-        return "cuccess";
-    }
     @RequestMapping("toSuccess")
     public String toSuccess(){
-        return "redirect:/Success";
+        return "cuccess";
     }
     @RequestMapping("doAllComment")
     public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){
@@ -148,4 +144,5 @@ public class RestaurantController extends BaseController{
         modelMap.put("problemVos",problemVos);
         return "showVegetablesProblems";
     }
+
 }

@@ -39,7 +39,7 @@
         )VALUES(
             #{cId},
             #{cUuid},
-            #{cTime},
+            sysdate(),
             #{cPeople},
             #{cCount}
         )

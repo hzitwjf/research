@@ -1,5 +1,9 @@
 package com.hzit.vo;
 
+import com.hzit.dao.entity.Discuss;
+
+import java.util.List;
+
 /**
  * 
  * @author wjf
@@ -25,6 +29,10 @@ public class CommentVo {
 	 *  评论人出现的次数
 	 */
 	private String cCount;
+	/**
+	 *  评论详情
+	 */
+	private List<Discuss> discussList;
 	/**
 	 * 评论ID
 	 * @param cId
@@ -101,14 +109,31 @@ public class CommentVo {
 		this.cCount = cCount;
 	}
 
+	/**
+	 * 评论详情
+	 * @return discussList
+	 */
+	public List<Discuss> getDiscussList() {
+		return discussList;
+	}
+
+	/**
+	 * 评论详情
+	 * @param discussList
+	 */
+	public void setDiscussList(List<Discuss> discussList) {
+		this.discussList = discussList;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment{" +
+		return "CommentVo{" +
 				"cId=" + cId +
 				", cUuid='" + cUuid + '\'' +
 				", cTime='" + cTime + '\'' +
 				", cPeople='" + cPeople + '\'' +
 				", cCount='" + cCount + '\'' +
+				", discussList=" + discussList +
 				'}';
 	}
 }
