@@ -59,4 +59,14 @@ public class RestaurantController {
         session.setAttribute("ip",ip);
         return ip;
     }
+    @RequestMapping("toDemo")
+    public String  toDemo(ModelMap modelMap){
+        List<Vegetable> vegetableList=vegetableServices.findAllVegetable(null);
+        modelMap.put("vagetableList",vegetableList);
+        List<Problem> problemList=problemServices.findAllProblem(null);
+        modelMap.put("problem",problemList);
+        List<Answer> answerList=answerService.findAllAnswer(null);
+        modelMap.put("answer",answerList);
+        return "demo";
+    }
 }

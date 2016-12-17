@@ -11,6 +11,7 @@
     <title></title>
   </head>
   <body>
-  <a href="showAll">dian</a>
+  <a href="showAll">showAll</a>
+  <a href="toDemo">toDemo</a>
   </body>
 </html>
