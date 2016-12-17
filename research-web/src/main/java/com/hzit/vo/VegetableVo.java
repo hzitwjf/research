@@ -26,6 +26,10 @@ public class VegetableVo {
 	 */
 	private Integer vLevel;
 	/**
+	 *  菜品评论
+	 */
+	private String vDiscuss;
+	/**
 	 * 菜品ID
 	 * @param vId
 	 */
@@ -101,6 +105,14 @@ public class VegetableVo {
 		return vLevel;
 	}
 
+	public String getvDiscuss() {
+		return vDiscuss;
+	}
+
+	public void setvDiscuss(String vDiscuss) {
+		this.vDiscuss = vDiscuss;
+	}
+
 	@Override
 	public String toString() {
 		return "VegetableVo{" +
@@ -109,6 +121,7 @@ public class VegetableVo {
 				", vName='" + vName + '\'' +
 				", vParent=" + vParent +
 				", vLevel=" + vLevel +
+				", vDiscuss='" + vDiscuss + '\'' +
 				'}';
 	}
 }

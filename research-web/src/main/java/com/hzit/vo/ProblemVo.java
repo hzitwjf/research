@@ -18,6 +18,10 @@ public class ProblemVo {
 	 */
 	private Integer pModule;
 	/**
+	 *  问题答案
+	 */
+	private String pAnswer;
+	/**
 	 * 题目ID
 	 * @param pId
 	 */
@@ -62,12 +66,22 @@ public class ProblemVo {
     public Integer getPModule(){
     	return pModule;
     }
+
+	public String getpAnswer() {
+		return pAnswer;
+	}
+
+	public void setpAnswer(String pAnswer) {
+		this.pAnswer = pAnswer;
+	}
+
 	@Override
 	public String toString() {
 		return "ProblemVo{" +
 				"pId=" + pId +
 				", pContent='" + pContent + '\'' +
 				", pModule=" + pModule +
+				", pAnswer='" + pAnswer + '\'' +
 				'}';
 	}
 }

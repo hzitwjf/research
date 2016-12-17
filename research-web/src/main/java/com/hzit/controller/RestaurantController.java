@@ -6,15 +6,19 @@ import com.hzit.dao.entity.Vegetable;
 import com.hzit.services.AnswerService;
 import com.hzit.services.ProblemServices;
 import com.hzit.services.VegetableServices;
+import com.hzit.vo.ProblemVo;
+import com.hzit.vo.VegetableVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -78,5 +82,46 @@ public class RestaurantController extends BaseController{
     @RequestMapping("toCuccess")
     public String toCuccess(){
         return "cuccess";
+    }
+    @RequestMapping("toComment")
+    public String toComment(){
+        return "redirect:/doComment";
+    }
+    @RequestMapping("doAllComment")
+    @ResponseBody
+    public Object knowIp(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,HttpSession session){
+        //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
+        List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
+        List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
+        List list=new ArrayList();
+        for (int i=0;vegetables !=null && i<vegetables.length;i++){
+            /*System.out.println(vegetables[i]);
+            list.add(vegetables[i]);*/
+            VegetableVo vegetableVo=new VegetableVo();
+            if (i%2==0){
+                vegetableVo.setVId(Integer.parseInt(vegetables[i]));
+                vegetableVo.setvDiscuss(vegetables[i+1]);
+                System.out.println(vegetableVo.toString());
+                vegetableVos.add(vegetableVo);
+            }else {
+                System.out.println("");
+            }
+        }
+        for (int j=0;analyst !=null && j<analyst.length;j++){
+            /*System.out.println(analyst[j]);
+            list.add(analyst[j]);*/
+            ProblemVo problemVo=new ProblemVo();
+            if (j%2==0){
+                problemVo.setPId(Integer.parseInt(analyst[j]));
+                problemVo.setpAnswer(analyst[j]+1);
+                System.out.println(problemVo.toString());
+                problemVos.add(problemVo);
+            }else {
+                System.out.println("");
+            }
+        }
+        list.add(vegetableVos);
+        list.add(problemVos);
+        return list;
     }
 }

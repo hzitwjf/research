@@ -33,14 +33,15 @@
         <small>为了更好的满足大家的用餐需求，请大家结合自己的实际情况勾选填写。</small>
     </div>
   </header>
-<form action="/index.jsp">
+<form action="doComment" method="post">
   <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
       <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">一、对以往餐点的评选</strong></div>
+          <div class="am-fl am-cf" style="margin-left: 600px"><strong class="am-text-primary am-text-lg">二、对总体的评估</strong></div>
       </div>
           <div class="am-g">
-            <div class="am-u-md-6">
+            <div class="am-u-md-3">
               <div class="am-panel am-panel-default">
                   <div class="am-panel-hd">
                     <h4 class="am-panel-title" data-am-collapse="{ target: '#statistics'}">
@@ -50,7 +51,7 @@
                   <div id="statistics" class="am-panel-collapse am-collapse am-in">
                     <div class="am-panel-bd">
                        <div id="statistics-main-content" render="true" >
-                           <div style="margin-left: auto;margin-right: auto;width: 260px">
+                           <div style="width: 230px;">
                                <c:forEach items="${vagetableList}" var="uv">
                                    <c:if test="${uv.VParent==0}">
                                        <%--<h3> <a href="#">${uv.VType}</a></h3>--%>
@@ -63,10 +64,10 @@
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                         <c:if test="${u.VType=='肉' or u.VType=='鸡鸭鱼'}">
-                                                                           <li><a href="javascript:void(0)">${u.VName}</a> </li>
+                                                                           <li><a href="javascript:void(0)"><input type="hidden" name="vegetables" value="${u.VId}">${u.VName}</a> </li>
                                                                            <li>
-                                                                               <input type="checkbox" value="最喜欢吃"> 最喜欢吃
-                                                                               <input type="checkbox" value="最不喜欢吃"> 最不喜欢吃
+                                                                               <input type="checkbox" value="喜欢吃" name="vegetables" style="width: 20px;height: 20px">喜欢吃
+                                                                               <input type="checkbox" value="不喜欢吃" name="vegetables" style="width: 20px;height: 20px"> 不喜欢吃
                                                                            </li>
                                                                         </c:if>
                                                                    </c:if>
@@ -85,7 +86,7 @@
                </div>
             </div>
 
-            <div class="am-u-md-6">
+            <div class="am-u-md-3">
               <div class="am-panel am-panel-default">
                   <div class="am-panel-hd">
                     <h4 class="am-panel-title" data-am-collapse="{ target: '#expend'}">
@@ -95,7 +96,7 @@
                   <div id="expend" class="am-panel-collapse am-collapse am-in">
                     <div class="am-panel-bd">
                        <div id="expend-main-content" render="true" >
-                           <div style="margin-left: auto;margin-right: auto;width: 260px">
+                           <div style="width: 230px;">
                                <c:forEach items="${vagetableList}" var="uv">
                                    <c:if test="${uv.VParent==0}">
                                        <%--<h3> <a href="#">${uv.VType}</a></h3>--%>
@@ -108,10 +109,10 @@
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                            <c:if test="${u.VType=='青瓜' or u.VType=='土豆'}">
-                                                                               <li><a href="javascript:void(0)">${u.VName}</a> </li>
+                                                                               <li><a href="javascript:void(0)"><input type="hidden" name="vegetables" value="${u.VId}">${u.VName}</a> </li>
                                                                                <li>
-                                                                                   <input type="checkbox" value="最喜欢吃"> 最喜欢吃
-                                                                                   <input type="checkbox" value="最不喜欢吃"> 最不喜欢吃
+                                                                                   <input type="checkbox" value="喜欢吃" name="vegetables" style="width: 20px;height: 20px"> 喜欢吃
+                                                                                   <input type="checkbox" value="不喜欢吃" name="vegetables" style="width: 20px;height: 20px"> 不喜欢吃
                                                                                </li>
                                                                            </c:if>
                                                                    </c:if>
@@ -130,11 +131,8 @@
                </div>
             </div>
 
-              <div class="am-cf am-padding">
-                  <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">二、对总体的评估</strong></div>
-              </div>
               <div class="am-g">
-                  <div class="am-u-md-12">
+                  <div class="am-u-md-5">
                       <div class="am-panel am-panel-default">
                           <div class="am-panel-hd">
                               <h4 class="am-panel-title" data-am-collapse="{ target: '#combo'}">
@@ -144,24 +142,24 @@
                           <div id="combo" class="am-panel-collapse am-collapse am-in">
                               <div class="am-panel-bd">
                                   <div id="combo-main-content"  render="true">
-                                      <div style="margin-left: auto;margin-right: auto;width: 800px; ">
+                                      <%--<div style="margin-left: auto;margin-right: auto;width: 800px;border: 1px solid red ">--%>
                                           <table>
                                               <c:forEach items="${problem}" var="p">
-                                                  <tr><th>${p.PContent}</th></tr>
+                                                  <tr><th colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</th></tr>
                                                   <tr>
                                                       <c:forEach items="${answer}" var="a">
                                                           <c:if test="${p.PId==a.prId}">
-                                                              <td width="150px"><input type="checkbox" value="${a.awContent}">${a.awContent}</td>
+                                                              <td width="100px"><input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px">${a.awContent}</td>
                                                           </c:if>
                                                       </c:forEach>
                                                   </tr>
                                               </c:forEach>
                                           </table>
-                                          <textarea cols="60" rows="10">德玛西亚</textarea>
+                                          <textarea cols="60" rows="10" name="analyst">德玛西亚</textarea>
                                           <div id="combo-main-echarts"  render="true" >
                                              <input type="submit" value="提交">
                                           </div>
-                                      </div>
+                                      <%--</div>--%>
                                   </div>
                               </div>
                           </div>
