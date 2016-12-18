@@ -1,11 +1,7 @@
 package testresearch;
 
 import com.hzit.StartSpring;
-import com.hzit.dao.entity.Comment;
-import com.hzit.dao.entity.Discuss;
-import com.hzit.dao.entity.Vegetable;
-import com.hzit.services.RestaurantCommentService;
-import com.hzit.services.VegetableServices;
+import com.hzit.services.CommentService;
 import com.hzit.vo.CommentVo;
 import com.hzit.vo.DiscussVo;
 import org.junit.Test;
@@ -13,10 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,9 +17,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(StartSpring.class)
-public class TestRestaurantCommentServicesImpl {
+public class TestCommentServicesImpl {
     @Autowired
-    private RestaurantCommentService restaurantCommentService;
+    private CommentService commentService;
     @Test
     public void addRestaurantComment(){
         CommentVo commentVo=new CommentVo();
@@ -42,7 +35,7 @@ public class TestRestaurantCommentServicesImpl {
         discussVos.add(discussVo);
         discussVos.add(discussVo1);
        commentVo.setDiscussVos(discussVos);
-        int i=restaurantCommentService.addRestaurantComment(commentVo);
+        int i=commentService.addComment(commentVo);
         System.out.println("共影响"+i+"行");
     }
 }
