@@ -7,6 +7,7 @@ import com.hzit.vo.ProblemVo;
 import com.hzit.vo.VegetableVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,7 +52,7 @@ public class CommentController {
         }
     }
     @RequestMapping("addAllComment")
-    public Object addAllComment(HttpSession session){
+    public String addAllComment(HttpSession session){
         try{
             List<VegetableVo> vegetableVoList=(List<VegetableVo>) session.getAttribute("restaurantVegetablesComment");
             List<ProblemVo> problemVoList=(List<ProblemVo>)session.getAttribute("restaurantProblemComment");
@@ -85,5 +86,10 @@ public class CommentController {
             ex.printStackTrace();
             return "redirect:/toShowAllVegetables";
         }
+    }
+    @RequestMapping("toShowAllComment")
+    public String toShowAllComment(ModelMap modelMap){
+
+        return "showComment";
     }
 }
