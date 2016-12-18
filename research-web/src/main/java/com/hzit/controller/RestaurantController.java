@@ -155,5 +155,9 @@ public class RestaurantController extends BaseController{
         session.setAttribute("restaurantSomeComment",problemVos);
         return "showVegetablesProblems";
     }
+    @RequestMapping("toRestaurantIndex")
+    public String toRestaurantIndex(){
+        return "RestaurantIndex";
+    }
 
 }
