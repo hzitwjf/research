@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/12/15.
@@ -57,7 +59,9 @@ public class RestaurantController extends BaseController{
     public String showAllVegetables(ModelMap modelMap){
         List<Vegetable> vegetableList=vegetableServices.findAllVegetable(null);
         modelMap.put("vagetableList",vegetableList);
-        List<Problem> problemList=problemServices.findAllProblem(null);
+        Map problemMap=new HashMap<>();
+        problemMap.put("pModule",0);
+        List<Problem> problemList=problemServices.findAllProblem(problemMap);
         modelMap.put("problem",problemList);
         List<Answer> answerList=answerService.findAllAnswer(null);
         modelMap.put("answer",answerList);
@@ -69,6 +73,8 @@ public class RestaurantController extends BaseController{
     }
     @RequestMapping("vegetablesProblems")
     public String  vegetablesProblems(ModelMap modelMap){
+        Map problemMap=new HashMap<>();
+        problemMap.put("pModule",0);
         List<Problem> problemList=problemServices.findAllProblem(null);
         modelMap.put("problem",problemList);
         List<Answer> answerList=answerService.findAllAnswer(null);
@@ -114,6 +120,7 @@ public class RestaurantController extends BaseController{
                 //System.out.println(problemVo.getpAnswer());
                 Problem problem=problemServices.findOneProblem(problemVo.getPId());
                 problemVo.setPContent(problem.getPContent());
+                problemVo.setPModule(problem.getPModule());
                 //System.out.println(problemVo.toString());
                 problemVos.add(problemVo);
             }else {
@@ -136,6 +143,7 @@ public class RestaurantController extends BaseController{
                 problemVo.setpAnswer(analyst[j + 1]);
                 Problem problem = problemServices.findOneProblem(problemVo.getPId());
                 problemVo.setPContent(problem.getPContent());
+                problemVo.setPModule(problem.getPModule());
                 problemVos.add(problemVo);
             } else {
                 System.out.println("");

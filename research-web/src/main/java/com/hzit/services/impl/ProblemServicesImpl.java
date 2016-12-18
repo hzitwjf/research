@@ -19,7 +19,7 @@ public class ProblemServicesImpl implements ProblemServices {
     private ProblemMapper problemMapper;
     @Override
     public List<Problem> findAllProblem(Map map) {
-        List<Problem> problemList=problemMapper.searchProblemByParams(null);
+        List<Problem> problemList=problemMapper.searchProblemByParams(map);
         return problemList;
     }
 

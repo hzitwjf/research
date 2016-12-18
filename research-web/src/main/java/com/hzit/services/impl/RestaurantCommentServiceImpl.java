@@ -32,18 +32,29 @@ public class RestaurantCommentServiceImpl implements RestaurantCommentService {
     public int addRestaurantComment(CommentVo commentVo) {
         try{
             String cUuid= UUID.randomUUID().toString();
+            int pModule=0;
             Comment comment=new Comment();
             comment.setCUuid(cUuid);
             comment.setcCount("1");
             comment.setCPeople(commentVo.getCPeople());
+            comment.setcModule(commentVo.getcModule());
+            List<DiscussVo> discussVos=commentVo.getDiscussVos();
+            for (DiscussVo discussVo1 : discussVos){
+                pModule=discussVo1.getpModule();
+               // System.out.println(discussVo1.toString());
+            }
+            if (pModule==0){
+                comment.setcModule("餐饮");
+            }else{
+                comment.setcModule("未知模块");
+            }
             commentMapper.insertComment(comment);
-            List<Discuss> discusseDetails=commentVo.getDiscussList();
-            for (Discuss discussDetail : discusseDetails){
+            for (DiscussVo discussVo : discussVos){
                 Discuss discuss=new Discuss();
                 discuss.setCUuid(cUuid);
-                discuss.setVId(discussDetail.getVId());
-                discuss.setPId(discussDetail.getPId());
-                discuss.setDResult(discussDetail.getDResult());
+                discuss.setVId(discussVo.getVId());
+                discuss.setPId(discussVo.getPId());
+                discuss.setDResult(discussVo.getDResult());
                 discussMapper.insertDiscuss(discuss);
             }
             return 1;

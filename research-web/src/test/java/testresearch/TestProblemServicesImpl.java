@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wjf13 on 2016/12/15.
@@ -23,7 +25,9 @@ public class TestProblemServicesImpl {
     private ProblemServices problemServices;
     @Test
     public void findAllProblems(){
-            List<Problem> problemList=problemServices.findAllProblem(null);
+        Map map=new HashMap<>();
+            map.put("pModule",0);
+            List<Problem> problemList=problemServices.findAllProblem(map);
             problemList.forEach(problem -> System.out.println(problem.toString()));
         }
     @Test

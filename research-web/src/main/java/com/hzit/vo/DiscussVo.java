@@ -22,6 +22,10 @@ public class DiscussVo {
 	 */
 	private Integer pId;
 	/**
+	 * 评论的模块
+	 */
+	private int pModule;
+	/**
 	 *  评论结果
 	 */
 	private String dResult;
@@ -101,6 +105,22 @@ public class DiscussVo {
 		return dResult;
 	}
 
+	/**
+	 * 评论的模块
+	 * @return pModule
+	 */
+	public int getpModule() {
+		return pModule;
+	}
+
+	/**
+	 * 评论的模块
+	 * @param pModule
+	 */
+	public void setpModule(int pModule) {
+		this.pModule = pModule;
+	}
+
 	@Override
 	public String toString() {
 		return "DiscussVo{" +
@@ -108,6 +128,7 @@ public class DiscussVo {
 				", cUuid='" + cUuid + '\'' +
 				", vId=" + vId +
 				", pId=" + pId +
+				", pModule=" + pModule +
 				", dResult='" + dResult + '\'' +
 				'}';
 	}

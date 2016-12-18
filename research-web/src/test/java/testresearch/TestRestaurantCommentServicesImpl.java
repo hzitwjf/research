@@ -7,6 +7,7 @@ import com.hzit.dao.entity.Vegetable;
 import com.hzit.services.RestaurantCommentService;
 import com.hzit.services.VegetableServices;
 import com.hzit.vo.CommentVo;
+import com.hzit.vo.DiscussVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +31,17 @@ public class TestRestaurantCommentServicesImpl {
     public void addRestaurantComment(){
         CommentVo commentVo=new CommentVo();
         commentVo.setCPeople("192.168.0.111");
-        Discuss discuss=new Discuss();
-        discuss.setVId(3);
-        discuss.setDResult("喜欢吃");
-        Discuss discuss1=new Discuss();
-        discuss1.setPId(1);
-        discuss1.setDResult("男");
-        List<Discuss> discussList=new ArrayList<Discuss>();
-        discussList.add(discuss);
-        discussList.add(discuss1);
-        commentVo.setDiscussList(discussList);
+        DiscussVo discussVo=new DiscussVo();
+        discussVo.setVId(3);
+        discussVo.setDResult("喜欢吃");
+        DiscussVo discussVo1=new DiscussVo();
+        discussVo1.setPId(1);
+        discussVo1.setDResult("男");
+        discussVo1.setpModule(0);
+        List<DiscussVo> discussVos=new ArrayList<DiscussVo>();
+        discussVos.add(discussVo);
+        discussVos.add(discussVo1);
+       commentVo.setDiscussVos(discussVos);
         int i=restaurantCommentService.addRestaurantComment(commentVo);
         System.out.println("共影响"+i+"行");
     }

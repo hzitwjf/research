@@ -39,7 +39,7 @@
     <div data-module="firstlevel" class="am-animation-slide-left">
       <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">一、对以往餐点的评选</strong></div>
-          <div class="am-fl am-cf" style="margin-left: 600px"><strong class="am-text-primary am-text-lg">二、对总体的评估</strong></div>
+          <div class="am-fl am-cf" style="margin-left: 450px"><strong class="am-text-primary am-text-lg">二、对总体的评估</strong></div>
       </div>
           <div class="am-g">
             <div class="am-u-md-3">

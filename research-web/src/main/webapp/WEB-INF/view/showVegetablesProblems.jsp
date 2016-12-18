@@ -45,6 +45,7 @@
                             <tr>
                                 <th>问题名称</th>
                                 <th>对该问题提出的意见</th>
+                                <%--<th>该问题所属模块</th>--%>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,7 +54,9 @@
                                     <td>
                                         <input type="hidden" name="pId" value="${p.PId}">${p.PContent}
                                     </td>
-                                    <td> ${p.pAnswer}</td>
+                                    <td> ${p.pAnswer}
+                                        <input type="hidden" name="pModule" value="${p.PModule}">
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

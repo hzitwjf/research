@@ -26,6 +26,10 @@ public class Comment {
 	 */
 	private String cCount;
 	/**
+	 * 评论的模块
+	 */
+	private String  cModule;
+	/**
 	 * 评论ID
 	 * @param cId
 	 */
@@ -101,6 +105,22 @@ public class Comment {
 		this.cCount = cCount;
 	}
 
+	/**
+	 * 评论的模块
+	 * @return cModule
+	 */
+	public String getcModule() {
+		return cModule;
+	}
+
+	/**
+	 * 评论的模块
+	 * @param cModule
+	 */
+	public void setcModule(String cModule) {
+		this.cModule = cModule;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment{" +
@@ -109,6 +129,7 @@ public class Comment {
 				", cTime='" + cTime + '\'' +
 				", cPeople='" + cPeople + '\'' +
 				", cCount='" + cCount + '\'' +
+				", cModule='" + cModule + '\'' +
 				'}';
 	}
 }

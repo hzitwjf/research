@@ -63,6 +63,7 @@
                                 <tr>
                                     <th>问题名称</th>
                                     <th>对该问题提出的意见</th>
+                                    <%--<th>该问题所属模块</th>--%>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,14 +72,17 @@
                                         <td>
                                             <input type="hidden" name="pId" value="${p.PId}">${p.PContent}
                                         </td>
-                                        <td> ${p.pAnswer}</td>
+                                        <td> ${p.pAnswer}
+                                        <input type="hidden" name="pModule" value="${p.PModule}">
+                                        </td>
+                                        <%--<td>${p.PModule}</td>--%>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
                             <!-- col end -->
                             <input type="submit" value="确认评价" class="am-btn am-btn-primary">
-                            <a href="toShowAllVegetables" class="am-btn am-btn-primary" style="margin-left: 360px">返回重新评论</a>
+                            <a href="toShowAllVegetables" class="am-btn am-btn-primary" style="margin-left: 300px">返回重新评论</a>
                         </div>
                     </div>
                     <!-- Row end -->

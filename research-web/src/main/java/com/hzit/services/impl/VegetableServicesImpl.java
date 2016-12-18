@@ -19,7 +19,7 @@ public class VegetableServicesImpl implements VegetableServices {
     private VegetableMapper vegetableMapper;
     @Override
     public List<Vegetable> findAllVegetable(Map map) {
-        List<Vegetable> vegetableList=vegetableMapper.searchVegetableByParams(null);
+        List<Vegetable> vegetableList=vegetableMapper.searchVegetableByParams(map);
         return vegetableList;
     }
 

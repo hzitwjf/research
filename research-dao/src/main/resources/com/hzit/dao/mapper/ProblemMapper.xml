@@ -18,7 +18,7 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pContent)">
                     AND p_content = #{map.pContent}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pModule)">
+                <if test="map.pModule!=null">
                     AND p_module = #{map.pModule}
                 </if>
             </where>

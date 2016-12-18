@@ -30,9 +30,13 @@ public class CommentVo {
 	 */
 	private String cCount;
 	/**
+	 * 评论的模块
+	 */
+	private String  cModule;
+	/**
 	 *  评论详情
 	 */
-	private List<Discuss> discussList;
+	private List<DiscussVo> discussVos;
 	/**
 	 * 评论ID
 	 * @param cId
@@ -108,23 +112,35 @@ public class CommentVo {
 	public void setcCount(String cCount) {
 		this.cCount = cCount;
 	}
-
 	/**
 	 * 评论详情
-	 * @return discussList
+	 * @return discussVos
 	 */
-	public List<Discuss> getDiscussList() {
-		return discussList;
+	public List<DiscussVo> getDiscussVos() {
+		return discussVos;
+	}
+	/**
+	 * 评论详情
+	 * @param discussVos
+	 */
+	public void setDiscussVos(List<DiscussVo> discussVos) {
+		this.discussVos = discussVos;
+	}
+	/**
+	 * 评论的模块
+	 * @return cModule
+	 */
+	public String getcModule() {
+		return cModule;
 	}
 
 	/**
-	 * 评论详情
-	 * @param discussList
+	 * 评论的模块
+	 * @param cModule
 	 */
-	public void setDiscussList(List<Discuss> discussList) {
-		this.discussList = discussList;
+	public void setcModule(String cModule) {
+		this.cModule = cModule;
 	}
-
 	@Override
 	public String toString() {
 		return "CommentVo{" +
@@ -133,7 +149,8 @@ public class CommentVo {
 				", cTime='" + cTime + '\'' +
 				", cPeople='" + cPeople + '\'' +
 				", cCount='" + cCount + '\'' +
-				", discussList=" + discussList +
+				", cModule='" + cModule + '\'' +
+				", discussVos=" + discussVos +
 				'}';
 	}
 }
