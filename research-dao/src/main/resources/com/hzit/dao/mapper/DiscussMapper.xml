@@ -14,16 +14,16 @@
     <sql id="discussBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dId)">
+                <if test="map.dId!=null">
                     d_id = #{map.dId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cUuid)">
                     AND c_uuid = #{map.cUuid}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.vId)">
+                <if test="map.vId!=null">
                     AND v_id = #{map.vId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.pId)">
+                <if test="map.pId!=null">
                     AND p_id = #{map.pId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dResult)">
