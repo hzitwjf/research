@@ -1,5 +1,7 @@
 package com.hzit.controller;
 
+import com.fc.platform.commons.page.Page;
+import com.hzit.dao.entity.Comment;
 import com.hzit.services.CommentService;
 import com.hzit.vo.CommentVo;
 import com.hzit.vo.DiscussVo;
@@ -88,8 +90,13 @@ public class CommentController {
         }
     }
     @RequestMapping("toShowAllComment")
-    public String toShowAllComment(ModelMap modelMap){
-
+    public String toShowAllComment(@RequestParam(name="page",defaultValue = "0")Integer page,ModelMap modelMap){
+        if(page<=0){
+            page=0;
+        }
+        Page<Comment> commentPage=commentService.searchPageByParams(page,5);
+        modelMap.put("commentPage",commentPage);
+        modelMap.put("currentPage",page);
         return "showComment";
     }
 }

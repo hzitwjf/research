@@ -33,54 +33,62 @@
 					<!-- Row start -->
 					  	<div class="am-g">
         <div class="am-u-sm-12">
-          <form class="am-form">
             <table class="am-table am-table-striped am-table-hover table-main">
               <thead>
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
-                  <th class="table-id">ID</th>
-                  <th class="table-title">标题</th>
-                  <th class="table-type">类别</th>
-                  <th class="table-author am-hide-sm-only">作者</th>
-                  <th class="table-date am-hide-sm-only">修改日期</th>
+                  <th class="table-id">评论ID</th>
+                  <th class="table-title">评论人</th>
+                  <th class="table-date am-hide-sm-only">评论时间</th>
+                  <th class="table-author am-hide-sm-only">当前人评论次数</th>
+                  <th class="table-type">评论模块</th>
                   <th class="table-set">操作</th>
               </tr>
               </thead>
               <tbody>
-                  <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>1</td>
-                    <td><a href="#">Business management</a></td>
-                    <td>default</td>
-                    <td class="am-hide-sm-only">测试1号</td>
-                    <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                    <td>
-                      <div class="am-btn-toolbar">
-                        <div class="am-btn-group am-btn-group-xs">
-                          <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="#"><span class="am-icon-pencil-square-o"></span> 查看评论详情</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                <c:forEach items="${commentPage.content}" var="commentList">
+                    <tr>
+                        <td><input type="checkbox" name="cUuid" value="${commentList.CUuid}"/></td>
+                        <td>${commentList.CId}</td>
+                        <td><a href="javascript:void(0)">${commentList.CPeople}</a></td>
+                        <td>${commentList.CTime}</td>
+                        <td class="am-hide-sm-only">${commentList.cCount}</td>
+                        <td class="am-hide-sm-only">${commentList.cModule}</td>
+                        <td>
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="#"><span class="am-icon-pencil-square-o"></span> 查看评论详情</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
               </tbody>
             </table>
             <div class="am-cf">
-              共 15 条记录
+              共 ${commentPage.totalElements} 条记录
               <div class="am-fr">
                 <ul class="am-pagination">
-                  <li class="am-disabled"><a href="#">«</a></li>
-                  <li class="am-active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">»</a></li>
+                    <c:if test="${(currentPage-1)<0}">
+                        <li class="am-disabled"><a href="toShowAllComment?page=${currentPage-1}">«</a></li>
+                    </c:if>
+                    <c:if test="${(currentPage-1)>=0}">
+                        <li><a href="toShowAllComment?page=${currentPage-1}">«</a></li>
+                    </c:if>
+                    <c:forEach begin="0" end="${commentPage.totalPages-1}" var="p">
+                        <li class="am-active"><a href="toShowAllComment?page=${p}">${p+1}</a></li>
+                    </c:forEach>
+                    <c:if test="${currentPage<(commentPage.totalPages-1)}">
+                        <li><a href="toShowAllComment?page=${currentPage+1}">»</a></li>
+                    </c:if>
+                    <c:if test="${currentPage>=(commentPage.totalPages-1)}">
+                        <li class="am-disabled"><a href="toShowAllComment?page=${currentPage+1}">»</a></li>
+                    </c:if>
                 </ul>
               </div>
             </div>
             <hr />
             <p>注：合众艾特评论信息表</p>
-          </form>
         </div>
 
       </div>
