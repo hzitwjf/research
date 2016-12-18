@@ -45,6 +45,7 @@ public class CommentController {
             commentVo.setDiscussVos(discussVos);
             int i=commentService.addComment(commentVo);
             if(i==1){
+                commentService.removeAllSession(session);
                 return "redirect:/toSuccess";
             }else {
                 return "redirect:/index.jsp";
@@ -81,6 +82,7 @@ public class CommentController {
             commentVo.setDiscussVos(discussVos);
             int i=commentService.addComment(commentVo);
             if(i==1){
+                commentService.removeAllSession(session);
                 return "redirect:/toSuccess";
             }else {
                 return "redirect:/toShowAllVegetables";

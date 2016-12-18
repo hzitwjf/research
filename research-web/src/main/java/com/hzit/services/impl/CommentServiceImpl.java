@@ -14,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 /**
  * Created by wjf13 on 2016/12/18.
@@ -79,5 +77,20 @@ public class CommentServiceImpl implements CommentService {
         PageRequest pageRequest=new PageRequest(page,rowCount);
         Page<Comment> commentPage=commentMapper.searchCommentByParams(map,pageRequest);
         return commentPage;
+    }
+
+    @Override
+    public Boolean removeAllSession(HttpSession session) {
+        try{
+            Enumeration e=session.getAttributeNames();
+            while(e.hasMoreElements()){ String sessionName=(String)e.nextElement();
+                System.out.println("存在的session有："+sessionName);
+                session.removeAttribute(sessionName);
+            }
+            return true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
     }
 }

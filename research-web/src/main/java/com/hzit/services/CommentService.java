@@ -4,6 +4,7 @@ import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Comment;
 import com.hzit.vo.CommentVo;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -12,4 +13,5 @@ import java.util.List;
 public interface CommentService {
     int addComment(CommentVo commentVo);
     Page<Comment> searchPageByParams(int page, int rowCount,String cModule );
+    Boolean removeAllSession(HttpSession session);
 }
