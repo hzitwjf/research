@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface CommentService {
     int addComment(CommentVo commentVo);
-    Page<Comment> searchPageByParams(int page, int rowCount);
+    Page<Comment> searchPageByParams(int page, int rowCount,String cModule );
 }

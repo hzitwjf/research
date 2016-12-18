@@ -38,30 +38,23 @@
               <thead>
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
-                  <th class="table-id">ID</th>
-                  <th class="table-title">标题</th>
-                  <th class="table-type">类别</th>
-                  <th class="table-author am-hide-sm-only">作者</th>
-                  <th class="table-date am-hide-sm-only">修改日期</th>
-                  <th class="table-set">操作</th>
+                  <th class="table-id">详情ID</th>
+                  <th class="table-author am-hide-sm-only">菜品名字</th>
+                  <th class="table-type">题目名字</th>
+                  <th class="table-title">意见</th>
               </tr>
               </thead>
               <tbody>
-                  <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>1</td>
-                    <td><a href="#">Business management</a></td>
-                    <td>default</td>
-                    <td class="am-hide-sm-only">测试1号</td>
-                    <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                    <td>
-                      <div class="am-btn-toolbar">
-                        <div class="am-btn-group am-btn-group-xs">
-                          <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="#"><span class="am-icon-pencil-square-o"></span> 查看评论详情</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+              ${discussVoList}
+                  <c:forEach items="${discussVoList}" var="disc">
+                      <tr>
+                        <td><input type="checkbox" value="" /></td>
+                        <td>1</td>
+                        <td><a href="#">Business management</a></td>
+                        <td>default</td>
+                        <td class="am-hide-sm-only">测试1号</td>
+                      </tr>
+                  </c:forEach>
               </tbody>
             </table>
             <div class="am-cf">

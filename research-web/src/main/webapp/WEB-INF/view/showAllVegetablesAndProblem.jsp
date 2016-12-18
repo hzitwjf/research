@@ -146,7 +146,9 @@
                                       <%--<div style="margin-left: auto;margin-right: auto;width: 800px;border: 1px solid red ">--%>
                                           <table>
                                               <c:forEach items="${problem}" var="p">
-                                                  <tr><th colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</th></tr>
+                                                  <c:if test="${p.PModule==0}">
+                                                    <tr><th colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</th></tr>
+                                                  </c:if>
                                                   <tr>
                                                       <c:forEach items="${answer}" var="a">
                                                           <c:if test="${p.PId==a.prId}">

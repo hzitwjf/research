@@ -13,7 +13,10 @@ import com.hzit.vo.DiscussVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -70,9 +73,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Page<Comment> searchPageByParams(int page, int rowCount) {
+    public Page<Comment> searchPageByParams(int page, int rowCount,String cModule) {
+        Map map=new HashMap();
+        map.put("cModule",cModule);
         PageRequest pageRequest=new PageRequest(page,rowCount);
-        Page<Comment> commentPage=commentMapper.searchCommentByParams(null,pageRequest);
+        Page<Comment> commentPage=commentMapper.searchCommentByParams(map,pageRequest);
         return commentPage;
     }
 }

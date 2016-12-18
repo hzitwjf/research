@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/12/18.
@@ -90,11 +91,17 @@ public class CommentController {
         }
     }
     @RequestMapping("toShowAllComment")
-    public String toShowAllComment(@RequestParam(name="page",defaultValue = "0")Integer page,ModelMap modelMap){
+    public String toShowAllComment(@RequestParam("cModule") String cModule,HttpSession session){
+        session.setAttribute("cModule",cModule);
+        return "redirect:/showAllComment";
+    }
+    @RequestMapping("showAllComment")
+    public String showAllComment(@RequestParam(name="page",defaultValue = "0")Integer page,ModelMap modelMap,HttpSession session){
         if(page<=0){
             page=0;
         }
-        Page<Comment> commentPage=commentService.searchPageByParams(page,5);
+        String module= (String) session.getAttribute("cModule");
+        Page<Comment> commentPage=commentService.searchPageByParams(page,10,module);
         modelMap.put("commentPage",commentPage);
         modelMap.put("currentPage",page);
         return "showComment";

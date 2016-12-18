@@ -44,7 +44,7 @@ public class TestCommentServicesImpl {
     public void findAllCommentsByPage(){
         int page=2;
         int rowCount=3;
-        Page<Comment> commentPage=commentService.searchPageByParams(page,rowCount);
+        Page<Comment> commentPage=commentService.searchPageByParams(page,rowCount,"餐饮");
         commentPage.forEach(comment -> System.out.println(comment.toString()));
         System.out.println("总行数"+commentPage.getTotalElements());
         System.out.println("总页数"+commentPage.getTotalPages());

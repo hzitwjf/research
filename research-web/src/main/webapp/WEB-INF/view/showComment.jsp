@@ -37,7 +37,7 @@
               <thead>
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
-                  <th class="table-id">评论ID</th>
+                  <th class="table-title">评论ID</th>
                   <th class="table-title">评论人</th>
                   <th class="table-date am-hide-sm-only">评论时间</th>
                   <th class="table-author am-hide-sm-only">当前人评论次数</th>
@@ -57,7 +57,7 @@
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
-                                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="#"><span class="am-icon-pencil-square-o"></span> 查看评论详情</a>
+                                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="toShowDiscussByCUuid?cUuid=${commentList.CUuid}"><span class="am-icon-pencil-square-o"></span> 查看评论详情</a>
                                 </div>
                             </div>
                         </td>
@@ -70,19 +70,19 @@
               <div class="am-fr">
                 <ul class="am-pagination">
                     <c:if test="${(currentPage-1)<0}">
-                        <li class="am-disabled"><a href="toShowAllComment?page=${currentPage-1}">«</a></li>
+                        <li class="am-disabled"><a href="showAllComment?page=${currentPage-1}">«</a></li>
                     </c:if>
                     <c:if test="${(currentPage-1)>=0}">
-                        <li><a href="toShowAllComment?page=${currentPage-1}">«</a></li>
+                        <li><a href="showAllComment?page=${currentPage-1}">«</a></li>
                     </c:if>
                     <c:forEach begin="0" end="${commentPage.totalPages-1}" var="p">
-                        <li class="am-active"><a href="toShowAllComment?page=${p}">${p+1}</a></li>
+                        <li class="am-active"><a href="showAllComment?page=${p}">${p+1}</a></li>
                     </c:forEach>
                     <c:if test="${currentPage<(commentPage.totalPages-1)}">
-                        <li><a href="toShowAllComment?page=${currentPage+1}">»</a></li>
+                        <li><a href="showAllComment?page=${currentPage+1}">»</a></li>
                     </c:if>
                     <c:if test="${currentPage>=(commentPage.totalPages-1)}">
-                        <li class="am-disabled"><a href="toShowAllComment?page=${currentPage+1}">»</a></li>
+                        <li class="am-disabled"><a href="showAllComment?page=${currentPage+1}">»</a></li>
                     </c:if>
                 </ul>
               </div>
@@ -114,8 +114,9 @@
 		
 		<script type="text/javascript" src="/assets/js/jquery-2.1.0.js" ></script>
 		<script type="text/javascript" src="/assets/js/amazeui.min.js"></script>
-		<script type="text/javascript" src="/assets/js/app.js" ></script>
+
 		<script type="text/javascript" src="/assets/js/blockUI.js" ></script>
+
 	</body>
 	
 </html>

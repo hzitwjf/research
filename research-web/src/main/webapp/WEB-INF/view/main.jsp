@@ -32,7 +32,9 @@
             <div style="margin-left: auto;margin-right: auto;width: 800px; ">
                     <table>
                         <c:forEach items="${problem}" var="p">
-                            <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</td></tr>
+                            <c:if test="${p.PModule==0}">
+                                <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</td></tr>
+                            </c:if>
                             <tr>
                                 <c:forEach items="${answer}" var="a">
                                     <c:if test="${p.PId==a.prId}">
