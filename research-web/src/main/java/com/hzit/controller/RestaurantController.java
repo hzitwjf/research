@@ -134,7 +134,7 @@ public class RestaurantController extends BaseController{
         return "SurveyDetails";
     }
     @RequestMapping("doSomeComment")
-    public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap) {
+    public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session) {
         List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
         for (int j = 0; analyst != null && j < analyst.length; j++) {
             ProblemVo problemVo = new ProblemVo();
@@ -150,6 +150,7 @@ public class RestaurantController extends BaseController{
             }
         }
         modelMap.put("problemVos",problemVos);
+        session.setAttribute("restaurantSomeComment",problemVos);
         return "showVegetablesProblems";
     }
 

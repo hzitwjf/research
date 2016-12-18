@@ -35,7 +35,7 @@
     <div class="wrap_show"></div>
     <div class="wrap_"></div>
     <div class="wrap_main">
-        <form action="toSuccess" method="post">
+        <form action="addComment" method="post">
             <h2>一、对总体的评估</h2>
                 <div class="am-u-sm-14">
                     <div class="card-box">
@@ -55,6 +55,7 @@
                                         <input type="hidden" name="pId" value="${p.PId}">${p.PContent}
                                     </td>
                                     <td> ${p.pAnswer}
+                                        <input type="hidden" name="dResult" value="${p.pAnswer}">
                                         <input type="hidden" name="pModule" value="${p.PModule}">
                                     </td>
                                 </tr>

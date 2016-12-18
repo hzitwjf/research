@@ -27,7 +27,7 @@
 <div class="admin">
     <div class="content-page">
         <!-- Start content -->
-        <form action="toSuccess" method="post">
+        <form action="addAllComment" method="post">
             <div class="content">
                 <div class="am-g">
                     <div class="am-u-sm-6">
@@ -46,7 +46,9 @@
                                         <td>
                                             <input type="hidden" value="${v.VId}" name="vId"> ${v.VName}
                                         </td>
-                                        <td>${v.vDiscuss}</td>
+                                        <td>
+                                            <input type="hidden" value="${v.vDiscuss}" name="dResult">${v.vDiscuss}
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -73,7 +75,8 @@
                                             <input type="hidden" name="pId" value="${p.PId}">${p.PContent}
                                         </td>
                                         <td> ${p.pAnswer}
-                                        <input type="hidden" name="pModule" value="${p.PModule}">
+                                            <input type="hidden" name="dResult" value="${p.pAnswer}">
+                                            <input type="hidden" name="pModule" value="${p.PModule}">
                                         </td>
                                         <%--<td>${p.PModule}</td>--%>
                                     </tr>

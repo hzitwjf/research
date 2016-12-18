@@ -22,6 +22,14 @@ public class DiscussVo {
 	 */
 	private Integer pId;
 	/**
+	 *  评论的题目名称
+	 */
+	private String pContent;
+	/**
+	 *  评论的菜品名称
+	 */
+	private String vName;
+	/**
 	 * 评论的模块
 	 */
 	private int pModule;
@@ -119,6 +127,38 @@ public class DiscussVo {
 	 */
 	public void setpModule(int pModule) {
 		this.pModule = pModule;
+	}
+
+	/**
+	 * 评论的菜品名称
+	 * @return vName
+	 */
+	public String getvName() {
+		return vName;
+	}
+
+	/**
+	 * 评论的菜品名称
+	 * @param vName
+	 */
+	public void setvName(String vName) {
+		this.vName = vName;
+	}
+
+	/**
+	 * 评论的题目名称
+	 * @return pContent
+	 */
+	public String getpContent() {
+		return pContent;
+	}
+
+	/**
+	 * 评论的题目名称
+	 * @param pContent
+	 */
+	public void setpContent(String pContent) {
+		this.pContent = pContent;
 	}
 
 	@Override
