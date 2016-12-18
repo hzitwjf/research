@@ -33,7 +33,6 @@ public class CommentServiceImpl implements CommentService {
             comment.setCUuid(cUuid);
             comment.setcCount("1");
             comment.setCPeople(commentVo.getCPeople());
-            comment.setcModule(commentVo.getcModule());
             List<DiscussVo> discussVos=commentVo.getDiscussVos();
             for (DiscussVo discussVo1 : discussVos){
                 pModule=discussVo1.getpModule();

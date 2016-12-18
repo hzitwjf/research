@@ -90,7 +90,7 @@ public class RestaurantController extends BaseController{
         return "cuccess";
     }
     @RequestMapping("doAllComment")
-    public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap){
+    public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session){
         //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
         List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
         List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
@@ -131,6 +131,8 @@ public class RestaurantController extends BaseController{
         //list.add(problemVos);
        modelMap.put("vegetableVos",vegetableVos);
         modelMap.put("problemVos",problemVos);
+        session.setAttribute("restaurantVegetablesComment",vegetableVos);
+        session.setAttribute("restaurantProblemComment",problemVos);
         return "SurveyDetails";
     }
     @RequestMapping("doSomeComment")

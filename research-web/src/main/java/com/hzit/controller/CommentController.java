@@ -1,7 +1,10 @@
 package com.hzit.controller;
 
 import com.hzit.services.CommentService;
+import com.hzit.vo.CommentVo;
 import com.hzit.vo.DiscussVo;
+import com.hzit.vo.ProblemVo;
+import com.hzit.vo.VegetableVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,15 +23,67 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
     @RequestMapping("addComment")
-    @ResponseBody
-    public Object addComment(HttpSession session){
-
-        return session.getAttribute("restaurantSomeComment");
+    public String addComment(HttpSession session){
+        try{
+            List<ProblemVo> problemVoList= (List<ProblemVo>) session.getAttribute("restaurantSomeComment");
+            //System.out.println(problemVoList.size());
+            CommentVo commentVo=new CommentVo();
+            String ip= (String) session.getAttribute("ip");
+            commentVo.setCPeople(ip);
+            List<DiscussVo> discussVos=new ArrayList<DiscussVo>();
+            for (ProblemVo problemVo : problemVoList){
+                DiscussVo discussVo=new DiscussVo();
+                discussVo.setPId(problemVo.getPId());
+                discussVo.setpContent(problemVo.getPContent());
+                discussVo.setDResult(problemVo.getpAnswer());
+                discussVos.add(discussVo);
+            }
+            commentVo.setDiscussVos(discussVos);
+            int i=commentService.addComment(commentVo);
+            if(i==1){
+                return "redirect:/toSuccess";
+            }else {
+                return "redirect:/index.jsp";
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return "redirect:/index.jsp";
+        }
     }
     @RequestMapping("addAllComment")
-    @ResponseBody
-    public Object addAllComment(HttpSession session,DiscussVo  discussVos){
-
-        return discussVos;
+    public Object addAllComment(HttpSession session){
+        try{
+            List<VegetableVo> vegetableVoList=(List<VegetableVo>) session.getAttribute("restaurantVegetablesComment");
+            List<ProblemVo> problemVoList=(List<ProblemVo>)session.getAttribute("restaurantProblemComment");
+            //System.out.println(problemVoList.size());
+            CommentVo commentVo=new CommentVo();
+            String ip= (String) session.getAttribute("ip");
+            commentVo.setCPeople(ip);
+            List<DiscussVo> discussVos=new ArrayList<DiscussVo>();
+            for (VegetableVo vegetableVo : vegetableVoList){
+                DiscussVo discussVo=new DiscussVo();
+                discussVo.setVId(vegetableVo.getVId());
+                discussVo.setDResult(vegetableVo.getvDiscuss());
+                discussVo.setpContent(vegetableVo.getVName());
+                discussVos.add(discussVo);
+            }
+            for (ProblemVo problemVo : problemVoList){
+                DiscussVo discussVo=new DiscussVo();
+                discussVo.setPId(problemVo.getPId());
+                discussVo.setpContent(problemVo.getPContent());
+                discussVo.setDResult(problemVo.getpAnswer());
+                discussVos.add(discussVo);
+            }
+            commentVo.setDiscussVos(discussVos);
+            int i=commentService.addComment(commentVo);
+            if(i==1){
+                return "redirect:/toSuccess";
+            }else {
+                return "redirect:/toShowAllVegetables";
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return "redirect:/toShowAllVegetables";
+        }
     }
 }
