@@ -1,5 +1,7 @@
 package com.hzit.services.impl;
 
+import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Comment;
 import com.hzit.dao.entity.Discuss;
 import com.hzit.dao.mapper.CommentMapper;
@@ -65,5 +67,12 @@ public class CommentServiceImpl implements CommentService {
             ex.printStackTrace();
             return -1;
         }
+    }
+
+    @Override
+    public Page<Comment> searchPageByParams(int page, int rowCount) {
+        PageRequest pageRequest=new PageRequest(page,rowCount);
+        Page<Comment> commentPage=commentMapper.searchCommentByParams(null,pageRequest);
+        return commentPage;
     }
 }

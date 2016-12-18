@@ -1,6 +1,8 @@
 package testresearch;
 
+import com.fc.platform.commons.page.Page;
 import com.hzit.StartSpring;
+import com.hzit.dao.entity.Comment;
 import com.hzit.services.CommentService;
 import com.hzit.vo.CommentVo;
 import com.hzit.vo.DiscussVo;
@@ -37,5 +39,14 @@ public class TestCommentServicesImpl {
        commentVo.setDiscussVos(discussVos);
         int i=commentService.addComment(commentVo);
         System.out.println("共影响"+i+"行");
+    }
+    @Test
+    public void findAllCommentsByPage(){
+        int page=2;
+        int rowCount=3;
+        Page<Comment> commentPage=commentService.searchPageByParams(page,rowCount);
+        commentPage.forEach(comment -> System.out.println(comment.toString()));
+        System.out.println("总行数"+commentPage.getTotalElements());
+        System.out.println("总页数"+commentPage.getTotalPages());
     }
 }
