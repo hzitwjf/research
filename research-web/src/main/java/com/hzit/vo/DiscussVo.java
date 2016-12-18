@@ -168,6 +168,8 @@ public class DiscussVo {
 				", cUuid='" + cUuid + '\'' +
 				", vId=" + vId +
 				", pId=" + pId +
+				", pContent='" + pContent + '\'' +
+				", vName='" + vName + '\'' +
 				", pModule=" + pModule +
 				", dResult='" + dResult + '\'' +
 				'}';

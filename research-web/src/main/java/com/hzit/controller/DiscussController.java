@@ -53,12 +53,12 @@ public class DiscussController {
             Problem problem=problemServices.findOneProblem(discussVo.getPId());
             String content=problem.getPContent();
             //System.out.println(content);
-            discussVo.setpContent("haha");
+            discussVo.setpContent(content);
             Vegetable vegetable=vegetableServices.findOneVegetable(discussVo.getVId());
             String vegetableName=vegetable.getVName();
             //System.out.println(vegetableName);
-            discussVo.setvName("1");
-            System.out.println(discussVo.toString());
+            discussVo.setvName(vegetableName);
+            //System.out.println(discussVo.toString());
             discussVoList.add(discussVo);
         }
        modelMap.put("discussVoList", discussVoList);

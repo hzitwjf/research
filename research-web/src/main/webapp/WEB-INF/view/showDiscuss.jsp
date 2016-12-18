@@ -38,41 +38,48 @@
               <thead>
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
-                  <th class="table-id">详情ID</th>
+                  <th class="table-type">详情ID</th>
                   <th class="table-author am-hide-sm-only">菜品名字</th>
                   <th class="table-type">题目名字</th>
                   <th class="table-title">意见</th>
               </tr>
               </thead>
               <tbody>
-              ${discussVoList}
                   <c:forEach items="${discussVoList}" var="disc">
                       <tr>
-                        <td><input type="checkbox" value="" /></td>
-                        <td>1</td>
-                        <td><a href="#">Business management</a></td>
-                        <td>default</td>
-                        <td class="am-hide-sm-only">测试1号</td>
+                        <td><input type="checkbox" value="${disc.CUuid}" /></td>
+                        <td>${disc.DId}</td>
+                        <td>${disc.vName}</td>
+                        <td>${disc.pContent}</td>
+                        <td class="am-hide-sm-only"><a href="javascript:void(0)">${disc.DResult}</a></td>
                       </tr>
                   </c:forEach>
               </tbody>
             </table>
             <div class="am-cf">
-              共 15 条记录
+              共 ${totalElements} 条记录
               <div class="am-fr">
-                <ul class="am-pagination">
-                  <li class="am-disabled"><a href="#">«</a></li>
-                  <li class="am-active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
+                  <ul class="am-pagination">
+                      <c:if test="${(currentPage-1)<0}">
+                          <li class="am-disabled"><a href="showDiscussByCUuid?page=${currentPage-1}">«</a></li>
+                      </c:if>
+                      <c:if test="${(currentPage-1)>=0}">
+                          <li><a href="showDiscussByCUuid?page=${currentPage-1}">«</a></li>
+                      </c:if>
+                      <c:forEach begin="0" end="${totalPages-1}" var="p">
+                          <li class="am-active"><a href="showDiscussByCUuid?page=${p}">${p+1}</a></li>
+                      </c:forEach>
+                      <c:if test="${currentPage<(totalPages-1)}">
+                          <li><a href="showDiscussByCUuid?page=${currentPage+1}">»</a></li>
+                      </c:if>
+                      <c:if test="${currentPage>=(totalPages-1)}">
+                          <li class="am-disabled"><a href="showDiscussByCUuid?page=${currentPage+1}">»</a></li>
+                      </c:if>
+                  </ul>
               </div>
             </div>
             <hr />
-            <p>注：合众艾特评论信息表</p>
+            <p>注：合众艾特评论详情信息表</p>
           </form>
         </div>
 
