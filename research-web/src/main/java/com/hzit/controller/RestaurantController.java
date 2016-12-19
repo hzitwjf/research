@@ -75,7 +75,7 @@ public class RestaurantController extends BaseController{
     public String  vegetablesProblems(ModelMap modelMap){
         Map problemMap=new HashMap<>();
         problemMap.put("pModule",0);
-        List<Problem> problemList=problemServices.findAllProblem(null);
+        List<Problem> problemList=problemServices.findAllProblem(problemMap);
         modelMap.put("problem",problemList);
         List<Answer> answerList=answerService.findAllAnswer(null);
         modelMap.put("answer",answerList);
