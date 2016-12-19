@@ -37,4 +37,29 @@ public class TestDiscussServicesImpl {
         System.out.println("总行数"+discussPage.getTotalElements());
         System.out.println("总页数"+discussPage.getTotalPages());
     }
+
+    /**
+     * 统计受欢迎度一般的菜品
+     */
+    @Test
+    public void findDiscussOfNormalPopulation(){
+        List<DiscussVo> discussVoList=discussService.findDiscussOfNormalPopulation();
+        discussVoList.forEach(discussVo -> System.out.println(discussVo.toString()));
+    }
+    /**
+     * 统计不受欢迎的菜品
+     */
+    @Test
+    public void findDiscussOfNotPopulation(){
+        List<DiscussVo> discussVoList=discussService.findDiscussOfNotPopulation();
+        discussVoList.forEach(discussVo -> System.out.println(discussVo.toString()));
+    }
+    /**
+     * 统计非常受欢迎度的菜品
+     */
+    @Test
+    public void findDiscussOfPopulation(){
+        List<DiscussVo> discussVoList=discussService.findDiscussOfPopulation();
+        discussVoList.forEach(discussVo -> System.out.println(discussVo.toString()));
+    }
 }

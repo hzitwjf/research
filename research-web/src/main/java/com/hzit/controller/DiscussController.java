@@ -67,4 +67,14 @@ public class DiscussController {
         modelMap.put("totalPages",discussPage.getTotalPages());
         return "showDiscuss";
     }
+    @RequestMapping("showPopulation")
+    public String showPopulation(ModelMap modelMap){
+        List<DiscussVo> population=discussService.findDiscussOfPopulation();
+        List<DiscussVo> notPopulation=discussService.findDiscussOfNotPopulation();
+        List<DiscussVo> normalPopulation=discussService.findDiscussOfNormalPopulation();
+        modelMap.put("population",population);
+        modelMap.put("notPopulation",notPopulation);
+        modelMap.put("normalPopulation",normalPopulation);
+        return "showDetailsOfPopulation";
+    }
 }

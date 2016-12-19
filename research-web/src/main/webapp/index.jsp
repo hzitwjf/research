@@ -127,8 +127,8 @@
             <!-- User -->
             <div class="user-box am-hide-sm-only">
                 <div class="user-img">
-                    <img src="assets/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                    <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
+                    <img src="assets/img/logo.png" alt="UNION" title="UNION@合众艾特" width="88px">
+                    <%--<div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>--%>
                 </div>
                 <h5><a href="javascript:void(0)">满意度调查系统</a> </h5>
                 <ul class="list-inline">
@@ -168,7 +168,7 @@
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-line-chart"></span> 统计喜爱度<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
-                        <li><a href="javascript:void(0)" class="am-cf">餐饮</a></li>
+                        <li><a href="showPopulation" class="am-cf">餐饮</a></li>
                         <li><a href="javascript:void(0)" class="am-cf">讲师</a></li>
                         <li><a href="javascript:void(0)" class="am-cf">班主任</a></li>
                     </ul>

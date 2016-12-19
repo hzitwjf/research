@@ -19,5 +19,7 @@ public interface DiscussMapper {
 	Page<Discuss> searchDiscussByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<Discuss> searchDiscussByParams(@Param("map") Map<String, String> map);
-
+	List<Discuss> searchDiscussOfPopulation();
+	List<Discuss> searchDiscussOfNotPopulation();
+	List<Discuss> searchDiscussOfNormalPopulation();
 } 

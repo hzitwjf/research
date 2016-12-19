@@ -75,7 +75,21 @@
         FROM discuss
         <include refid="discussBaseWhereSql"/>
     </select>
-
+    <select id="searchDiscussOfPopulation" resultMap="discussMap">
+       SELECT * FROM (SELECT COUNT(v_id) p_id,v_id ,d_result  FROM discuss GROUP BY v_id,d_result) l
+        WHERE l.d_result='喜欢吃'
+        AND l.p_id=(SELECT MAX(次数) FROM(SELECT COUNT(v_id) 次数,v_id,d_result FROM discuss GROUP BY v_id,d_result) h )
+    </select>
+    <select id="searchDiscussOfNotPopulation" resultMap="discussMap">
+      SELECT * FROM (SELECT COUNT(v_id) p_id,v_id ,d_result  FROM discuss GROUP BY v_id,d_result) l
+        WHERE l.d_result='不喜欢吃'
+        AND l.p_id=(SELECT MAX(次数) FROM(SELECT COUNT(v_id) 次数,v_id,d_result FROM discuss GROUP BY v_id,d_result) h )
+    </select>
+    <select id="searchDiscussOfNormalPopulation" resultMap="discussMap">
+        SELECT * FROM (SELECT COUNT(v_id) p_id,v_id ,d_result  FROM discuss GROUP BY v_id,d_result) l
+        WHERE l.p_id>0
+        AND l.p_id &lt; (SELECT MAX(次数) FROM(SELECT COUNT(v_id) 次数,v_id,d_result FROM discuss GROUP BY v_id,d_result) h )
+    </select>
     <resultMap type="com.hzit.dao.entity.Discuss" id="discussMap">
         <id column="d_id" property="dId"/>
         <result column="c_uuid" property="cUuid"/>

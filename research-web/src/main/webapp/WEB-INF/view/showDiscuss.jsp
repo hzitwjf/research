@@ -58,6 +58,7 @@
             </table>
             <div class="am-cf">
               共 ${totalElements} 条记录
+                <a href="showAllComment" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
               <div class="am-fr">
                   <ul class="am-pagination">
                       <c:if test="${(currentPage-1)<0}">

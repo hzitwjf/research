@@ -38,7 +38,7 @@
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
                   <th class="table-title">评论ID</th>
-                  <th class="table-title">评论人</th>
+                  <%--<th class="table-title">评论人</th>--%>
                   <th class="table-date am-hide-sm-only">评论时间</th>
                   <th class="table-author am-hide-sm-only">当前人评论次数</th>
                   <th class="table-type">评论模块</th>
@@ -49,8 +49,10 @@
                 <c:forEach items="${commentPage.content}" var="commentList">
                     <tr>
                         <td><input type="checkbox" name="cUuid" value="${commentList.CUuid}"/></td>
-                        <td>${commentList.CId}</td>
-                        <td><a href="javascript:void(0)">${commentList.CPeople}</a></td>
+                        <td>${commentList.CId}
+                            <input type="hidden" value="${commentList.CPeople}">
+                        </td>
+                        <%--<td><a href="javascript:void(0)">${commentList.CPeople}</a></td>--%>
                         <td>${commentList.CTime}</td>
                         <td class="am-hide-sm-only">${commentList.cCount}</td>
                         <td class="am-hide-sm-only">${commentList.cModule}</td>
@@ -67,6 +69,7 @@
             </table>
             <div class="am-cf">
               共 ${commentPage.totalElements} 条记录
+                <a href="/index.jsp" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
               <div class="am-fr">
                 <ul class="am-pagination">
                     <c:if test="${(currentPage-1)<0}">
