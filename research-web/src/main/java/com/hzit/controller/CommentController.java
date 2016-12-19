@@ -29,6 +29,7 @@ public class CommentController {
     @RequestMapping("addComment")
     public String addComment(HttpSession session){
         try{
+            int count=0;
             List<ProblemVo> problemVoList= (List<ProblemVo>) session.getAttribute("restaurantSomeComment");
             //System.out.println(problemVoList.size());
             CommentVo commentVo=new CommentVo();
@@ -40,9 +41,17 @@ public class CommentController {
                 discussVo.setPId(problemVo.getPId());
                 discussVo.setpContent(problemVo.getPContent());
                 discussVo.setDResult(problemVo.getpAnswer());
+                if (problemVo.getpScore()!=null){
+                    discussVo.setdScore(String.valueOf(problemVo.getpScore()));
+                   // System.out.println(discussVo.getdScore());
+                    count=count+problemVo.getpScore();
+                }else {
+                    discussVo.setdScore(null);
+                }
                 discussVos.add(discussVo);
             }
             commentVo.setDiscussVos(discussVos);
+            commentVo.setcScore(count);
             int i=commentService.addComment(commentVo);
             if(i==1){
                 commentService.removeAllSession(session);
@@ -58,6 +67,7 @@ public class CommentController {
     @RequestMapping("addAllComment")
     public String addAllComment(HttpSession session){
         try{
+            int count=0;
             List<VegetableVo> vegetableVoList=(List<VegetableVo>) session.getAttribute("restaurantVegetablesComment");
             List<ProblemVo> problemVoList=(List<ProblemVo>)session.getAttribute("restaurantProblemComment");
             //System.out.println(problemVoList.size());
@@ -77,9 +87,17 @@ public class CommentController {
                 discussVo.setPId(problemVo.getPId());
                 discussVo.setpContent(problemVo.getPContent());
                 discussVo.setDResult(problemVo.getpAnswer());
+                if (problemVo.getpScore()!=null){
+                    discussVo.setdScore(String.valueOf(problemVo.getpScore()));
+                    // System.out.println(discussVo.getdScore());
+                    count=count+problemVo.getpScore();
+                }else {
+                    discussVo.setdScore(null);
+                }
                 discussVos.add(discussVo);
             }
             commentVo.setDiscussVos(discussVos);
+            commentVo.setcScore(count);
             int i=commentService.addComment(commentVo);
             if(i==1){
                 commentService.removeAllSession(session);
@@ -103,7 +121,7 @@ public class CommentController {
             page=0;
         }
         String module= (String) session.getAttribute("cModule");
-        Page<Comment> commentPage=commentService.searchPageByParams(page,10,module);
+        Page<Comment> commentPage=commentService.searchPageByParams(page,8,module);
         modelMap.put("commentPage",commentPage);
         modelMap.put("currentPage",page);
         return "showComment";

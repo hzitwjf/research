@@ -184,7 +184,7 @@ public class DiscussVo {
 				", vName='" + vName + '\'' +
 				", pModule=" + pModule +
 				", dResult='" + dResult + '\'' +
-				", dScore='" + dScore + '\'' +
+				", dScore=" + dScore +
 				'}';
 	}
 }

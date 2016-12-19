@@ -42,6 +42,7 @@
                   <th class="table-date am-hide-sm-only">评论时间</th>
                   <th class="table-author am-hide-sm-only">当前人评论次数</th>
                   <th class="table-type">评论模块</th>
+                  <th class="table-type">当前模块得分</th>
                   <th class="table-set">操作</th>
               </tr>
               </thead>
@@ -56,6 +57,7 @@
                         <td>${commentList.CTime}</td>
                         <td class="am-hide-sm-only">${commentList.cCount}</td>
                         <td class="am-hide-sm-only">${commentList.cModule}</td>
+                        <td class="am-hide-sm-only">${commentList.cScore}</td>
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
@@ -93,7 +95,8 @@
              </c:if>
             </div>
             <hr />
-            <p>注：合众艾特评论信息表</p>
+            <p>合众艾特评论信息表</p>
+            <p>注：餐饮模块满分25分</p>
         </div>
 
       </div>

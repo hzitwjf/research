@@ -99,7 +99,7 @@
         <result column="c_people" property="cPeople"/>
         <result column="c_count" property="cCount"/>
         <result column="c_module" property="cModule"/>
-        <result column="c_score" property="cModule"/>
+        <result column="c_score" property="cScore"/>
     </resultMap>
 
 </mapper>

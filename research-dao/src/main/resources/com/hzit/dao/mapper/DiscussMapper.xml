@@ -8,7 +8,8 @@
         c_uuid,
         v_id,
         p_id,
-        d_result
+        d_result,
+        d_score
     </sql>
 
     <sql id="discussBaseWhereSql">
@@ -29,6 +30,9 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dResult)">
                     AND d_result = #{map.dResult}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.dScore)">
+                    AND d_score = #{map.dScore}
+                </if>
             </where>
         </if>
     </sql>
@@ -41,7 +45,8 @@
             #{cUuid},
             #{vId},
             #{pId},
-            #{dResult}
+            #{dResult},
+            #{dScore}
         )
     </insert>
 
@@ -64,6 +69,9 @@
             </if>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(dResult)">
                 d_result = #{dResult} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(dScore)">
+                d_score = #{dScore} ,
             </if>
         </set>
         WHERE d_id = #{dId}
@@ -96,6 +104,7 @@
         <result column="v_id" property="vId"/>
         <result column="p_id" property="pId"/>
         <result column="d_result" property="dResult"/>
+        <result column="d_score" property="dScore"/>
     </resultMap>
 
 </mapper>

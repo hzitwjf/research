@@ -50,6 +50,7 @@ public class DiscussController {
             discussVo.setVId(discuss.getVId());
             discussVo.setPId(discuss.getPId());
             discussVo.setDResult(discuss.getDResult());
+            discussVo.setdScore(discuss.getdScore());
             Problem problem=problemServices.findOneProblem(discussVo.getPId());
             String content=problem.getPContent();
             //System.out.println(content);

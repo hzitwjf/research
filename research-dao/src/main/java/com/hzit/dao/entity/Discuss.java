@@ -26,6 +26,10 @@ public class Discuss {
 	 */
 	private String dResult;
 	/**
+	 *  得分项
+	 */
+	private String dScore;
+	/**
 	 * 评论详情Id
 	 * @param dId
 	 */
@@ -101,6 +105,22 @@ public class Discuss {
     	return dResult;
     }
 
+	/**
+	 * 得分项
+	 * @return dScore
+	 */
+	public String getdScore() {
+		return dScore;
+	}
+
+	/**
+	 * 得分项
+	 * @param dScore
+	 */
+	public void setdScore(String dScore) {
+		this.dScore = dScore;
+	}
+
 	@Override
 	public String toString() {
 		return "Discuss{" +
@@ -109,6 +129,7 @@ public class Discuss {
 				", vId=" + vId +
 				", pId=" + pId +
 				", dResult='" + dResult + '\'' +
+				", dScore='" + dScore + '\'' +
 				'}';
 	}
 }

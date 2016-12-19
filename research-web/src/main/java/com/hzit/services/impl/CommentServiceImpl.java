@@ -36,6 +36,7 @@ public class CommentServiceImpl implements CommentService {
             comment.setCUuid(cUuid);
             comment.setcCount("1");
             comment.setCPeople(commentVo.getCPeople());
+            comment.setcScore(commentVo.getcScore());
             List<DiscussVo> discussVos=commentVo.getDiscussVos();
             for (DiscussVo discussVo1 : discussVos){
                 pModule=discussVo1.getpModule();
@@ -61,6 +62,11 @@ public class CommentServiceImpl implements CommentService {
                 discuss.setVId(discussVo.getVId());
                 discuss.setPId(discussVo.getPId());
                 discuss.setDResult(discussVo.getDResult());
+                if (discussVo.getdScore()!=null){
+                    discuss.setdScore(String.valueOf(discussVo.getdScore()));
+                }else {
+                    discuss.setdScore("意见反馈题，请根据实际反馈评分");
+                }
                 discussMapper.insertDiscuss(discuss);
             }
             return 1;

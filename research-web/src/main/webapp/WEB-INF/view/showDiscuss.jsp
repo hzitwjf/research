@@ -42,6 +42,7 @@
                   <th class="table-author am-hide-sm-only">菜品名字</th>
                   <th class="table-type">题目名字</th>
                   <th class="table-title">意见</th>
+                  <th class="table-title">得分</th>
               </tr>
               </thead>
               <tbody>
@@ -52,6 +53,7 @@
                         <td>${disc.vName}</td>
                         <td>${disc.pContent}</td>
                         <td class="am-hide-sm-only"><a href="javascript:void(0)">${disc.DResult}</a></td>
+                        <td>${disc.dScore}</td>
                       </tr>
                   </c:forEach>
               </tbody>

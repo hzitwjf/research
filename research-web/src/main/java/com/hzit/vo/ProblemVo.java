@@ -94,6 +94,7 @@ public class ProblemVo {
 	public void setpScore(Integer pScore) {
 		this.pScore = pScore;
 	}
+
 	@Override
 	public String toString() {
 		return "ProblemVo{" +

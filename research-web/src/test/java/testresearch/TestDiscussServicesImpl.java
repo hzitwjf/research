@@ -29,9 +29,9 @@ public class TestDiscussServicesImpl {
     private DiscussService discussService;
     @Test
     public void findCommentDiscussByPage(){
-        int page=3;
+        int page=0;
         int rowCount=10;
-        String cUuid="b71a8687-0e3f-44e7-ac8a-e4c5d16f5cbe";
+        String cUuid="13d45526-1a5b-4f54-ac5e-3c9444916062";
         Page<Discuss> discussPage=discussService.findDiscussPageByCUuid(page,rowCount,cUuid);
         discussPage.forEach(discuss -> System.out.println(discuss.toString()));
         System.out.println("总行数"+discussPage.getTotalElements());
