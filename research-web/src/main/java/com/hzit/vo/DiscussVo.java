@@ -38,6 +38,10 @@ public class DiscussVo {
 	 */
 	private String dResult;
 	/**
+	 *  得分项
+	 */
+	private String dScore;
+	/**
 	 * 评论详情Id
 	 * @param dId
 	 */
@@ -161,6 +165,14 @@ public class DiscussVo {
 		this.pContent = pContent;
 	}
 
+	public String getdScore() {
+		return dScore;
+	}
+
+	public void setdScore(String dScore) {
+		this.dScore = dScore;
+	}
+
 	@Override
 	public String toString() {
 		return "DiscussVo{" +
@@ -172,6 +184,7 @@ public class DiscussVo {
 				", vName='" + vName + '\'' +
 				", pModule=" + pModule +
 				", dResult='" + dResult + '\'' +
+				", dScore='" + dScore + '\'' +
 				'}';
 	}
 }

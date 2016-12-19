@@ -34,6 +34,10 @@ public class CommentVo {
 	 */
 	private String  cModule;
 	/**
+	 * 当前模块的总得分
+	 */
+	private Integer cScore;
+	/**
 	 *  评论详情
 	 */
 	private List<DiscussVo> discussVos;
@@ -141,6 +145,22 @@ public class CommentVo {
 	public void setcModule(String cModule) {
 		this.cModule = cModule;
 	}
+	/**
+	 * 当前模块的总得分
+	 * @return cScore
+	 */
+	public Integer getcScore() {
+		return cScore;
+	}
+
+	/**
+	 * 当前模块的总得分
+	 * @param cScore
+	 */
+	public void setcScore(Integer cScore) {
+		this.cScore = cScore;
+	}
+
 	@Override
 	public String toString() {
 		return "CommentVo{" +
@@ -150,6 +170,7 @@ public class CommentVo {
 				", cPeople='" + cPeople + '\'' +
 				", cCount='" + cCount + '\'' +
 				", cModule='" + cModule + '\'' +
+				", cScore=" + cScore +
 				", discussVos=" + discussVos +
 				'}';
 	}

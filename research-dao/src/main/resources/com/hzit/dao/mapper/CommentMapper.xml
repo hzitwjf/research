@@ -9,7 +9,8 @@
         c_time,
         c_people,
         c_count,
-        c_module
+        c_module,
+        c_score
     </sql>
 
     <sql id="commentBaseWhereSql">
@@ -33,6 +34,9 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cModule)">
                     AND c_module = #{map.cModule}
                 </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cScore)">
+                    AND c_module = #{map.cScore}
+                </if>
             </where>
         </if>
     </sql>
@@ -46,7 +50,8 @@
             sysdate(),
             #{cPeople},
             #{cCount},
-            #{cModule}
+            #{cModule},
+            #{cScore}
         )
     </insert>
 
@@ -71,7 +76,10 @@
                 c_count = #{cCount} ,
             </if>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cModule)">
-                c_module = #{cCount} ,
+                c_module = #{cModule} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cScore)">
+                c_score = #{cScore} ,
             </if>
         </set>
         WHERE c_id = #{cId}
@@ -91,6 +99,7 @@
         <result column="c_people" property="cPeople"/>
         <result column="c_count" property="cCount"/>
         <result column="c_module" property="cModule"/>
+        <result column="c_score" property="cModule"/>
     </resultMap>
 
 </mapper>
