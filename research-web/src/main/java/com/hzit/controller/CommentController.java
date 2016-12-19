@@ -57,11 +57,11 @@ public class CommentController {
                 commentService.removeAllSession(session);
                 return "redirect:/toSuccess";
             }else {
-                return "redirect:/index.jsp";
+                return "redirect:/toError";
             }
         }catch (Exception ex){
             ex.printStackTrace();
-            return "redirect:/index.jsp";
+            return "redirect:/toError";
         }
     }
     @RequestMapping("addAllComment")
@@ -103,11 +103,11 @@ public class CommentController {
                 commentService.removeAllSession(session);
                 return "redirect:/toSuccess";
             }else {
-                return "redirect:/toShowAllVegetables";
+                return "redirect:/toError";
             }
         }catch (Exception ex){
             ex.printStackTrace();
-            return "redirect:/toShowAllVegetables";
+            return "redirect:/toError";
         }
     }
     @RequestMapping("toShowAllComment")

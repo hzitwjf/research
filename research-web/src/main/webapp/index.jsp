@@ -153,8 +153,8 @@
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 调查方向<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
                         <li><a href="toRestaurantIndex" class="am-cf">餐饮调查</a></li>
-                        <li><a href="javascript:void(0)" class="am-cf">讲师调查</a></li>
-                        <li><a href="javascript:void(0)" class="am-cf">班主任调查</a></li>
+                        <li><a href="teacherProblems?pModule=1" class="am-cf">讲师调查</a></li>
+                        <li><a href="teacherProblems?pModule=2" class="am-cf">班主任调查</a></li>
                     </ul>
                 </li>
                 <li class="admin-parent">
