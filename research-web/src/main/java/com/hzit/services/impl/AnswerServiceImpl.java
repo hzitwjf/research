@@ -6,6 +6,7 @@ import com.hzit.services.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,5 +21,18 @@ public class AnswerServiceImpl implements AnswerService {
     public List<Answer> findAllAnswer(Map map) {
         List<Answer> answerList=answerMapper.searchAnswerByParams(null);
         return answerList;
+    }
+
+    @Override
+    public Answer findOneAnswer(String awContent, Integer prId) {
+        Map map=new HashMap<>();
+        map.put("awContent",awContent);
+        map.put("prId",prId);
+        List<Answer> answerList=answerMapper.searchAnswerByParams(map);
+        if (answerList.size()!=0 && answerList!=null){
+            return answerList.get(0);
+        }else {
+            return null;
+        }
     }
 }

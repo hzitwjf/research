@@ -26,5 +26,12 @@ public class TestAnswerServicesImpl {
             List<Answer> answerList=answerService.findAllAnswer(null);
             answerList.forEach(answer -> System.out.println(answer.toString()));
         }
+    @Test
+    public void findOneAnswers(){
+        String a="男";
+        int b=1;
+        Answer answer=answerService.findOneAnswer(a, b);
+        System.out.println(answer.toString());
+    }
     }
 

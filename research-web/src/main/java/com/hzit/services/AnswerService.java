@@ -10,4 +10,5 @@ import java.util.Map;
  */
 public interface AnswerService {
     List<Answer> findAllAnswer(Map map);
+    Answer findOneAnswer(String awContent,Integer prId);
 }

@@ -22,7 +22,7 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.awSc)">
                     AND aw_sc = #{map.awSc}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.prId)">
+                <if test="map.prId!=null">
                     AND pr_id = #{map.prId}
                 </if>
             </where>

@@ -122,7 +122,13 @@ public class RestaurantController extends BaseController{
                 problemVo.setPContent(problem.getPContent());
                 problemVo.setPModule(problem.getPModule());
                 //System.out.println(problemVo.toString());
-                problemVos.add(problemVo);
+                Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
+                if (answer!=null){
+                    problemVo.setpScore(answer.getAwSc());
+                    problemVos.add(problemVo);
+                }else {
+                    problemVos.add(problemVo);
+                }
             }else {
                 System.out.println("");
             }
@@ -146,7 +152,13 @@ public class RestaurantController extends BaseController{
                 Problem problem = problemServices.findOneProblem(problemVo.getPId());
                 problemVo.setPContent(problem.getPContent());
                 problemVo.setPModule(problem.getPModule());
-                problemVos.add(problemVo);
+               Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
+                if (answer!=null){
+                    problemVo.setpScore(answer.getAwSc());
+                    problemVos.add(problemVo);
+                }else {
+                    problemVos.add(problemVo);
+                }
             } else {
                 System.out.println("");
             }

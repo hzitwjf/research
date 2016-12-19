@@ -45,7 +45,7 @@
                             <tr>
                                 <th>问题名称</th>
                                 <th>对该问题提出的意见</th>
-                                <%--<th>该问题所属模块</th>--%>
+                                <th>分数</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -58,6 +58,7 @@
                                         <input type="hidden" name="dResult" value="${p.pAnswer}">
                                         <input type="hidden" name="pModule" value="${p.PModule}">
                                     </td>
+                                    <td>${p.pScore}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>

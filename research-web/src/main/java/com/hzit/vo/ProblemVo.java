@@ -22,6 +22,10 @@ public class ProblemVo {
 	 */
 	private String pAnswer;
 	/**
+	 * 当前问题得分
+	 */
+	private Integer pScore;
+	/**
 	 * 题目ID
 	 * @param pId
 	 */
@@ -75,6 +79,21 @@ public class ProblemVo {
 		this.pAnswer = pAnswer;
 	}
 
+	/**
+	 * 当前问题得分
+	 * @return pScore
+	 */
+	public Integer getpScore() {
+		return pScore;
+	}
+
+	/**
+	 * 当前问题得分
+	 * @param pScore
+	 */
+	public void setpScore(Integer pScore) {
+		this.pScore = pScore;
+	}
 	@Override
 	public String toString() {
 		return "ProblemVo{" +
@@ -82,6 +101,7 @@ public class ProblemVo {
 				", pContent='" + pContent + '\'' +
 				", pModule=" + pModule +
 				", pAnswer='" + pAnswer + '\'' +
+				", pScore=" + pScore +
 				'}';
 	}
 }
