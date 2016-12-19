@@ -56,6 +56,7 @@
                   </c:forEach>
               </tbody>
             </table>
+           <c:if test="${totalPages!=0}">
             <div class="am-cf">
               共 ${totalElements} 条记录
                 <a href="showAllComment" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
@@ -78,6 +79,7 @@
                       </c:if>
                   </ul>
               </div>
+             </c:if>
             </div>
             <hr />
             <p>注：合众艾特评论详情信息表</p>
