@@ -59,4 +59,5 @@ public class TestCommentServicesImpl {
        List<Comment> commentList=commentService.findAllComment();
         commentList.forEach(comment -> System.out.println(comment.toString()));
     }
+    //SELECT AVG(c_score),c_score FROM COMMENT WHERE c_module='讲师' GROUP BY cd_people
 }
