@@ -192,4 +192,29 @@ public class CommentController {
             }
         //}
     }
+    @RequestMapping("showDetailsOfTeacher")
+    public String showDetailsOfTeacher(@RequestParam("cModule") String cModule,ModelMap modelMap){
+        try {
+            String month="";
+            int year=0;
+            List<Comment> commentList=commentService.findAllTeacherAvgScore(cModule);
+            modelMap.put("avgScore",commentList);
+            for (Comment comment : commentList){
+                month=comment.getCTime();
+                year=comment.getCId();
+            }
+            modelMap.put("year",year);
+            modelMap.put("month",month);
+            if (cModule.equals("讲师")){
+                return "showDetailsOfTeacherAvgScore";
+            }else if (cModule.equals("教务")){
+                return "showDetailsOfHeadTeacherAvgScore";
+            }else {
+                return "redirect:/toError";
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return "redirect:/toError";
+        }
+    }
 }

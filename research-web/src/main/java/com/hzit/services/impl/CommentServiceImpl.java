@@ -111,6 +111,12 @@ public class CommentServiceImpl implements CommentService  {
     }
 
     @Override
+    public List<Comment> findAllTeacherAvgScore(String cModule) {
+        List<Comment> list=commentMapper.searchCommentBycModule(cModule);
+        return list;
+    }
+
+    @Override
     @Transactional
     public int addTeacherComment(CommentVo commentVo) {
         try{

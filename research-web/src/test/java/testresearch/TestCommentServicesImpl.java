@@ -60,4 +60,9 @@ public class TestCommentServicesImpl {
         commentList.forEach(comment -> System.out.println(comment.toString()));
     }
     //SELECT AVG(c_score),c_score FROM COMMENT WHERE c_module='讲师' GROUP BY cd_people
+    @Test
+    public void findAllTeacherAvgScore(){
+        List<Comment> commentList=commentService.findAllTeacherAvgScore("教务");
+        commentList.forEach(comment -> System.out.println(comment.toString()));
+    }
 }

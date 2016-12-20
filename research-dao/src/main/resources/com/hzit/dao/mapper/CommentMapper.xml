@@ -102,6 +102,10 @@
     <select id="findPeopleCount" parameterType="java.lang.String" resultType="java.lang.Integer">
         SELECT COUNT(c_people) FROM `comment` WHERE c_people=#{cPeople}
     </select>
+    <select id="searchCommentBycModule" parameterType="java.lang.String" resultMap="commentMap">
+      SELECT AVG(c_score) c_score,cd_people,DATE_FORMAT(SYSDATE(),'%c') c_time,DATE_FORMAT(c_time,'%y') c_id
+      FROM COMMENT WHERE c_module=#{cModule} GROUP BY cd_people
+    </select>
     <resultMap type="com.hzit.dao.entity.Comment" id="commentMap">
         <id column="c_id" property="cId"/>
         <result column="c_uuid" property="cUuid"/>

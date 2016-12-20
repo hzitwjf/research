@@ -17,4 +17,5 @@ public interface CommentService {
     Boolean removeAllSession(HttpSession session);
     int findPeopleCount(String cPeople);
     List<Comment> findAllComment();
+    List<Comment> findAllTeacherAvgScore(String cModule);
 }

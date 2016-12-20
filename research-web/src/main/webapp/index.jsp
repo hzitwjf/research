@@ -169,8 +169,8 @@
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-line-chart"></span> 统计喜爱度<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
                         <li><a href="showPopulation" class="am-cf">餐饮</a></li>
-                        <li><a href="javascript:void(0)" class="am-cf">讲师</a></li>
-                        <li><a href="javascript:void(0)" class="am-cf">班主任</a></li>
+                        <li><a href="showDetailsOfTeacher?cModule=讲师" class="am-cf">讲师</a></li>
+                        <li><a href="showDetailsOfTeacher?cModule=教务" class="am-cf">班主任</a></li>
                     </ul>
                 </li>
             </ul>
