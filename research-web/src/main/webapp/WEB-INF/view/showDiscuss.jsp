@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="/assets/css/page/typography.css" />
 		<link rel="stylesheet" href="/assets/css/page/form.css" />
 	</head>
-	<body>
+	<body style="overflow-y: scroll;overflow-x: scroll";>
 
 	<!--	<div class="am-g">-->
 		<!-- ============================================================== -->

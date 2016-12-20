@@ -11,6 +11,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="demo">
+        <meta name="keywords" content="demo">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp,no-store"/>
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <meta name="apple-mobile-web-app-title" content="demo"/>
 		<title>评论列表</title>
 		<link rel="stylesheet" href="/assets/css/amazeui.css" />
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -20,8 +29,13 @@
 		<link rel="stylesheet" href="/assets/css/admin.css" />
 		<link rel="stylesheet" href="/assets/css/page/typography.css" />
 		<link rel="stylesheet" href="/assets/css/page/form.css" />
+
+        <link rel="icon" type="image/png" href="/dist/i/favicon.png">
+        <link rel="apple-touch-icon-precomposed" href="/dist/i/app-icon72x72@2x.png">
+        <link rel="stylesheet" href="/dist/amazeui.min.css"/>
+        <link rel="stylesheet" href="/docs/demo.css"/>
 	</head>
-	<body>
+	<body style="overflow-y: scroll";>
 
 	<!--	<div class="am-g">-->
 		<!-- ============================================================== -->

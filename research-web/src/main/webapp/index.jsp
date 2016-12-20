@@ -162,7 +162,7 @@
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
                         <li><a href="toShowAllComment?cModule=餐饮" class="am-cf">餐饮评论</a></li>
                         <li><a href="toShowAllComment?cModule=讲师" class="am-cf">讲师评论</a></li>
-                        <li><a href="toShowAllComment?cModule=班主任" class="am-cf">班主任评论</a></li>
+                        <li><a href="toShowAllComment?cModule=教务" class="am-cf">班主任评论</a></li>
                     </ul>
                 </li>
                 <li class="admin-parent">

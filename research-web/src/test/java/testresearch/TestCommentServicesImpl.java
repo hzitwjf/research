@@ -42,11 +42,21 @@ public class TestCommentServicesImpl {
     }
     @Test
     public void findAllCommentsByPage(){
-        int page=2;
+        int page=0;
         int rowCount=3;
         Page<Comment> commentPage=commentService.searchPageByParams(page,rowCount,"餐饮");
         commentPage.forEach(comment -> System.out.println(comment.toString()));
         System.out.println("总行数"+commentPage.getTotalElements());
         System.out.println("总页数"+commentPage.getTotalPages());
+    }
+    @Test
+    public void findPeopleCount(){
+        int i=commentService.findPeopleCount("127.0.0.1");
+        System.out.println(i);
+    }
+    @Test
+    public void findAllComments(){
+       List<Comment> commentList=commentService.findAllComment();
+        commentList.forEach(comment -> System.out.println(comment.toString()));
     }
 }

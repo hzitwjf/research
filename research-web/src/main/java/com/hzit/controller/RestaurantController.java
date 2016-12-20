@@ -4,6 +4,7 @@ import com.hzit.dao.entity.Answer;
 import com.hzit.dao.entity.Problem;
 import com.hzit.dao.entity.Vegetable;
 import com.hzit.services.AnswerService;
+import com.hzit.services.CommentService;
 import com.hzit.services.ProblemServices;
 import com.hzit.services.VegetableServices;
 import com.hzit.vo.ProblemVo;
@@ -34,6 +35,8 @@ public class RestaurantController extends BaseController{
     private ProblemServices problemServices;
     @Autowired
     private AnswerService answerService;
+    @Autowired
+    private CommentService commentService;
     @RequestMapping("ip")
     @ResponseBody
     public String ip(HttpSession session,HttpServletRequest request){
@@ -91,91 +94,103 @@ public class RestaurantController extends BaseController{
     }
     @RequestMapping("doAllComment")
     public String doAllComment(@RequestParam("vegetables")String [] vegetables,@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session){
-        try {
-            //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
-            List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
-            List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
-            //List list=new ArrayList();
-            for (int i=0;vegetables !=null && i<vegetables.length;i++){
+        /*String ip= (String) session.getAttribute("ip");
+        Integer people=commentService.findPeopleCount(ip);
+        if (people>1 && people!=null){
+            return "index";
+        }else {*/
+            try {
+                //@RequestParam("VId") String [] VId,@RequestParam("VName") String [] VName
+                List<VegetableVo> vegetableVos=new ArrayList<VegetableVo>();
+                List<ProblemVo> problemVos=new ArrayList<ProblemVo>();
+                //List list=new ArrayList();
+                for (int i=0;vegetables !=null && i<vegetables.length;i++){
             /*System.out.println(vegetables[i]);
             list.add(vegetables[i]);*/
-                VegetableVo vegetableVo=new VegetableVo();
-                if (i%2==0){
-                    vegetableVo.setVId(Integer.parseInt(vegetables[i]));
-                    vegetableVo.setvDiscuss(vegetables[i+1]);
-                    Vegetable vegetable=vegetableServices.findOneVegetable(vegetableVo.getVId());
-                    vegetableVo.setVName(vegetable.getVName());
-                    //System.out.println(vegetableVo.toString());
-                    vegetableVos.add(vegetableVo);
-                }else {
-                    System.out.println("");
-                }
-            }
-            for (int j=0;analyst !=null && j<analyst.length;j++){
-                //System.out.println(analyst[j]);
-                //list.add(analyst[j]);
-                ProblemVo problemVo=new ProblemVo();
-                if (j%2==0){
-                    problemVo.setPId(Integer.parseInt(analyst[j]));
-                    problemVo.setpAnswer(analyst[j+1]);
-                    //System.out.println(problemVo.getpAnswer());
-                    Problem problem=problemServices.findOneProblem(problemVo.getPId());
-                    problemVo.setPContent(problem.getPContent());
-                    problemVo.setPModule(problem.getPModule());
-                    //System.out.println(problemVo.toString());
-                    Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
-                    if (answer!=null){
-                        problemVo.setpScore(answer.getAwSc());
-                        problemVos.add(problemVo);
+                    VegetableVo vegetableVo=new VegetableVo();
+                    if (i%2==0){
+                        vegetableVo.setVId(Integer.parseInt(vegetables[i]));
+                        vegetableVo.setvDiscuss(vegetables[i+1]);
+                        Vegetable vegetable=vegetableServices.findOneVegetable(vegetableVo.getVId());
+                        vegetableVo.setVName(vegetable.getVName());
+                        //System.out.println(vegetableVo.toString());
+                        vegetableVos.add(vegetableVo);
                     }else {
-                        problemVos.add(problemVo);
+                        System.out.println("");
                     }
-                }else {
-                    System.out.println("");
                 }
+                for (int j=0;analyst !=null && j<analyst.length;j++){
+                    //System.out.println(analyst[j]);
+                    //list.add(analyst[j]);
+                    ProblemVo problemVo=new ProblemVo();
+                    if (j%2==0){
+                        problemVo.setPId(Integer.parseInt(analyst[j]));
+                        problemVo.setpAnswer(analyst[j+1]);
+                        //System.out.println(problemVo.getpAnswer());
+                        Problem problem=problemServices.findOneProblem(problemVo.getPId());
+                        problemVo.setPContent(problem.getPContent());
+                        problemVo.setPModule(problem.getPModule());
+                        //System.out.println(problemVo.toString());
+                        Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
+                        if (answer!=null){
+                            problemVo.setpScore(answer.getAwSc());
+                            problemVos.add(problemVo);
+                        }else {
+                            problemVos.add(problemVo);
+                        }
+                    }else {
+                        System.out.println("");
+                    }
+                }
+                //list.add(vegetableVos);
+                //list.add(problemVos);
+                modelMap.put("vegetableVos",vegetableVos);
+                modelMap.put("problemVos",problemVos);
+                session.setAttribute("restaurantVegetablesComment",vegetableVos);
+                session.setAttribute("restaurantProblemComment",problemVos);
+                return "SurveyDetails";
+            }catch (Exception ex){
+                ex.printStackTrace();
+                return "redirect:/toError";
             }
-            //list.add(vegetableVos);
-            //list.add(problemVos);
-            modelMap.put("vegetableVos",vegetableVos);
-            modelMap.put("problemVos",problemVos);
-            session.setAttribute("restaurantVegetablesComment",vegetableVos);
-            session.setAttribute("restaurantProblemComment",problemVos);
-            return "SurveyDetails";
-        }catch (Exception ex){
-            ex.printStackTrace();
-            return "redirect:/toError";
-        }
+        //}
     }
     @RequestMapping("doSomeComment")
     public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session) {
-       try {
-           List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
-           for (int j = 0; analyst != null && j < analyst.length; j++) {
-               ProblemVo problemVo = new ProblemVo();
-               if (j % 2 == 0) {
-                   problemVo.setPId(Integer.parseInt(analyst[j]));
-                   problemVo.setpAnswer(analyst[j + 1]);
-                   Problem problem = problemServices.findOneProblem(problemVo.getPId());
-                   problemVo.setPContent(problem.getPContent());
-                   problemVo.setPModule(problem.getPModule());
-                   Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
-                   if (answer!=null){
-                       problemVo.setpScore(answer.getAwSc());
-                       problemVos.add(problemVo);
-                   }else {
-                       problemVos.add(problemVo);
-                   }
-               } else {
-                   System.out.println("");
-               }
-           }
-           modelMap.put("problemVos",problemVos);
-           session.setAttribute("restaurantSomeComment",problemVos);
-           return "showVegetablesProblems";
-       }catch (Exception ex){
-           ex.printStackTrace();
-           return "redirect:/toError";
-       }
+       /* String ip= (String) session.getAttribute("ip");
+        Integer people=commentService.findPeopleCount(ip);
+        if (people>1 && people!=null){
+            return "index";
+        }else {*/
+            try {
+                List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
+                for (int j = 0; analyst != null && j < analyst.length; j++) {
+                    ProblemVo problemVo = new ProblemVo();
+                    if (j % 2 == 0) {
+                        problemVo.setPId(Integer.parseInt(analyst[j]));
+                        problemVo.setpAnswer(analyst[j + 1]);
+                        Problem problem = problemServices.findOneProblem(problemVo.getPId());
+                        problemVo.setPContent(problem.getPContent());
+                        problemVo.setPModule(problem.getPModule());
+                        Answer answer=answerService.findOneAnswer(problemVo.getpAnswer(),problemVo.getPId());
+                        if (answer!=null){
+                            problemVo.setpScore(answer.getAwSc());
+                            problemVos.add(problemVo);
+                        }else {
+                            problemVos.add(problemVo);
+                        }
+                    } else {
+                        System.out.println("");
+                    }
+                }
+                modelMap.put("problemVos",problemVos);
+                session.setAttribute("restaurantSomeComment",problemVos);
+                return "showVegetablesProblems";
+            }catch (Exception ex){
+                ex.printStackTrace();
+                return "redirect:/toError";
+            }
+        //}
     }
     @RequestMapping("toRestaurantIndex")
     public String toRestaurantIndex(){

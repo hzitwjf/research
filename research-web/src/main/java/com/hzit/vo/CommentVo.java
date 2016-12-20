@@ -42,6 +42,10 @@ public class CommentVo {
 	 */
 	private List<DiscussVo> discussVos;
 	/**
+	 * 被评论人
+	 */
+	private String cdPeople;
+	/**
 	 * 评论ID
 	 * @param cId
 	 */
@@ -160,6 +164,21 @@ public class CommentVo {
 	public void setcScore(Integer cScore) {
 		this.cScore = cScore;
 	}
+	/**
+	 * 被评论人
+	 * @return cdPeople
+	 */
+	public String getCdPeople() {
+		return cdPeople;
+	}
+
+	/**
+	 * 被评论人
+	 * @param cdPeople
+	 */
+	public void setCdPeople(String cdPeople) {
+		this.cdPeople = cdPeople;
+	}
 
 	@Override
 	public String toString() {
@@ -172,6 +191,7 @@ public class CommentVo {
 				", cModule='" + cModule + '\'' +
 				", cScore=" + cScore +
 				", discussVos=" + discussVos +
+				", cdPeople='" + cdPeople + '\'' +
 				'}';
 	}
 }

@@ -19,5 +19,5 @@ public interface CommentMapper {
 	Page<Comment> searchCommentByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<Comment> searchCommentByParams(@Param("map") Map<String, String> map);
-
+	int findPeopleCount(@Param("cPeople") String cPeople);
 } 

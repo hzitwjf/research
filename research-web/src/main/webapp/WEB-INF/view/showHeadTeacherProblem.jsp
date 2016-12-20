@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>教员调查表</title>
+    <title>班主任调查表</title>
     <meta name="description" content="demo">
     <meta name="keywords" content="demo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -30,30 +30,29 @@
 
 <header class="am-topbar am-header">
     <div class="am-topbar-brand">
-        <strong>合众艾特教员</strong>
-        <small>统计教员工作情况</small>
+        <strong>合众艾特</strong>
+        <small>统计班主任工作情况</small>
     </div>
 </header>
 <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
         <form action="doTeacherComment" method="post">
-        <div class="am-cf am-padding">
-          <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">请选择你要评论的老师：</strong></div>
-            <select class="form-control" name="teaId" id="teaId">
-                <c:forEach items="${teacher}" var="t">
-                    <option  value="${t.teaId}">${t.teaName}</option>
-                </c:forEach>
-            </select>
-        </div>
-        <div class="am-g">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">请选择你要评论的班主任：</strong></div>
+                <select class="form-control" name="teaId" id="teaId">
+                    <c:forEach items="${teacher}" var="t">
+                        <option value="${t.teaId}">${t.teaName}</option>
+                    </c:forEach>
+                </select>
+            </div>
             <div class="am-g">
-                <div class="am-u-md-12">
+                <div class="am-g">
+                    <div class="am-u-md-12">
 
                         <div class="am-panel am-panel-default">
-
                             <div class="am-panel-hd">
                                 <h4 class="am-panel-title" data-am-collapse="{ target: '#combo'}">
-                                    教员调查问卷
+                                    班主任调查问卷
                                 </h4>
                             </div>
                             <div id="combo" class="am-panel-collapse am-collapse am-in">
@@ -62,7 +61,7 @@
                                     <table class="am-table  am-table-hover">
                                         <thead>
                                         <c:forEach items="${problem}" var="p">
-                                        <c:if test="${p.PModule==1}">
+                                        <c:if test="${p.PModule==2}">
                                             <tr>
                                                 <td colspan="5"><input type="hidden" value="${p.PId}"
                                                                        name="analyst">${p.PContent}</td>
@@ -81,18 +80,15 @@
                                         </tbody>
                                         </c:forEach>
                                     </table>
-                                    <textarea cols="60" rows="10" name="analyst">做的很好，暂无意见！</textarea>
                                 </div>
                             </div>
                         </div>
                         <input type="submit" class="am-btn am-btn-primary" style="margin-left: 560px;" value="提交问卷">
                         <a href="/index.jsp" class="am-btn am-btn-primary" style="">返回首页</a>
-                    </form>
-                </div>
-            </div>
-
-        </div>
+        </form>
     </div>
+</div>
+
 </div>
 </div>
 </div>

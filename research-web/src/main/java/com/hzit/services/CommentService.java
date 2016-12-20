@@ -12,6 +12,9 @@ import java.util.List;
  */
 public interface CommentService {
     int addComment(CommentVo commentVo);
+    int addTeacherComment(CommentVo commentVo);
     Page<Comment> searchPageByParams(int page, int rowCount,String cModule );
     Boolean removeAllSession(HttpSession session);
+    int findPeopleCount(String cPeople);
+    List<Comment> findAllComment();
 }

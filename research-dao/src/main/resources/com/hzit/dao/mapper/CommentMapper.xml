@@ -10,7 +10,8 @@
         c_people,
         c_count,
         c_module,
-        c_score
+        c_score,
+        cd_people
     </sql>
 
     <sql id="commentBaseWhereSql">
@@ -35,7 +36,10 @@
                     AND c_module = #{map.cModule}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cScore)">
-                    AND c_module = #{map.cScore}
+                    AND c_score = #{map.cScore}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cScore)">
+                    AND cd_people = #{map.cdPeople}
                 </if>
             </where>
         </if>
@@ -51,7 +55,8 @@
             #{cPeople},
             #{cCount},
             #{cModule},
-            #{cScore}
+            #{cScore},
+            #{cdPeople}
         )
     </insert>
 
@@ -81,6 +86,9 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cScore)">
                 c_score = #{cScore} ,
             </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cScore)">
+                cd_people = #{cdPeople} ,
+            </if>
         </set>
         WHERE c_id = #{cId}
     </update>
@@ -91,7 +99,9 @@
         FROM comment
         <include refid="commentBaseWhereSql"/>
     </select>
-
+    <select id="findPeopleCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(c_people) FROM `comment` WHERE c_people=#{cPeople}
+    </select>
     <resultMap type="com.hzit.dao.entity.Comment" id="commentMap">
         <id column="c_id" property="cId"/>
         <result column="c_uuid" property="cUuid"/>
@@ -100,6 +110,7 @@
         <result column="c_count" property="cCount"/>
         <result column="c_module" property="cModule"/>
         <result column="c_score" property="cScore"/>
+        <result column="cd_people" property="cdPeople"/>
     </resultMap>
 
 </mapper>

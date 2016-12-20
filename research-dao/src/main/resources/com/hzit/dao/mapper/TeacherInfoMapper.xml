@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.TeacherInfoMapper">
+
+    <sql id="teacherInfoBaseColumnSql">
+        tea_id,
+        tea_name,
+        tea_module
+    </sql>
+
+    <sql id="teacherInfoBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="map.teaId!=null">
+                    tea_id = #{map.teaId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.teaName)">
+                    AND tea_name = #{map.teaName}
+                </if>
+                <if test="map.teaModule!=null">
+                    AND tea_module = #{map.teaModule}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTeacherInfo" parameterType="com.hzit.dao.entity.TeacherInfo">
+        INSERT INTO teacherinfo(
+        <include refid="teacherInfoBaseColumnSql"/>
+        )VALUES(
+            #{teaId},
+            #{teaName},
+            #{teaModule}
+        )
+    </insert>
+
+    
+    <delete id="deleteTeacherInfoByTeaId" parameterType="Integer">
+        DELETE FROM teacherinfo WHERE tea_id = #{teaId}
+    </delete>
+
+    <update id="updateTeacherInfo" parameterType="com.hzit.dao.entity.TeacherInfo">
+        UPDATE teacherinfo
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(teaName)">
+                tea_name = #{teaName} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(teaModule)">
+                tea_module = #{teaModule} ,
+            </if>
+        </set>
+        WHERE tea_id = #{teaId}
+    </update>
+
+    <select id="searchTeacherInfoByParams" parameterType="map" resultMap="teacherInfoMap">
+        SELECT
+        <include refid="teacherInfoBaseColumnSql"/>
+        FROM teacherinfo
+        <include refid="teacherInfoBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.TeacherInfo" id="teacherInfoMap">
+        <id column="tea_id" property="teaId"/>
+        <result column="tea_name" property="teaName"/>
+        <result column="tea_module" property="teaModule"/>
+    </resultMap>
+
+</mapper>

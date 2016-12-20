@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/docs/demo.css"/>
     <link rel="stylesheet" href="/assets/css/amazeui.css" />
 </head>
-<body>
+<body  style="overflow-x: hidden;">
 
   <header class="am-topbar am-header">
     <div class="am-topbar-brand">
