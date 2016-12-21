@@ -36,6 +36,7 @@
 </header>
 <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
+        <p style="margin-left: 15px">请注意所有的选项都为单选，请勿多选或少选！</p>
         <form action="doTeacherComment" method="post">
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">请选择你要评论的班主任：</strong></div>

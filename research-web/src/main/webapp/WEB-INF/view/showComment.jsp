@@ -54,7 +54,7 @@
                   <th class="table-title">评论ID</th>
                   <%--<th class="table-title">评论人</th>--%>
                   <th class="table-date am-hide-sm-only">评论时间</th>
-                  <th class="table-author am-hide-sm-only">当前人评论次数</th>
+                  <th class="table-author am-hide-sm-only">被评论人</th>
                   <th class="table-type">评论模块</th>
                   <th class="table-type">当前模块得分</th>
                   <th class="table-set">操作</th>
@@ -69,7 +69,7 @@
                         </td>
                         <%--<td><a href="javascript:void(0)">${commentList.CPeople}</a></td>--%>
                         <td>${commentList.CTime}</td>
-                        <td class="am-hide-sm-only">${commentList.cCount}</td>
+                        <td class="am-hide-sm-only">${commentList.cdPeople}</td>
                         <td class="am-hide-sm-only">${commentList.cModule}</td>
                         <td class="am-hide-sm-only">${commentList.cScore}</td>
                         <td>

@@ -36,6 +36,7 @@
   </header>
 <form action="doAllComment" method="post">
   <div class="am-content">
+      <p style="margin-left: 15px">请注意所有的选项都为单选，请勿多选或少选！</p>
     <div data-module="firstlevel" class="am-animation-slide-left">
       <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">一、对以往餐点的评选</strong></div>
