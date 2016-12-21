@@ -47,7 +47,7 @@
                       <div class="am-panel am-panel-default">
                           <div class="am-panel-hd">
                               <h4 class="am-panel-title" data-am-collapse="{ target: '#combo'}">
-                                  <span style="margin-left: 700px;">${year} 年${month}月教员满意度统计详情表</span>
+                                  <span style="margin-left: 500px;">${year} 年${month}月教员满意度统计详情表</span>
                               </h4>
                           </div>
                           <div id="combo" class="am-panel-collapse am-collapse am-in">
