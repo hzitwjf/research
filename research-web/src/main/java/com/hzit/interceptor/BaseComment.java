@@ -34,8 +34,14 @@ public class BaseComment implements HandlerInterceptor {
             response.sendRedirect("/index.jsp");
             return false;
         }
-        session.setAttribute("ip",ip);
-        return true;
+        //session.setAttribute("ip",ip);
+        //return true;
+        if (ip.equals("192.168.0.151")){
+            return false;
+        }else {
+            session.setAttribute("ip",ip);
+            return true;
+        }
     }
 
     @Override

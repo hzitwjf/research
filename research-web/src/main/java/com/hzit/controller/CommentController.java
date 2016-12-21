@@ -217,4 +217,8 @@ public class CommentController {
             return "redirect:/toError";
         }
     }
+    @RequestMapping("toAdminIndex")
+    public String toAdminIndex(){
+        return "adminIndexIndex";
+    }
 }

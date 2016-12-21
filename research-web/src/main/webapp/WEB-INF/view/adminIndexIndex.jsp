@@ -18,92 +18,6 @@
     <link rel="stylesheet" href="/assets/css/page/typography.css" />
     <link rel="stylesheet" href="/assets/css/page/form.css" />
     <link rel="stylesheet" href="/assets/css/component.css" />
-    <style>
-        *{
-            margin:0;
-            padding:0;
-        }
-        a{
-            text-decoration:none;
-        }
-        body{
-            /*background-image:url(/img/bg.jpg);*/
-            background-attachment: fixed;
-            font-family:"microsoft yahei";
-            font-size:16px;
-            color:#333;
-        }
-        ul{
-            padding-bottom:16px;
-        }
-        li{
-            list-style:none;
-            padding-left:20px;
-        }
-        .wrap{
-            min-width:960px;
-            width:960px;
-            margin:0 auto;
-            background-color:white;
-        }
-        .wrap_head{
-            width:960px;
-
-            position:relative;
-        }
-        .wrap_head_gs{
-            position:absolute;
-            font-size:34px;
-            color:white;
-            bottom:60px;
-            left:154px;
-        }
-        .wrap_head_js{
-            position:absolute;
-            font-size:20px;
-            color:white;
-            right:10px;
-            bottom:10px;
-        }
-        .wrap_btn{
-            width:362px;
-            height:0;
-            position:absolute;
-            top: 0;
-            left:240px;
-            bottom:0;
-            right:0;
-            margin:auto;
-        }
-        .wrap_btn a{
-            padding:20px 40px;
-            background-color:#ccc;
-            margin-left:10px;
-
-        }
-        .wrap_btn a:hover{
-            background-color:#ddd;
-            color:orange;
-        }
-        .wrap_btn_bottom{
-            width:100%;
-            height:50px;
-            background-color:#ccc;
-            cursor:pointer;
-            text-align:center;
-            line-height:50px;
-            color:white;
-            font-size:20px;
-            margin-bottom:10px;
-            margin-top:10px;
-
-        }
-        .wrap_btn_bottom:hover{
-            color:orange;
-            background-color:#ddd;
-
-        }
-    </style>
 </head>
 <body>
 <!-- Begin page -->
@@ -149,26 +63,31 @@
 
             <ul class="am-list admin-sidebar-list">
                 <li><a href="index.jsp"><span class="am-icon-home"></span> 首页</a></li>
-                <li class="admin-parent">
+<%--                <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 调查方向<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
                         <li><a href="toRestaurantIndex" class="am-cf">餐饮调查</a></li>
                         <li><a href="teacherProblems?pModule=1" class="am-cf">讲师调查</a></li>
                         <li><a href="teacherProblems?pModule=2" class="am-cf">班主任调查</a></li>
                     </ul>
+                </li>--%>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 评论 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
+                        <li><a href="toShowAllComment?cModule=餐饮" class="am-cf">餐饮评论</a></li>
+                        <li><a href="toShowAllComment?cModule=讲师" class="am-cf">讲师评论</a></li>
+                        <li><a href="toShowAllComment?cModule=教务" class="am-cf">班主任评论</a></li>
+                    </ul>
+                </li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-line-chart"></span> 统计喜爱度<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav3">
+                        <li><a href="showPopulation" class="am-cf">餐饮</a></li>
+                        <li><a href="showDetailsOfTeacher?cModule=讲师" class="am-cf">讲师</a></li>
+                        <li><a href="showDetailsOfTeacher?cModule=教务" class="am-cf">班主任</a></li>
+                    </ul>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="wrap">
-        <div class="wrap_head">
-            <img src="/img/logo.png" alt="">
-            <h3 class="wrap_head_gs">公司就餐情况调查表</h3>
-            <h4 class="wrap_head_js">技术支持： 合众艾特</h4>
-        </div>
-        <div class="wrap_btn">
-            <a href="toShowAllVegetables">在公司用餐</a>
-            <a href="toVegetablesProblems">不在公司用餐</a>
         </div>
     </div>
 </div>

@@ -13,6 +13,14 @@
     <title>餐饮调查表</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/index.css">
+    <script src="/assets/js/jquery-3.0.0.js"></script>
+    <script>
+        function one(){
+            var  pan=$(".pa").val();
+            console.log(pan);
+            console.log(pan.length);
+        }
+    </script>
 </head>
 <body>
 <div class="wrap">
@@ -33,21 +41,23 @@
                     <table>
                         <c:forEach items="${problem}" var="p">
                             <c:if test="${p.PModule==0}">
-                                <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}">${p.PContent}</td></tr>
+                                <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}" class="pa">${p.PContent}</td></tr>
                             </c:if>
                             <tr>
                                 <c:forEach items="${answer}" var="a">
                                     <c:if test="${p.PId==a.prId}">
-                                        <td width="160px"><input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px">${a.awContent}</td>
+                                        <td width="160px">
+                                            <input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px" class="pa">${a.awContent}</td>
                                     </c:if>
                                 </c:forEach>
                             </tr>
                         </c:forEach>
                     </table>
-                <textarea cols="60" rows="10" name="analyst">做的很好，暂无意见！</textarea>
+                <textarea cols="60" rows="10" name="analyst" class="pa">做的很好，暂无意见！</textarea>
             </div>
             <%--<div class="wrap_btn_bottom">提交</div>--%>
             <input type="submit" class="wrap_btn_bottom" value="提交">
+            <input type="button" class="wrap_btn_bottom" value="查看代码" onclick="one()">
         </form>
 
     </div>
