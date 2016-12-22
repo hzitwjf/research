@@ -77,8 +77,9 @@
                         <c:if test="${teaName=='焦尚姝' or teaName=='黄晓燕'}">
                             <a href="teacherProblems?pModule=2" class="am-btn am-btn-primary" style="">返回重新评论</a>
                         </c:if>
-                        <c:if test="${teaName!='焦尚姝' or teaName!='黄晓燕'}"
+                        <c:if test="${teaName!='焦尚姝' and teaName!='黄晓燕'}">
                             <a href="teacherProblems?pModule=1" class="am-btn am-btn-primary" style="">返回重新评论</a>
+                        </c:if>
                     </form>
                 </div>
             </div>
