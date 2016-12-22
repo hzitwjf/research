@@ -66,6 +66,7 @@ public class TeacherController {
         //}
     }
     @RequestMapping("doTeacherComment")
+    @ResponseBody
     public Object doTeacherComment(@RequestParam("analyst") String [] analyst,@RequestParam("teaId") Integer teaId,ModelMap modelMap,HttpSession session) {
         /*String people=(String)session.getAttribute("ip");
         Integer peopleCount=commentService.findPeopleCount(people);
@@ -98,12 +99,18 @@ public class TeacherController {
                 //modelMap.put("teacher",teacherInfo);
                 session.setAttribute("teaName", teacherInfo.getTeaName());
                 session.setAttribute("teacherComment", problemVos);
-                return "SurveyTeacherDetails";
+                //return "SurveyTeacherDetails";
                 //return problemVos;
+                return 1;
             } catch (Exception ex) {
                 ex.printStackTrace();
-                return "redirect:/toError";
+                //return "redirect:/toError";
+                return -1;
             }
         }
     //}
+    @RequestMapping("toSurveyTeacherDetails")
+    public String toSurveyTeacherDetails(){
+        return "SurveyTeacherDetails";
+    }
 }

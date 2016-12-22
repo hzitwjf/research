@@ -24,7 +24,68 @@
   <meta name="apple-mobile-web-app-title" content="demo" />
   <link rel="stylesheet" href="../dist/amazeui.min.css"/>
   <link rel="stylesheet" href="/docs/demo.css"/>
-    <link rel="stylesheet" href="/assets/css/amazeui.css" />
+  <link rel="stylesheet" href="/assets/css/amazeui.css" />
+  <script src="/assets/js/jquery-3.0.0.js"></script>
+  <script>
+        $(function () {
+            var analyst=new Array();
+            $(".pa").click(function () {
+                //var problem=new Array();
+                var pId=$(this).attr("pId");
+                var aContent=$(this).val();
+                for(var i = 0; i < analyst.length; i++){
+                    if(pId == analyst[i]){
+                        analyst.splice(i, 2);
+                        break;
+                    };
+                };
+                analyst.push(pId);
+                analyst.push(aContent);
+                //analyst.push(problem);
+                console.log(analyst)
+                console.log(pId+aContent);
+                /*$.post("addPIdAndAnswer",{"pId":pId,"answer":aContent},function (data) {
+                 console.log(data);
+                 });*/
+            });
+            $("#fa").blur(function () {
+                var pId=$(this).attr("pId");
+                var aContent=$(this).val();
+                for(var i = 0; i < analyst.length; i++){
+                    if(pId == analyst[i]){
+                        analyst.splice(i, 2);
+                        break;
+                    };
+                };
+                analyst.push(pId);
+                analyst.push(aContent);
+                console.log(analyst)
+                console.log(pId+aContent);
+            });
+            $("#submit").click(function () {
+                /*$.post("doSomeComment",{"analyst[]":analyst},function (data) {
+                 alert(data);
+                 });*/
+                $.ajax({
+                    url: 'doSomeComment',
+                    data: { "analyst": analyst },
+                    //data: _list,
+                    dataType: "json",
+                    type: "POST",
+                    traditional: true,
+                    success: function (data) {
+                        // your logic
+                        //alert(data);
+                        if (data==1){
+                            window.location="toShowVegetablesProblems";
+                        }else {
+                            window.location="toError";
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 

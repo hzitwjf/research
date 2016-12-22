@@ -156,6 +156,7 @@ public class RestaurantController extends BaseController{
         //}
     }
     @RequestMapping("doSomeComment")
+    @ResponseBody
     public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session) {
        /* String ip= (String) session.getAttribute("ip");
         Integer people=commentService.findPeopleCount(ip);
@@ -183,12 +184,14 @@ public class RestaurantController extends BaseController{
                         System.out.println("");
                     }
                 }
-                modelMap.put("problemVos",problemVos);
+                //modelMap.put("problemVos",problemVos);
                 session.setAttribute("restaurantSomeComment",problemVos);
-                return "showVegetablesProblems";
+                //return "showVegetablesProblems";
+                return 1;
             }catch (Exception ex){
                 ex.printStackTrace();
-                return "redirect:/toError";
+                //return "redirect:/toError";
+                return -1;
             }
         //}
     }
@@ -196,5 +199,10 @@ public class RestaurantController extends BaseController{
     public String toRestaurantIndex(){
         return "RestaurantIndex";
     }
-
+    @RequestMapping("toShowVegetablesProblems")
+    public String toShowVegetablesProblems(HttpSession session){
+        List<ProblemVo> problemVoList= (List<ProblemVo>) session.getAttribute("restaurantSomeComment");
+        problemVoList.forEach(problemVo -> System.out.println(problemVo.toString()));
+        return "showVegetablesProblems";
+    }
 }

@@ -25,6 +25,61 @@
     <link rel="stylesheet" href="../dist/amazeui.min.css"/>
     <link rel="stylesheet" href="/docs/demo.css"/>
     <link rel="stylesheet" href="/assets/css/amazeui.css"/>
+    <script src="/assets/js/jquery-3.0.0.js"></script>
+    <script>
+        /*function one(){
+         var  pan=new Array();
+         console.log(pan);
+         console.log(pan.length);
+         }*/
+        $(function () {
+            var analyst=new Array();
+            $(".pa").click(function () {
+                //var problem=new Array();
+                var pId=$(this).attr("pId");
+                var aContent=$(this).val();
+                for(var i = 0; i < analyst.length; i++){
+                    if(pId == analyst[i]){
+                        analyst.splice(i, 2);
+                        break;
+                    };
+                };
+                analyst.push(pId);
+                analyst.push(aContent);
+                /*analyst.sort();
+                console.log(analyst);*/
+                //analyst.push(problem);
+                /*console.log(analyst)
+                 console.log(pId+aContent);*/
+                /*$.post("addPIdAndAnswer",{"pId":pId,"answer":aContent},function (data) {
+                 console.log(data);
+                 });*/
+            });
+            $("#submit").click(function () {
+                /*$.post("doSomeComment",{"analyst[]":analyst},function (data) {
+                 alert(data);
+                 });*/
+                var teacher=$("#teaId").val();
+                $.ajax({
+                    url: 'doTeacherComment',
+                    data: { "analyst": analyst,"teaId":teacher },
+                    //data: _list,
+                    dataType: "json",
+                    type: "POST",
+                    traditional: true,
+                    success: function (data) {
+                        // your logic
+                        //alert(data);
+                        if (data==1){
+                            window.location="toSurveyTeacherDetails";
+                        }else {
+                            window.location="toError";
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -36,8 +91,6 @@
 </header>
 <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
-        <p style="margin-left: 15px">请注意所有的选项都为单选，请勿多选或少选！</p>
-        <form action="doTeacherComment" method="post">
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">请选择你要评论的班主任：</strong></div>
                 <select class="form-control" name="teaId" id="teaId">
@@ -72,8 +125,8 @@
                                         <tbody>
                                         <c:forEach items="${answer}" var="a">
                                             <c:if test="${p.PId==a.prId}">
-                                                <td width="160px"><input type="checkbox" name="analyst"
-                                                                         value="${a.awContent}"
+                                                <td width="160px"><input class="pa" type="radio" name="analyst${a.prId}"
+                                                                         value="${a.awContent}" pId="${a.prId}"
                                                                          style="width: 20px;height: 20px">${a.awContent}
                                                 </td>
                                             </c:if>
@@ -84,9 +137,9 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="am-btn am-btn-primary" style="margin-left: 560px;" value="提交问卷">
+                        <input type="button" class="am-btn am-btn-primary" style="margin-left: 560px;" value="提交问卷" id="submit">
                         <a href="/index.jsp" class="am-btn am-btn-primary" style="">返回首页</a>
-        </form>
+
     </div>
 </div>
 

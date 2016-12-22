@@ -15,11 +15,69 @@
     <link rel="stylesheet" href="/css/index.css">
     <script src="/assets/js/jquery-3.0.0.js"></script>
     <script>
-        function one(){
-            var  pan=$(".pa").val();
+        /*function one(){
+            var  pan=new Array();
             console.log(pan);
             console.log(pan.length);
-        }
+        }*/
+        $(function () {
+            var analyst=new Array();
+            $(".pa").click(function () {
+                //var problem=new Array();
+                var pId=$(this).attr("pId");
+                var aContent=$(this).val();
+                    for(var i = 0; i < analyst.length; i++){
+                        if(pId == analyst[i]){
+                            analyst.splice(i, 2);
+                            break;
+                        };
+                    };
+                analyst.push(pId);
+                analyst.push(aContent);
+                //analyst.push(problem);
+                console.log(analyst)
+                console.log(pId+aContent);
+                /*$.post("addPIdAndAnswer",{"pId":pId,"answer":aContent},function (data) {
+                    console.log(data);
+                });*/
+            });
+            $("#fa").blur(function () {
+                var pId=$(this).attr("pId");
+                var aContent=$(this).val();
+                for(var i = 0; i < analyst.length; i++){
+                    if(pId == analyst[i]){
+                        analyst.splice(i, 2);
+                        break;
+                    };
+                };
+                analyst.push(pId);
+                analyst.push(aContent);
+                console.log(analyst)
+                console.log(pId+aContent);
+            });
+            $("#submit").click(function () {
+                /*$.post("doSomeComment",{"analyst[]":analyst},function (data) {
+                    alert(data);
+                });*/
+                $.ajax({
+                    url: 'doSomeComment',
+                    data: { "analyst": analyst },
+                    //data: _list,
+                    dataType: "json",
+                    type: "POST",
+                    traditional: true,
+                    success: function (data) {
+                        // your logic
+                        //alert(data);
+                        if (data==1){
+                            window.location="toShowVegetablesProblems";
+                        }else {
+                            window.location="toError";
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
@@ -35,30 +93,34 @@
     <div class="wrap_show"></div>
     <div class="wrap_"></div>
     <div class="wrap_main">
-        <form action="doSomeComment" method="post">
+        <%--<form action="doSomeComment" method="post">--%>
             <h2>一、对总体的评估</h2>
             <div style="margin-left: auto;margin-right: auto;width: 800px; ">
                     <table>
                         <c:forEach items="${problem}" var="p">
                             <c:if test="${p.PModule==0}">
-                                <tr><td colspan="4"><input type="hidden" name="analyst" value="${p.PId}" class="pa">${p.PContent}</td></tr>
+                                <tr><td colspan="4"><input type="hidden"  value="${p.PId}">${p.PContent}</td></tr>
                             </c:if>
                             <tr>
                                 <c:forEach items="${answer}" var="a">
-                                    <c:if test="${p.PId==a.prId}">
+                                    <c:if test="${p.PId==a.prId and a.prId!=7}">
                                         <td width="160px">
-                                            <input type="checkbox" name="analyst" value="${a.awContent}" style="width: 20px;height: 20px" class="pa">${a.awContent}</td>
+                                            <input type="radio" name="analyst${a.prId}" value="${a.awContent}" pId="${a.prId}" style="width: 20px;height: 20px" class="pa">
+                                            ${a.awContent}
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${a.prId==7 and p.PId==7}">
+                                        <td colspan="4"><textarea cols="60" rows="10" pId="${a.prId}" id="fa"></textarea></td>
                                     </c:if>
                                 </c:forEach>
                             </tr>
                         </c:forEach>
                     </table>
-                <textarea cols="60" rows="10" name="analyst" class="pa">做的很好，暂无意见！</textarea>
             </div>
             <%--<div class="wrap_btn_bottom">提交</div>--%>
-            <input type="submit" class="wrap_btn_bottom" value="提交">
-            <input type="button" class="wrap_btn_bottom" value="查看代码" onclick="one()">
-        </form>
+            <%--<input type="submit" class="wrap_btn_bottom" value="提交">--%>
+            <input type="button" class="wrap_btn_bottom" value="提交" id="submit" >
+        <%--</form>--%>
 
     </div>
 </div>

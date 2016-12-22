@@ -49,7 +49,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${problemVos}" var="p">
+                            <c:forEach items="${sessionScope.restaurantSomeComment}" var="p">
                                 <tr>
                                     <td>
                                         <input type="hidden" name="pId" value="${p.PId}">${p.PContent}

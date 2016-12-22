@@ -155,7 +155,7 @@
                       </div>
                   </div>
               </div>
-              <a href="/index.jsp" class="am-btn am-btn-primary" style="margin-left: 560px;">返回首页</a>
+              <a href="toAdminIndex" class="am-btn am-btn-primary" style="margin-left: 560px;">返回首页</a>
           </div>
     </div>
   </div>

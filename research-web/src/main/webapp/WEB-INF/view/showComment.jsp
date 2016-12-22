@@ -86,7 +86,7 @@
             <c:if test="${commentPage.totalPages!=0}">
             <div class="am-cf">
               共 ${commentPage.totalElements} 条记录
-                <a href="/index.jsp" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
+                <a href="toAdminIndex" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
               <div class="am-fr">
                 <ul class="am-pagination">
                     <c:if test="${(currentPage-1)<0}">

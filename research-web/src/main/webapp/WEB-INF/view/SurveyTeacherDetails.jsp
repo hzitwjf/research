@@ -55,7 +55,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${problemVos}" var="p">
+                                        <c:forEach items="${sessionScope.teacherComment}" var="p">
                                             <tr>
                                                 <td>
                                                     <input type="hidden" name="pId" value="${p.PId}">${p.PContent}
@@ -74,7 +74,11 @@
                             </div>
                         </div>
                         <input type="submit" class="am-btn am-btn-primary" style="margin-left: 560px;" value="确认评价">
-                        <a href="javascript:history.go(-1)" class="am-btn am-btn-primary" style="">返回首页</a>
+                        <c:if test="${teaName=='焦尚姝' or teaName=='黄晓燕'}">
+                            <a href="teacherProblems?pModule=2" class="am-btn am-btn-primary" style="">返回重新评论</a>
+                        </c:if>
+                        <c:if test="${teaName!='焦尚姝' or teaName!='黄晓燕'}"
+                            <a href="teacherProblems?pModule=1" class="am-btn am-btn-primary" style="">返回重新评论</a>
                     </form>
                 </div>
             </div>
