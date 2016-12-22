@@ -35,7 +35,6 @@
         $(function () {
             var analyst=new Array();
             $(".pa").click(function () {
-                //var problem=new Array();
                 var prId=$(this).attr("pId");
                 var awContent=$(this).val();
                 var anwer={"prId":prId,"awContent":awContent};
@@ -70,9 +69,35 @@
                  });*/
                 var teacher=$("#teaId").val();
                 //添加表单验证，要求所有题目的单选框都被选中
-
+                var flag=false;
+                var problemLength=$(".problem").length;
+                if (analyst.length<problemLength){
+                    alert("你还有其他问题没有回答！赶紧去补全答案吧");
+                    return;
+                }else {
+                    $.ajax({
+                     url: 'doTeacherComment',
+                     data: { "analyst": JSON.stringify(analyst) ,"teaId":teacher },
+                     //data: _list,
+                     dataType: "json",
+                     type: "POST",
+                     traditional: true,
+                     success: function (data) {
+                     // your logic
+                     //alert(data);
+                     if (data==1){
+                     window.location="toSurveyTeacherDetails";
+                     }else {
+                     window.location="toError";
+                     }
+                     },
+                     error:function(ex){
+                     alert(ex);
+                     }
+                     });
+                }
                   //alert(   JSON.stringify(analyst) );
-                $.ajax({
+                /*$.ajax({
                     url: 'doTeacherComment',
                     data: { "analyst": JSON.stringify(analyst) ,"teaId":teacher },
                     //data: _list,
@@ -91,7 +116,7 @@
                     error:function(ex){
                         alert(ex);
                     }
-                });
+                });*/
             });
         });
     </script>
@@ -134,7 +159,7 @@
                                         <c:forEach items="${problem}" var="p">
                                         <c:if test="${p.PModule==1}">
                                             <tr>
-                                                <td colspan="5"><input type="hidden" value="${p.PId}"
+                                                <td colspan="5"><input type="hidden" value="${p.PId}" class="problem"
                                                                        name="analyst">${p.PContent}</td>
                                             </tr>
                                         </c:if>

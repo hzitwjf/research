@@ -71,7 +71,36 @@
             });
             $("#submit").click(function () {
                 //添加表单验证，要求所有题目的单选框都被选中
-                $.ajax({
+                var vvIdLength=$(".vId").length;
+                var anLength=$(".problem").length;
+                var flag=false;
+                if (vegetables.length<vvIdLength){
+                    alert("再看看有没有喜欢吃的菜呗！")
+                    return;
+                }else {
+                    if (analyst.length<anLength){
+                        alert("你还有其他问题没有回答！赶紧去补全答案吧");
+                    }else {
+                        $.ajax({
+                            url: 'doAllComment',
+                            data: {"vegetables": JSON.stringify(vegetables) ,"analyst": JSON.stringify(analyst) },
+                            dataType: "json",
+                            type: "POST",
+                            traditional: true,
+                            success: function (data) {
+                                if (data==1){
+                                    window.location="toSurveyDetails";
+                                }else {
+                                    window.location="toError";
+                                }
+                            },
+                            error:function(ex){
+                                alert(ex);
+                            }
+                        });
+                    }
+                }
+                /*$.ajax({
                     url: 'doAllComment',
                     data: {"vegetables": JSON.stringify(vegetables) ,"analyst": JSON.stringify(analyst) },
                     dataType: "json",
@@ -87,7 +116,7 @@
                     error:function(ex){
                         alert(ex);
                     }
-                });
+                });*/
             });
         });
     </script>
@@ -130,7 +159,7 @@
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                         <c:if test="${u.VType=='肉' or u.VType=='鸡鸭鱼'}">
-                                                                           <li><a href="javascript:void(0)"><input type="hidden" name="vId" value="${u.VId}">${u.VName}</a> </li>
+                                                                           <li><a href="javascript:void(0)"><input type="hidden" class="vId" value="${u.VId}">${u.VName}</a> </li>
                                                                            <li>
                                                                                <input type="radio" vvId="${u.VId}" class="ve" value="喜欢吃" name="vegetables${u.VId}" style="width: 20px;height: 20px">喜欢吃
                                                                                <input type="radio" vvId="${u.VId}" class="ve" value="不喜欢吃" name="vegetables${u.VId}" style="width: 20px;height: 20px"> 不喜欢吃
@@ -175,7 +204,7 @@
                                                                <c:forEach items="${vagetableList}" var="u">
                                                                    <c:if test="${u.VParent==uvo.VId}">
                                                                            <c:if test="${u.VType=='青瓜' or u.VType=='土豆'}">
-                                                                               <li><a href="javascript:void(0)"><input type="hidden" name="vegetables" value="${u.VId}">${u.VName}</a> </li>
+                                                                               <li><a href="javascript:void(0)"><input type="hidden" class="vId" value="${u.VId}">${u.VName}</a> </li>
                                                                                <li>
                                                                                    <input type="radio" vvId="${u.VId}" class="ve" value="喜欢吃" name="vegetables${u.VId}" style="width: 20px;height: 20px"> 喜欢吃
                                                                                    <input type="radio" vvId="${u.VId}" class="ve" value="不喜欢吃" name="vegetables${u.VId}" style="width: 20px;height: 20px"> 不喜欢吃
@@ -212,7 +241,7 @@
                                           <table>
                                               <c:forEach items="${problem}" var="p">
                                                   <c:if test="${p.PModule==0}">
-                                                      <tr><td colspan="4"><input type="hidden"  value="${p.PId}">${p.PContent}</td></tr>
+                                                      <tr><td colspan="4"><input type="hidden" class="problem"  value="${p.PId}">${p.PContent}</td></tr>
                                                   </c:if>
                                                   <tr>
                                                       <c:forEach items="${answer}" var="a">

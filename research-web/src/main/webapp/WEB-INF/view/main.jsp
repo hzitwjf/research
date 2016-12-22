@@ -40,31 +40,39 @@
                     }
                 }
                 analyst.push(anwer);
+                //console.log(analyst);
             });
             $("#submit").click(function () {
                 //添加表单验证，要求所有题目的单选框都被选中
-
-                //alert(   JSON.stringify(analyst) );
-                $.ajax({
-                    url: 'doSomeComment',
-                    data: { "analyst": JSON.stringify(analyst) },
-                    //data: _list,
-                    dataType: "json",
-                    type: "POST",
-                    traditional: true,
-                    success: function (data) {
-                        // your logic
-                        //alert(data);
-                        if (data==1){
-                            window.location="toShowVegetablesProblems";
-                        }else {
-                            window.location="toError";
-                        }
-                    },
-                    error:function(ex){
-                        alert(ex);
-                    }
-                });
+                var  inp=$(".pro")
+                var length=inp.length;
+                var flag=false;
+                if (analyst.length<length){
+                    alert("你还有其他问题没有回答！赶紧去补全答案吧");
+                    flag=false;
+                    return;
+                }else {
+                    $.ajax({
+                     url: 'doSomeComment',
+                     data: { "analyst": JSON.stringify(analyst) },
+                     //data: _list,
+                     dataType: "json",
+                     type: "POST",
+                     traditional: true,
+                     success: function (data) {
+                     // your logic
+                     //alert(data);
+                     if (data==1){
+                     window.location="toShowVegetablesProblems";
+                     }else {
+                     window.location="toError";
+                     }
+                     },
+                     error:function(ex){
+                     alert(ex);
+                     }
+                     });
+                }
             });
         });
     </script>
@@ -88,7 +96,7 @@
                     <table>
                         <c:forEach items="${problem}" var="p">
                             <c:if test="${p.PModule==0}">
-                                <tr><td colspan="4"><input type="hidden"  value="${p.PId}">${p.PContent}</td></tr>
+                                <tr><td colspan="4"><input type="hidden" class="pro" value="${p.PId}">${p.PContent}</td></tr>
                             </c:if>
                             <tr>
                                 <c:forEach items="${answer}" var="a">

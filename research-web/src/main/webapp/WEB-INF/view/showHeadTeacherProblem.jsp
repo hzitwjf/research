@@ -53,9 +53,35 @@
             $("#submit").click(function () {
                 var teacher=$("#teaId").val();
                 //添加表单验证，要求所有题目的单选框都被选中
-
+                var problemLength=$(".problem").length;
+                var flag=false;
+                if (analyst.length<problemLength){
+                    alert("你的班主任需要你的答案,赶紧去帮助她吧!");
+                    return;
+                }else {
+                    $.ajax({
+                        url: 'doTeacherComment',
+                        data: { "analyst": JSON.stringify(analyst),"teaId":teacher },
+                        //data: _list,
+                        dataType: "json",
+                        type: "POST",
+                        traditional: true,
+                        success: function (data) {
+                            // your logic
+                            //alert(data);
+                            if (data==1){
+                                window.location="toSurveyTeacherDetails";
+                            }else {
+                                window.location="toError";
+                            }
+                        },
+                        error:function(ex){
+                            alert(ex);
+                        }
+                    });
+                }
                 //alert(   JSON.stringify(analyst) );
-                $.ajax({
+                /*$.ajax({
                     url: 'doTeacherComment',
                     data: { "analyst": JSON.stringify(analyst),"teaId":teacher },
                     //data: _list,
@@ -74,7 +100,7 @@
                     error:function(ex){
                         alert(ex);
                     }
-                });
+                });*/
             });
         });
     </script>
@@ -115,7 +141,7 @@
                                         <c:forEach items="${problem}" var="p">
                                         <c:if test="${p.PModule==2}">
                                             <tr>
-                                                <td colspan="5"><input type="hidden" value="${p.PId}"
+                                                <td colspan="5"><input type="hidden" value="${p.PId}" class="problem"
                                                                        name="analyst">${p.PContent}</td>
                                             </tr>
                                         </c:if>
