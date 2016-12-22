@@ -36,20 +36,21 @@
             var analyst=new Array();
             $(".pa").click(function () {
                 //var problem=new Array();
-                var pId=$(this).attr("pId");
-                var aContent=$(this).val();
+                var prId=$(this).attr("pId");
+                var awContent=$(this).val();
+                var anwer={"prId":prId,"awContent":awContent};
                 for(var i = 0; i < analyst.length; i++){
-                    if(pId == analyst[i]){
-                        analyst.splice(i, 2);
-                        break;
-                    };
-                };
-                analyst.push(pId);
-                analyst.push(aContent);
-                //analyst.push(problem);
-                /*console.log(analyst)
-                console.log(pId+aContent);*/
-                /*$.post("addPIdAndAnswer",{"pId":pId,"answer":aContent},function (data) {
+                    if(prId == analyst[i].prId){
+                        analyst[i].awContent=awContent;
+                        console.log(analyst)
+                        return;
+                    }
+                }
+
+                analyst.push(anwer);
+                console.log(analyst)
+                /* console.log(pId+aContent);
+               $.post("addPIdAndAnswer",{"pId":pId,"answer":aContent},function (data) {
                  console.log(data);
                  });*/
             });
@@ -72,9 +73,12 @@
                  alert(data);
                  });*/
                 var teacher=$("#teaId").val();
+                //添加表单验证，要求所有题目的单选框都被选中
+
+                  alert(   JSON.stringify(analyst) );
                 $.ajax({
                     url: 'doTeacherComment',
-                    data: { "analyst": analyst,"teaId":teacher },
+                    data: { "analyst": JSON.stringify(analyst) ,"teaId":teacher },
                     //data: _list,
                     dataType: "json",
                     type: "POST",
@@ -87,6 +91,9 @@
                         }else {
                             window.location="toError";
                         }
+                    },
+                    error:function(ex){
+                        alert(ex);
                     }
                 });
             });

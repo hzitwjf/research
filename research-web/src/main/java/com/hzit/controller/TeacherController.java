@@ -1,6 +1,8 @@
 package com.hzit.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.hzit.dao.entity.Answer;
 import com.hzit.dao.entity.Problem;
 import com.hzit.dao.entity.TeacherInfo;
@@ -8,10 +10,12 @@ import com.hzit.services.AnswerService;
 import com.hzit.services.CommentService;
 import com.hzit.services.ProblemServices;
 import com.hzit.services.TeacherService;
+import com.hzit.vo.AnswerVo;
 import com.hzit.vo.ProblemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,7 +71,7 @@ public class TeacherController {
     }
     @RequestMapping("doTeacherComment")
     @ResponseBody
-    public Object doTeacherComment(@RequestParam("analyst") String [] analyst,@RequestParam("teaId") Integer teaId,ModelMap modelMap,HttpSession session) {
+    public Object doTeacherComment(@RequestParam("analyst") String analyst, @RequestParam("teaId") Integer teaId, ModelMap modelMap, HttpSession session) {
         /*String people=(String)session.getAttribute("ip");
         Integer peopleCount=commentService.findPeopleCount(people);
         if (peopleCount>1 && peopleCount!=null){
@@ -75,11 +79,13 @@ public class TeacherController {
         }else {*/
             try {
                 List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
-                for (int j = 0; analyst != null && j < analyst.length; j++) {
+                  List<AnswerVo> array= JSON.parseArray(analyst,AnswerVo.class);
+
+                for (int j = 0; analyst != null && j < array.size(); j++) {
                     ProblemVo problemVo = new ProblemVo();
-                    if (j % 2 == 0) {
-                        problemVo.setPId(Integer.parseInt(analyst[j]));
-                        problemVo.setpAnswer(analyst[j + 1]);
+
+                        problemVo.setPId(array.get(j).getPrId());
+                        problemVo.setpAnswer(array.get(j).getAwContent());
                         Problem problem = problemServices.findOneProblem(problemVo.getPId());
                         problemVo.setPContent(problem.getPContent());
                         problemVo.setPModule(problem.getPModule());
@@ -90,9 +96,7 @@ public class TeacherController {
                         } else {
                             problemVos.add(problemVo);
                         }
-                    } else {
-                        System.out.println("");
-                    }
+
                 }
                 modelMap.put("problemVos", problemVos);
                 TeacherInfo teacherInfo = teacherService.findTeacherByTeaId(teaId);
