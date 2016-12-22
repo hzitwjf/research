@@ -30,6 +30,10 @@ public class VegetableVo {
 	 */
 	private String vDiscuss;
 	/**
+	 *  菜品评论
+	 */
+	private String veDiscuss;
+	/**
 	 * 菜品ID
 	 * @param vId
 	 */
@@ -113,6 +117,14 @@ public class VegetableVo {
 		this.vDiscuss = vDiscuss;
 	}
 
+	public String getVeDiscuss() {
+		return veDiscuss;
+	}
+
+	public void setVeDiscuss(String veDiscuss) {
+		this.veDiscuss = veDiscuss;
+	}
+
 	@Override
 	public String toString() {
 		return "VegetableVo{" +
@@ -122,6 +134,7 @@ public class VegetableVo {
 				", vParent=" + vParent +
 				", vLevel=" + vLevel +
 				", vDiscuss='" + vDiscuss + '\'' +
+				", veDiscuss='" + veDiscuss + '\'' +
 				'}';
 	}
 }

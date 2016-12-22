@@ -51,10 +51,12 @@ public class DiscussController {
             discussVo.setPId(discuss.getPId());
             discussVo.setDResult(discuss.getDResult());
             discussVo.setdScore(discuss.getdScore());
-            Problem problem=problemServices.findOneProblem(discussVo.getPId());
-            String content=problem.getPContent();
-            //System.out.println(content);
-            discussVo.setpContent(content);
+            if (discussVo.getPId()!=null){
+                Problem problem=problemServices.findOneProblem(discussVo.getPId());
+                String content=problem.getPContent();
+                //System.out.println(content);
+                discussVo.setpContent(content);
+            }
             Vegetable vegetable=vegetableServices.findOneVegetable(discussVo.getVId());
             String vegetableName=vegetable.getVName();
             //System.out.println(vegetableName);

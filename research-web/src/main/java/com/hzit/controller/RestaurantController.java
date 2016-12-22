@@ -110,7 +110,7 @@ public class RestaurantController extends BaseController{
                 for (int i=0;vegetables !=null && i<varray.size();i++){
                     VegetableVo vegetableVo=new VegetableVo();
                         vegetableVo.setVId(varray.get(i).getVId());
-                        vegetableVo.setvDiscuss(varray.get(i).getvDiscuss());
+                        vegetableVo.setvDiscuss(varray.get(i).getVeDiscuss());
                         Vegetable vegetable=vegetableServices.findOneVegetable(vegetableVo.getVId());
                         vegetableVo.setVName(vegetable.getVName());
                         vegetableVos.add(vegetableVo);

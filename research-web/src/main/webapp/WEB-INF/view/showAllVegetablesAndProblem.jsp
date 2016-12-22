@@ -33,15 +33,15 @@
             $(".ve").click(function () {
                 var vId=$(this).attr("vvId");
                 var vDiscuss=$(this).val();
-                var vegetable={"vId":vId,"vDiscuss":vDiscuss};
+                var vegetable={"vId":vId,"veDiscuss":vDiscuss};
                 for(var i = 0; i < vegetables.length; i++){
                     if(vId == vegetables[i].vId){
-                        vegetables[i].vDiscuss=vDiscuss;
+                        vegetables[i].veDiscuss=vDiscuss;
                         return;
                     }
                 }
                 vegetables.push(vegetable);
-                console.log(vegetables);
+                //console.log(vegetables);
             });
             $(".pa").click(function () {
                 var prId=$(this).attr("pId");
@@ -54,7 +54,7 @@
                     }
                 }
                 analyst.push(anwer);
-                console.log(analyst);
+                //console.log(analyst);
             });
             $("#fa").blur(function () {
                 var prId=$(this).attr("pId");
@@ -67,13 +67,13 @@
                     }
                 }
                 analyst.push(anwer);
-                console.log(analyst)
+                //console.log(analyst)
             });
             $("#submit").click(function () {
                 //添加表单验证，要求所有题目的单选框都被选中
                 $.ajax({
                     url: 'doAllComment',
-                    data: {"vegetables": JSON.stringify(vegetables),"analyst": JSON.stringify(analyst) },
+                    data: {"vegetables": JSON.stringify(vegetables) ,"analyst": JSON.stringify(analyst) },
                     dataType: "json",
                     type: "POST",
                     traditional: true,
