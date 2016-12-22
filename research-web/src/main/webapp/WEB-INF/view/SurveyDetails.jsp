@@ -41,7 +41,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${vegetableVos}" var="v">
+                                <c:forEach items="${sessionScope.restaurantVegetablesComment}" var="v">
                                     <tr>
                                         <td>
                                             <input type="hidden" value="${v.VId}" name="vId"> ${v.VName}
@@ -69,7 +69,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${problemVos}" var="p">
+                                <c:forEach items="${sessionScope.restaurantProblemComment}" var="p">
                                     <tr>
                                         <td>
                                             <input type="hidden" name="pId" value="${p.PId}">${p.PContent}

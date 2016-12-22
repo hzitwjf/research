@@ -15,28 +15,19 @@
     <link rel="stylesheet" href="/css/index.css">
     <script src="/assets/js/jquery-3.0.0.js"></script>
     <script>
-        /*function one(){
-         var  pan=new Array();
-         console.log(pan);
-         console.log(pan.length);
-         }*/
         $(function () {
             var analyst=new Array();
             $(".pa").click(function () {
-                //var problem=new Array();
                 var prId=$(this).attr("pId");
                 var awContent=$(this).val();
                 var anwer={"prId":prId,"awContent":awContent};
                 for(var i = 0; i < analyst.length; i++){
                     if(prId == analyst[i].prId){
                         analyst[i].awContent=awContent;
-                        //console.log(analyst)
                         return;
                     }
                 }
-
                 analyst.push(anwer);
-                //console.log(analyst)
             });
             $("#fa").blur(function () {
                 var prId=$(this).attr("pId");
@@ -45,18 +36,12 @@
                 for(var i = 0; i < analyst.length; i++){
                     if(prId == analyst[i].prId){
                         analyst[i].awContent=awContent;
-                        //console.log(analyst)
                         return;
                     }
                 }
                 analyst.push(anwer);
-                //console.log(analyst)
             });
             $("#submit").click(function () {
-                /*$.post("doSomeComment",{"analyst[]":analyst},function (data) {
-                 alert(data);
-                 });*/
-                var teacher=$("#teaId").val();
                 //添加表单验证，要求所有题目的单选框都被选中
 
                 //alert(   JSON.stringify(analyst) );

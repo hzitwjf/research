@@ -45,7 +45,7 @@ public class TeacherController {
         return "500";
     }
     @RequestMapping("teacherProblems")
-    public String showAllTeacherProblems(@RequestParam("pModule") Integer pModule,ModelMap modelMap,HttpSession session){
+    public String showAllTeacherProblems(@RequestParam("pModule") Integer pModule,ModelMap modelMap){
         /*String people=(String)session.getAttribute("ip");
         Integer peopleCount=commentService.findPeopleCount(people);
         if (peopleCount>1 && peopleCount!=null){
@@ -71,7 +71,7 @@ public class TeacherController {
     }
     @RequestMapping("doTeacherComment")
     @ResponseBody
-    public Object doTeacherComment(@RequestParam("analyst") String analyst, @RequestParam("teaId") Integer teaId, ModelMap modelMap, HttpSession session) {
+    public Object doTeacherComment(@RequestParam("analyst") String analyst, @RequestParam("teaId") Integer teaId, HttpSession session) {
         /*String people=(String)session.getAttribute("ip");
         Integer peopleCount=commentService.findPeopleCount(people);
         if (peopleCount>1 && peopleCount!=null){
