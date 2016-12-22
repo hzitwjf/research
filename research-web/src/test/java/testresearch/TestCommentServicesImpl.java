@@ -11,7 +11,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,7 +65,10 @@ public class TestCommentServicesImpl {
     //SELECT AVG(c_score),c_score FROM COMMENT WHERE c_module='讲师' GROUP BY cd_people
     @Test
     public void findAllTeacherAvgScore(){
-        List<Comment> commentList=commentService.findAllTeacherAvgScore("教务");
+        Date date=new Date();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat();
+        String time=simpleDateFormat.format(date);
+        List<Comment> commentList=commentService.findAllTeacherAvgScore("讲师","2017-01-1");
         commentList.forEach(comment -> System.out.println(comment.toString()));
     }
 }

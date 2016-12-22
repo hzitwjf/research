@@ -20,5 +20,5 @@ public interface CommentMapper {
 
 	List<Comment> searchCommentByParams(@Param("map") Map<String, String> map);
 	int findPeopleCount(@Param("cPeople") String cPeople);
-	List<Comment> searchCommentBycModule(@Param("cModule") String cModule);
+	List<Comment> searchCommentBycModule(@Param("cModule") String cModule,@Param("ymTime") String ymTime);
 } 

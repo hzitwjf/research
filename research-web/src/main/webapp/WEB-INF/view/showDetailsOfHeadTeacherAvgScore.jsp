@@ -24,7 +24,18 @@
   <meta name="apple-mobile-web-app-title" content="demo" />
   <link rel="stylesheet" href="../dist/amazeui.min.css"/>
   <link rel="stylesheet" href="/docs/demo.css"/>
-    <link rel="stylesheet" href="/assets/css/amazeui.css" />
+  <link rel="stylesheet" href="/assets/css/amazeui.css" />
+  <script>
+        function jump() {
+            var time=document.getElementById("date").value;
+            var url="showDetailsOfTeacher?cModule=教务&&time="+time
+            if(confirm("确定要查看这个时间段的教员统计信息吗"))
+            {
+                //alert(url);
+                window.location=url;
+            }
+        }
+  </script>
 </head>
 <body  style="overflow-x: hidden;">
 
@@ -36,11 +47,13 @@
   </header>
   <div class="am-content">
     <div data-module="firstlevel" class="am-animation-slide-left">
-      <%--<div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">一、受欢迎的菜系</strong></div>
-          <div class="am-fl am-cf" style="margin-left: 170px"><strong class="am-text-primary am-text-lg">二、不受欢迎的菜系</strong></div>
-          <div class="am-fl am-cf" style="margin-left: 150px"><strong class="am-text-primary am-text-lg">三、意见不统一的菜系</strong></div>
-      </div>--%>
+      <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary am-text-lg">
+                请选择你要查看的哪个时间段的讲师统计详情表:<input type="date" id="date" onblur="jump()">
+            </strong>
+        </div>
+      </div>
           <div class="am-g">
               <div class="am-g">
                   <div class="am-u-md-12">

@@ -111,8 +111,8 @@ public class CommentServiceImpl implements CommentService  {
     }
 
     @Override
-    public List<Comment> findAllTeacherAvgScore(String cModule) {
-        List<Comment> list=commentMapper.searchCommentBycModule(cModule);
+    public List<Comment> findAllTeacherAvgScore(String cModule,String ymTime) {
+        List<Comment> list=commentMapper.searchCommentBycModule(cModule,ymTime);
         return list;
     }
 

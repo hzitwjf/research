@@ -6,6 +6,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2016/12/15.
@@ -34,7 +36,10 @@ public class BaseComment implements HandlerInterceptor {
             response.sendRedirect("/index.jsp");
             return false;
         }
-        //session.setAttribute("ip",ip);
+        Date date=new Date();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat();
+        String time=simpleDateFormat.format(date);
+        session.setAttribute("time",time);
         //return true;
         if (ip.equals("192.168.0.151")){
             return false;
@@ -47,7 +52,7 @@ public class BaseComment implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         HttpSession session=httpServletRequest.getSession();
-        System.out.println("IP是："+session.getAttribute("ip"));
+        //System.out.println("IP是："+session.getAttribute("ip"));
     }
 
     @Override

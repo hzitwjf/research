@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -193,11 +194,11 @@ public class CommentController {
         //}
     }
     @RequestMapping("showDetailsOfTeacher")
-    public String showDetailsOfTeacher(@RequestParam("cModule") String cModule,ModelMap modelMap){
+    public String showDetailsOfTeacher(@RequestParam("cModule") String cModule,@RequestParam("time") String time, ModelMap modelMap){
         try {
             String month="";
             int year=0;
-            List<Comment> commentList=commentService.findAllTeacherAvgScore(cModule);
+            List<Comment> commentList=commentService.findAllTeacherAvgScore(cModule,time);
             modelMap.put("avgScore",commentList);
             for (Comment comment : commentList){
                 month=comment.getCTime();
