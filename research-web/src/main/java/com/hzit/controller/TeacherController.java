@@ -98,7 +98,7 @@ public class TeacherController {
                         }
 
                 }
-                modelMap.put("problemVos", problemVos);
+                //modelMap.put("problemVos", problemVos);
                 TeacherInfo teacherInfo = teacherService.findTeacherByTeaId(teaId);
                 //modelMap.put("teacher",teacherInfo);
                 session.setAttribute("teaName", teacherInfo.getTeaName());

@@ -1,5 +1,6 @@
 package com.hzit.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.hzit.dao.entity.Answer;
 import com.hzit.dao.entity.Problem;
 import com.hzit.dao.entity.Vegetable;
@@ -7,6 +8,7 @@ import com.hzit.services.AnswerService;
 import com.hzit.services.CommentService;
 import com.hzit.services.ProblemServices;
 import com.hzit.services.VegetableServices;
+import com.hzit.vo.AnswerVo;
 import com.hzit.vo.ProblemVo;
 import com.hzit.vo.VegetableVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,7 +159,7 @@ public class RestaurantController extends BaseController{
     }
     @RequestMapping("doSomeComment")
     @ResponseBody
-    public Object doSomeComment(@RequestParam("analyst") String [] analyst,ModelMap modelMap,HttpSession session) {
+    public Object doSomeComment(@RequestParam("analyst") String  analyst,ModelMap modelMap,HttpSession session) {
        /* String ip= (String) session.getAttribute("ip");
         Integer people=commentService.findPeopleCount(ip);
         if (people>1 && people!=null){
@@ -165,11 +167,11 @@ public class RestaurantController extends BaseController{
         }else {*/
             try {
                 List<ProblemVo> problemVos = new ArrayList<ProblemVo>();
-                for (int j = 0; analyst != null && j < analyst.length; j++) {
-                    ProblemVo problemVo = new ProblemVo();
-                    if (j % 2 == 0) {
-                        problemVo.setPId(Integer.parseInt(analyst[j]));
-                        problemVo.setpAnswer(analyst[j + 1]);
+                List<AnswerVo> array= JSON.parseArray(analyst,AnswerVo.class);
+                for (int j = 0; analyst != null && j < array.size(); j++) {
+                        ProblemVo problemVo = new ProblemVo();
+                        problemVo.setPId(array.get(j).getPrId());
+                        problemVo.setpAnswer(array.get(j).getAwContent());
                         Problem problem = problemServices.findOneProblem(problemVo.getPId());
                         problemVo.setPContent(problem.getPContent());
                         problemVo.setPModule(problem.getPModule());
@@ -180,9 +182,6 @@ public class RestaurantController extends BaseController{
                         }else {
                             problemVos.add(problemVo);
                         }
-                    } else {
-                        System.out.println("");
-                    }
                 }
                 //modelMap.put("problemVos",problemVos);
                 session.setAttribute("restaurantSomeComment",problemVos);
