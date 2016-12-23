@@ -73,7 +73,7 @@
                 //添加表单验证，要求所有题目的单选框都被选中
                 var vvIdLength=$(".vId").length;
                 var anLength=$(".problem").length;
-                var flag=false;
+                var text=$("#fa").val();
                 if (vegetables.length<vvIdLength){
                     alert("再看看有没有喜欢吃的菜呗！")
                     return;
@@ -81,23 +81,27 @@
                     if (analyst.length<anLength){
                         alert("你还有其他问题没有回答！赶紧去补全答案吧");
                     }else {
-                        $.ajax({
-                            url: 'doAllComment',
-                            data: {"vegetables": JSON.stringify(vegetables) ,"analyst": JSON.stringify(analyst) },
-                            dataType: "json",
-                            type: "POST",
-                            traditional: true,
-                            success: function (data) {
-                                if (data==1){
-                                    window.location="toSurveyDetails";
-                                }else {
-                                    window.location="toError";
-                                }
-                            },
-                            error:function(ex){
-                                alert(ex);
-                            }
-                        });
+                       if(text==null || text==""){
+                           alert("留下你的宝贵意见！");
+                       }else{
+                           $.ajax({
+                               url: 'doAllComment',
+                               data: {"vegetables": JSON.stringify(vegetables) ,"analyst": JSON.stringify(analyst) },
+                               dataType: "json",
+                               type: "POST",
+                               traditional: true,
+                               success: function (data) {
+                                   if (data==1){
+                                       window.location="toSurveyDetails";
+                                   }else {
+                                       window.location="toError";
+                                   }
+                               },
+                               error:function(ex){
+                                   alert(ex);
+                               }
+                           });
+                       }
                     }
                 }
                 /*$.ajax({

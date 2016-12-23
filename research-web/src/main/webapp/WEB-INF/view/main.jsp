@@ -46,32 +46,35 @@
                 //添加表单验证，要求所有题目的单选框都被选中
                 var  inp=$(".pro")
                 var length=inp.length;
-                var flag=false;
+                var text=$("#fa").val();
                 if (analyst.length<length){
                     alert("你还有其他问题没有回答！赶紧去补全答案吧");
-                    flag=false;
                     return;
                 }else {
-                    $.ajax({
-                     url: 'doSomeComment',
-                     data: { "analyst": JSON.stringify(analyst) },
-                     //data: _list,
-                     dataType: "json",
-                     type: "POST",
-                     traditional: true,
-                     success: function (data) {
-                     // your logic
-                     //alert(data);
-                     if (data==1){
-                     window.location="toShowVegetablesProblems";
-                     }else {
-                     window.location="toError";
-                     }
-                     },
-                     error:function(ex){
-                     alert(ex);
-                     }
-                     });
+                    if(text==null || text==""){
+                        alert("留下你的宝贵意见！")
+                    }else{
+                        $.ajax({
+                         url: 'doSomeComment',
+                         data: { "analyst": JSON.stringify(analyst) },
+                         //data: _list,
+                         dataType: "json",
+                         type: "POST",
+                         traditional: true,
+                         success: function (data) {
+                         // your logic
+                         //alert(data);
+                         if (data==1){
+                         window.location="toShowVegetablesProblems";
+                         }else {
+                         window.location="toError";
+                         }
+                         },
+                         error:function(ex){
+                         alert(ex);
+                         }
+                         });
+                    }
                 }
             });
         });

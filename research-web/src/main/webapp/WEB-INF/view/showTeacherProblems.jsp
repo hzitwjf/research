@@ -69,32 +69,36 @@
                  });*/
                 var teacher=$("#teaId").val();
                 //添加表单验证，要求所有题目的单选框都被选中
-                var flag=false;
+                var text=$("#fa").val();
                 var problemLength=$(".problem").length;
                 if (analyst.length<problemLength){
                     alert("你还有其他问题没有回答！赶紧去补全答案吧");
                     return;
                 }else {
-                    $.ajax({
-                     url: 'doTeacherComment',
-                     data: { "analyst": JSON.stringify(analyst) ,"teaId":teacher },
-                     //data: _list,
-                     dataType: "json",
-                     type: "POST",
-                     traditional: true,
-                     success: function (data) {
-                     // your logic
-                     //alert(data);
-                     if (data==1){
-                     window.location="toSurveyTeacherDetails";
-                     }else {
-                     window.location="toError";
-                     }
-                     },
-                     error:function(ex){
-                     alert(ex);
-                     }
-                     });
+                    if (text==null || text==""){
+                        alert("难道你没有什么想对你老师说什么的吗？")
+                    }else{
+                        $.ajax({
+                            url: 'doTeacherComment',
+                            data: { "analyst": JSON.stringify(analyst) ,"teaId":teacher },
+                            //data: _list,
+                            dataType: "json",
+                            type: "POST",
+                            traditional: true,
+                            success: function (data) {
+                                // your logic
+                                //alert(data);
+                                if (data==1){
+                                    window.location="toSurveyTeacherDetails";
+                                }else {
+                                    window.location="toError";
+                                }
+                            },
+                            error:function(ex){
+                                alert(ex);
+                            }
+                        });
+                    }
                 }
                   //alert(   JSON.stringify(analyst) );
                 /*$.ajax({

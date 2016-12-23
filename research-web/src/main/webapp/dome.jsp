@@ -42,9 +42,18 @@
            var a=document.getElementById("date")
            alert(a.value);
        }
+        function two(){
+            var a=document.getElementById("text");
+            if(a.value==null || a.value==""){
+                alert("请输入你意见或建议")
+            }else{
+                alert(a.value);
+            }
+        }
     </script>
 </head>
 <body>
 <input type="date" id="date" onblur="one()">
+<textarea id="text" onblur="two()"></textarea>
 </body>
 </html>
