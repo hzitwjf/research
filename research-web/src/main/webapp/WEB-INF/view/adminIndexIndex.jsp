@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/assets/css/page/form.css" />
     <link rel="stylesheet" href="/assets/css/component.css" />
 </head>
-<body>
+<body style="overflow: scroll">
 <!-- Begin page -->
 <header class="am-topbar am-topbar-fixed-top">
     <div class="am-topbar-left am-hide-sm-only">

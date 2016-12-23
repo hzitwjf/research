@@ -57,7 +57,6 @@ public class RestaurantController extends BaseController{
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        session.setAttribute("ip", ip);
         return ip;
     }
     @RequestMapping("showAllVegetables")
