@@ -86,11 +86,8 @@ public class DiscussController {
     @ResponseBody
     public Boolean removeAllSession(HttpSession session){
         try {
-            Enumeration e=session.getAttributeNames();
-            while(e.hasMoreElements()){ String sessionName=(String)e.nextElement();
-                System.out.println("存在的session有："+sessionName);
-                session.removeAttribute(sessionName);
-            }
+            session.removeAttribute("ipList");
+            session.invalidate();
             return true;
         }catch (Exception ex){
             ex.printStackTrace();
