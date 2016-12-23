@@ -93,7 +93,7 @@ public class CommentServiceImpl implements CommentService  {
             String ip= (String) session.getAttribute("ip");
             List<String> list=new ArrayList<>();
             list.add(ip);
-            application.setAttribute("ipList",ip);
+            application.setAttribute("ipList",list);
             Enumeration e=session.getAttributeNames();
             while(e.hasMoreElements()){ String sessionName=(String)e.nextElement();
                 System.out.println("存在的session有："+sessionName);

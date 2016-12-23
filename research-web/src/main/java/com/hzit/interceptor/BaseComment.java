@@ -32,12 +32,12 @@ public class BaseComment implements HandlerInterceptor {
         if (ip==null){
             response.sendRedirect("/index.jsp");
         }
-        System.out.println("ip是："+ip);
+        //System.out.println("ip是："+ip);
         ServletContext servletContext=session.getServletContext();
         List<String> list= (List<String>) servletContext.getAttribute("ipList");
         if (list!=null && list.size()!=0){
             for (int i=0;i<list.size();i++){
-                System.out.println("集合里的IP："+list.get(i));
+                //System.out.println("集合里的IP："+list.get(i));
                 if (list.get(i).equals(ip)){
                     response.sendRedirect("/index.jsp");
                     return false;
