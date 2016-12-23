@@ -33,6 +33,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
         interceptorRegistration.addPathPatterns("/doSomeComment");
         interceptorRegistration.addPathPatterns("/toShowVegetablesProblems");
         interceptorRegistration.addPathPatterns("/toSurveyDetails");
+        interceptorRegistration.addPathPatterns("/removeAllSession");
         super.addInterceptors(registry);
     }
 }
