@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
@@ -88,15 +89,16 @@ public class CommentServiceImpl implements CommentService  {
     @Override
     public Boolean removeAllSession(HttpSession session) {
         try{
+            ServletContext application = session.getServletContext();
             String ip= (String) session.getAttribute("ip");
             List<String> list=new ArrayList<>();
             list.add(ip);
+            application.setAttribute("ipList",ip);
             Enumeration e=session.getAttributeNames();
             while(e.hasMoreElements()){ String sessionName=(String)e.nextElement();
                 System.out.println("存在的session有："+sessionName);
                 session.removeAttribute(sessionName);
             }
-            session.setAttribute("ipList",list);
             return true;
         }catch (Exception ex){
             ex.printStackTrace();

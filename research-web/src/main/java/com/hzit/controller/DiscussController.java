@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -84,10 +86,16 @@ public class DiscussController {
     }
     @RequestMapping("removeAllSession")
     @ResponseBody
-    public Boolean removeAllSession(HttpSession session){
+    public Boolean removeAllSession(HttpServletRequest request){
         try {
-            session.removeAttribute("ipList");
-            session.invalidate();
+            ServletContext servletContext=request.getSession().getServletContext();
+            List<String> list= (List<String>) servletContext.getAttribute("ipList");
+            if (list!=null && list.size()!=0){
+                for (int i=0;i<list.size();i++){
+                    System.out.println("集合里的IP："+list.get(i));
+                }
+            }
+            //servletContext.removeAttribute("ipList");
             return true;
         }catch (Exception ex){
             ex.printStackTrace();

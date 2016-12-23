@@ -3,6 +3,7 @@ package com.hzit.interceptor;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,7 +33,8 @@ public class BaseComment implements HandlerInterceptor {
             response.sendRedirect("/index.jsp");
         }
         System.out.println("ip是："+ip);
-        List<String> list= (List<String>) session.getAttribute("ipList");
+        ServletContext servletContext=session.getServletContext();
+        List<String> list= (List<String>) servletContext.getAttribute("ipList");
         if (list!=null && list.size()!=0){
             for (int i=0;i<list.size();i++){
                 System.out.println("集合里的IP："+list.get(i));
