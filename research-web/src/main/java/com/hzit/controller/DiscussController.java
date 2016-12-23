@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -79,5 +81,20 @@ public class DiscussController {
         modelMap.put("notPopulation",notPopulation);
         modelMap.put("normalPopulation",normalPopulation);
         return "showDetailsOfPopulation";
+    }
+    @RequestMapping("removeAllSession")
+    @ResponseBody
+    public Boolean removeAllSession(HttpSession session){
+        try {
+            Enumeration e=session.getAttributeNames();
+            while(e.hasMoreElements()){ String sessionName=(String)e.nextElement();
+                System.out.println("存在的session有："+sessionName);
+                session.removeAttribute(sessionName);
+            }
+            return true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
     }
 }
