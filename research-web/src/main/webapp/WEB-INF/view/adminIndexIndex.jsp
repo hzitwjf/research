@@ -76,7 +76,7 @@
             <!-- End User -->
 
             <ul class="am-list admin-sidebar-list">
-                <li><button id="remove"><span class="am-icon-home"></span> 重新评价</button></li>
+                <li><a id="remove" href="javascript:void(0)"><span class="am-icon-home"></span> 重新评价</a></li>
 <%--                <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 调查方向<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
