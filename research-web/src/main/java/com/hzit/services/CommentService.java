@@ -14,8 +14,10 @@ public interface CommentService {
     int addComment(CommentVo commentVo);
     int addTeacherComment(CommentVo commentVo);
     Page<Comment> searchPageByParams(int page, int rowCount,String cModule );
+    Page<Comment> findCommentByParams(int page, int rowCount,String cdPeople,String cModule );
     Boolean removeAllSession(HttpSession session);
     int findPeopleCount(String cPeople);
     List<Comment> findAllComment();
     List<Comment> findAllTeacherAvgScore(String cModule,String ymTime);
+    List<Comment> findCommentByCdPeople(String cdPeople);
 }

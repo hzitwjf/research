@@ -85,7 +85,12 @@ public class CommentServiceImpl implements CommentService  {
         Page<Comment> commentPage=commentMapper.searchCommentByParams(map,pageRequest);
         return commentPage;
     }
-
+    @Override
+    public Page<Comment> findCommentByParams(int page, int rowCount,String cdPeople,String cModule) {
+        PageRequest pageRequest=new PageRequest(page,rowCount);
+        Page<Comment> commentPage=commentMapper.findCommentByParams(cdPeople,cModule, pageRequest);
+        return commentPage;
+    }
     @Override
     public Boolean removeAllSession(HttpSession session) {
         try{
@@ -120,6 +125,11 @@ public class CommentServiceImpl implements CommentService  {
     public List<Comment> findAllTeacherAvgScore(String cModule,String ymTime) {
         List<Comment> list=commentMapper.searchCommentBycModule(cModule,ymTime);
         return list;
+    }
+
+    @Override
+    public List<Comment> findCommentByCdPeople(String cdPeople) {
+        return commentMapper.searchCommentByName(cdPeople);
     }
 
     @Override

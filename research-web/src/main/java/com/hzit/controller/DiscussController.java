@@ -28,8 +28,8 @@ import java.util.List;
  */
 @Controller
 public class DiscussController {
-    @Autowired
-    private HttpServletRequest request;
+    /*@Autowired
+    private HttpServletRequest request;*/
     @Autowired
     private DiscussService discussService;
     @Autowired
@@ -88,7 +88,7 @@ public class DiscussController {
     }
     @RequestMapping("removeAllSession")
     @ResponseBody
-    public Boolean removeAllSession() {
+    public Boolean removeAllSession(HttpServletRequest request) {
         try {
             ServletContext servletContext=request.getSession().getServletContext();
             List<String> list= (List<String>) servletContext.getAttribute("ipList");

@@ -76,7 +76,7 @@
                                       <tbody>
                                       <c:forEach items="${avgScore}" var="as">
                                           <tr>
-                                              <td> ${as.cdPeople}</td>
+                                              <td> <a href="findCommentByName?cdPeople=${as.cdPeople}">${as.cdPeople}</a> </td>
                                               <td>${as.cScore}</td>
                                           </tr>
                                       </c:forEach>

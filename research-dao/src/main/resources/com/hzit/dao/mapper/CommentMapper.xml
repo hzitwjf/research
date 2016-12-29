@@ -98,6 +98,10 @@
         <include refid="commentBaseColumnSql"/>
         FROM comment
         <include refid="commentBaseWhereSql"/>
+        ORDER BY cd_people
+    </select>
+    <select id="findCommentByParams" parameterType="java.lang.String" resultMap="commentMap">
+        SELECT * FROM COMMENT WHERE  cd_people LIKE CONCAT('%',#{cdPeople},'%') and c_module = #{cModule}
     </select>
     <select id="findPeopleCount" parameterType="java.lang.String" resultType="java.lang.Integer">
         SELECT COUNT(c_people) FROM `comment` WHERE c_people=#{cPeople}
@@ -105,6 +109,9 @@
     <select id="searchCommentBycModule" parameterType="java.lang.String" resultMap="commentMap">
       select * from (SELECT AVG(c_score) c_score,cd_people,DATE_FORMAT(c_time,'%c') c_time,DATE_FORMAT(c_time,'%y') c_id ,DATE_FORMAT(c_time,'%y%c') haha
       FROM COMMENT WHERE c_module=#{cModule} GROUP BY cd_people,haha) l where haha=DATE_FORMAT(#{ymTime},'%y%c')
+    </select>
+    <select id="searchCommentByName" parameterType="java.lang.String" resultMap="commentMap">
+        select * from  comment where cd_people = #{cdPeople}
     </select>
     <resultMap type="com.hzit.dao.entity.Comment" id="commentMap">
         <id column="c_id" property="cId"/>

@@ -145,6 +145,31 @@ public class CommentController {
             return "showComment";
         //}
     }
+    @RequestMapping("showSomeOneComment")
+    public String showSomeOneComment(@RequestParam(name="page",defaultValue = "0")Integer page,@RequestParam("cdPeople") String cdPeople,ModelMap modelMap,HttpSession session){
+        /*String ip= (String) session.getAttribute("ip");
+        Integer people=commentService.findPeopleCount(ip);
+        if (people >1 && people !=null){
+            return "index";
+        }else {*/
+        if(page<=0){
+            page=0;
+        }
+        String module= (String) session.getAttribute("cModule");
+        Page<Comment> commentPage=commentService.findCommentByParams(page,10,cdPeople,module);
+        if (commentPage!=null){
+            modelMap.put("commentPage",commentPage);
+            modelMap.put("currentPage",page);
+            return "showSomeComment";
+        }else {
+            return "redirect:/toError";
+        }
+        //}
+    }
+    @RequestMapping("findBycdPeople")
+    public String findBycdPeople(@RequestParam("cdPeople") String cdPeople,ModelMap modelMap){
+        return null;
+    }
     @RequestMapping("addTeacherComment")
     public String addTeacherComment(HttpSession session){
         /*String peopel= (String) session.getAttribute("ip");
@@ -221,5 +246,11 @@ public class CommentController {
     @RequestMapping("toAdminIndex")
     public String toAdminIndex(){
         return "adminIndexIndex";
+    }
+    @RequestMapping("findCommentByName")
+    public String findCommentByName(@RequestParam("cdPeople")String cdPeople,ModelMap modelMap){
+        List<Comment> commentList=commentService.findCommentByCdPeople(cdPeople);
+        modelMap.put("commentList",commentList);
+        return "showOneComment";
     }
 }

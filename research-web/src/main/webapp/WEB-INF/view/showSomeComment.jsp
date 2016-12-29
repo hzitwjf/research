@@ -34,17 +34,6 @@
         <link rel="apple-touch-icon-precomposed" href="/dist/i/app-icon72x72@2x.png">
         <link rel="stylesheet" href="/dist/amazeui.min.css"/>
         <link rel="stylesheet" href="/docs/demo.css"/>
-        <script>
-            /*window.onload=function(){
-                var page=document.getElementById("page").value;
-                var pa=document.getElementsByName("pa");;
-                for(var i= 0;i<pa.length;i++){
-                    if(pa[i].value==page){
-
-                    }
-                }
-            }*/
-        </script>
 	</head>
 	<body style="overflow-y: scroll";>
 
@@ -56,19 +45,10 @@
 			<div class="content">
 				<div class="card-box">
 					<!-- Row start -->
-
 					  	<div class="am-g">
         <div class="am-u-sm-12">
             <table class="am-table am-table-striped am-table-hover table-main">
               <thead>
-              <c:if test="${sessionScope.cModule!='餐饮'}">
-                  <tr colspan="7">
-                      <form action="showSomeOneComment" method="post">
-                          <span>被评论人名字：</span><input type="text" name="cdPeople">
-                          <input type="submit" value="提交">
-                      </form>
-                  </tr>
-              </c:if>
               <tr>
                   <th class="table-check"><input type="checkbox" /></th>
                   <th class="table-title">评论ID</th>
@@ -106,7 +86,7 @@
             <c:if test="${commentPage.totalPages!=0}">
             <div class="am-cf">
               共 ${commentPage.totalElements} 条记录
-                <a href="toAdminIndex" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
+                <a href="javascript:history.go(-1)" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
               <div class="am-fr">
                 <ul class="am-pagination">
                     <c:if test="${(currentPage-1)<0}">
@@ -136,7 +116,6 @@
             <hr />
             <p>合众艾特评论信息表</p>
             <p>注：餐饮模块满分25分&nbsp;&nbsp;讲师模块满分80&nbsp;&nbsp;班主任模块满分100</p>
-            <input type="hidden" value="${currentPage}" id="page">
         </div>
 
       </div>
@@ -159,9 +138,12 @@
 		
 		<!-- navbar -->
 		<a href="admin-offcanvas" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"><!--<i class="fa fa-bars" aria-hidden="true"></i>--></a>
+		
 		<script type="text/javascript" src="/assets/js/jquery-2.1.0.js" ></script>
 		<script type="text/javascript" src="/assets/js/amazeui.min.js"></script>
+
 		<script type="text/javascript" src="/assets/js/blockUI.js" ></script>
+
 	</body>
 	
 </html>

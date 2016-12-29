@@ -35,7 +35,7 @@ public class BaseComment implements HandlerInterceptor {
         //System.out.println("ip是："+ip);
         ServletContext servletContext=session.getServletContext();
         List<String> list= (List<String>) servletContext.getAttribute("ipList");
-        if (list!=null && list.size()!=0){
+        /*if (list!=null && list.size()!=0){
             for (int i=0;i<list.size();i++){
                 //System.out.println("集合里的IP："+list.get(i));
                 if (list.get(i).equals(ip)){
@@ -43,7 +43,7 @@ public class BaseComment implements HandlerInterceptor {
                     return false;
                 }
             }
-        }
+        }*/
         return true;
     }
 

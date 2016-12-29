@@ -68,6 +68,10 @@
                  alert(data);
                  });*/
                 var teacher=$("#teaId").val();
+                if (teacher==1){
+                    alert("你还未选择老师！");
+                    return;
+                }
                 //添加表单验证，要求所有题目的单选框都被选中
                 var text=$("#fa").val();
                 var problemLength=$(".problem").length;

@@ -52,6 +52,10 @@
             });
             $("#submit").click(function () {
                 var teacher=$("#teaId").val();
+                if (teacher==6){
+                    alert("你还未选择班主任！");
+                    return;
+                }
                 //添加表单验证，要求所有题目的单选框都被选中
                 var problemLength=$(".problem").length;
                 var flag=false;
