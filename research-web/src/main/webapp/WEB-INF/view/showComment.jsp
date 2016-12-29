@@ -120,7 +120,7 @@
                             <li class="am-active"><a href="showAllComment?page=${p}">${p+1}</a></li>
                         </c:if>
                         <c:if test="${currentPage!=p}">
-                            <li class="am-active"><a href="showAllComment?page=${p}">${p+1}</a></li>
+                            <li><a href="showAllComment?page=${p}">${p+1}</a></li>
                         </c:if>
                     </c:forEach>
                     <c:if test="${currentPage<(commentPage.totalPages-1)}">

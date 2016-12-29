@@ -83,6 +83,7 @@
                 </c:forEach>
               </tbody>
             </table>
+            共${size}条记录
             <a href="javascript:history.go(-1)" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
             </div>
             <hr />

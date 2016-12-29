@@ -61,7 +61,7 @@
            <c:if test="${totalPages!=0}">
             <div class="am-cf">
               共 ${totalElements} 条记录
-                <a href="showAllComment" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
+                <a href="javascript:history.go(-1)" class="am-btn am-btn-primary" style="margin-left: 360px">返回</a>
               <div class="am-fr">
                   <ul class="am-pagination">
                       <c:if test="${(currentPage-1)<0}">
@@ -71,7 +71,12 @@
                           <li><a href="showDiscussByCUuid?page=${currentPage-1}">«</a></li>
                       </c:if>
                       <c:forEach begin="0" end="${totalPages-1}" var="p">
-                          <li class="am-active"><a href="showDiscussByCUuid?page=${p}">${p+1}</a></li>
+                          <c:if test="${currentPage==p}">
+                              <li class="am-active"><a href="showDiscussByCUuid?page=${p}">${p+1}</a></li>
+                          </c:if>
+                          <c:if test="${currentPage!=p}">
+                              <li><a href="showDiscussByCUuid?page=${p}">${p+1}</a></li>
+                          </c:if>
                       </c:forEach>
                       <c:if test="${currentPage<(totalPages-1)}">
                           <li><a href="showDiscussByCUuid?page=${currentPage+1}">»</a></li>

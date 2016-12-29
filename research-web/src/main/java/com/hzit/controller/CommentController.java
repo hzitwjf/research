@@ -160,6 +160,7 @@ public class CommentController {
         if (commentPage!=null){
             modelMap.put("commentPage",commentPage);
             modelMap.put("currentPage",page);
+            modelMap.put("people",cdPeople);
             return "showSomeComment";
         }else {
             return "redirect:/toError";
@@ -250,6 +251,8 @@ public class CommentController {
     @RequestMapping("findCommentByName")
     public String findCommentByName(@RequestParam("cdPeople")String cdPeople,ModelMap modelMap){
         List<Comment> commentList=commentService.findCommentByCdPeople(cdPeople);
+        int size=commentList.size();
+        modelMap.put("size",size);
         modelMap.put("commentList",commentList);
         return "showOneComment";
     }

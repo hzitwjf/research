@@ -108,7 +108,7 @@
     </select>
     <select id="searchCommentBycModule" parameterType="java.lang.String" resultMap="commentMap">
       select * from (SELECT AVG(c_score) c_score,cd_people,DATE_FORMAT(c_time,'%c') c_time,DATE_FORMAT(c_time,'%y') c_id ,DATE_FORMAT(c_time,'%y%c') haha
-      FROM COMMENT WHERE c_module=#{cModule} GROUP BY cd_people,haha) l where haha=DATE_FORMAT(#{ymTime},'%y%c')
+      FROM COMMENT WHERE c_module=#{cModule} GROUP BY cd_people,haha) l where haha=DATE_FORMAT(#{ymTime},'%y%c') ORDER BY c_score DESC
     </select>
     <select id="searchCommentByName" parameterType="java.lang.String" resultMap="commentMap">
         select * from  comment where cd_people = #{cdPeople}

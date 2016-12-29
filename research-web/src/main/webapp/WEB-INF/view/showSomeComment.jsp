@@ -90,24 +90,24 @@
               <div class="am-fr">
                 <ul class="am-pagination">
                     <c:if test="${(currentPage-1)<0}">
-                        <li class="am-disabled"><a href="showAllComment?page=${currentPage-1}">«</a></li>
+                        <li class="am-disabled"><a href="showSomeOneComment?page=${currentPage-1}&&cdPeople=${people}">«</a></li>
                     </c:if>
                     <c:if test="${(currentPage-1)>=0}">
-                        <li><a href="showAllComment?page=${currentPage-1}">«</a></li>
+                        <li><a href="showSomeOneComment?page=${currentPage-1}&&cdPeople=${people}">«</a></li>
                     </c:if>
                     <c:forEach begin="0" end="${commentPage.totalPages-1}" var="p">
                         <c:if test="${currentPage==p}">
-                            <li class="am-active"><a href="showAllComment?page=${p}">${p+1}</a></li>
+                            <li class="am-active"><a href="showSomeOneComment?page=${p}&&cdPeople=${people}">${p+1}</a></li>
                         </c:if>
                         <c:if test="${currentPage!=p}">
-                            <li class="am-active"><a href="showAllComment?page=${p}">${p+1}</a></li>
+                            <li><a href="showSomeOneComment?page=${p}&&cdPeople=${people}">${p+1}</a></li>
                         </c:if>
                     </c:forEach>
                     <c:if test="${currentPage<(commentPage.totalPages-1)}">
-                        <li><a href="showAllComment?page=${currentPage+1}">»</a></li>
+                        <li><a href="showSomeOneComment?page=${currentPage+1}&&cdPeople=${people}">»</a></li>
                     </c:if>
                     <c:if test="${currentPage>=(commentPage.totalPages-1)}">
-                        <li class="am-disabled"><a href="showAllComment?page=${currentPage+1}">»</a></li>
+                        <li class="am-disabled"><a href="showSomeOneComment?page=${currentPage+1}&&cdPeople=${people}">»</a></li>
                     </c:if>
                 </ul>
               </div>
