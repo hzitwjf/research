@@ -135,7 +135,7 @@
             </div>
             <hr />
             <p>合众艾特评论信息表</p>
-            <p>注：餐饮模块满分25分&nbsp;&nbsp;讲师模块满分80&nbsp;&nbsp;班主任模块满分100</p>
+            <p>注：餐饮模块满分25分&nbsp;&nbsp;讲师模块满分100&nbsp;&nbsp;班主任模块满分100</p>
             <input type="hidden" value="${currentPage}" id="page">
         </div>
 

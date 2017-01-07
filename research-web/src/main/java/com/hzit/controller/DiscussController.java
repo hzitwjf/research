@@ -42,12 +42,14 @@ public class DiscussController {
         return "redirect:/showDiscussByCUuid";
     }
     @RequestMapping("showDiscussByCUuid")
-    public String showDiscussByCUuid(@RequestParam(name = "page", defaultValue = "0") Integer page,HttpSession session, ModelMap modelMap) {
-        if (page <= 0) {
+    public String showDiscussByCUuid(HttpSession session, ModelMap modelMap) {
+        /*if (page <= 0) {
+        @RequestParam(name = "page", defaultValue = "0")
             page = 0;
-        }
+        }*/
+        Integer page=0;
         String uuid=(String)session.getAttribute("cUuid");
-        Page<Discuss> discussPage=discussService.findDiscussPageByCUuid(page,10,uuid);
+        Page<Discuss> discussPage=discussService.findDiscussPageByCUuid(page,200,uuid);
         List<DiscussVo> discussVoList=new ArrayList<>();
         for (Discuss discuss : discussPage){
             DiscussVo discussVo=new DiscussVo();

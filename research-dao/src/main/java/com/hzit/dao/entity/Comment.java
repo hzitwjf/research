@@ -32,7 +32,7 @@ public class Comment {
 	/**
 	 * 当前模块的总得分
 	 */
-	private Integer  cScore;
+	private double  cScore;
 	/**
 	 *  被评论人
 	 */
@@ -133,7 +133,7 @@ public class Comment {
 	 * 当前模块的总得分
 	 * @return cScore
 	 */
-	public Integer getcScore() {
+	public double getcScore() {
 		return cScore;
 	}
 
@@ -141,7 +141,7 @@ public class Comment {
 	 * 当前模块的总得分
 	 * @param cScore
 	 */
-	public void setcScore(Integer cScore) {
+	public void setcScore(double cScore) {
 		this.cScore = cScore;
 	}
 

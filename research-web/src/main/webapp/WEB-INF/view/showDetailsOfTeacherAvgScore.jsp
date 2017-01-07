@@ -91,7 +91,7 @@
   </div>
     </div>
   <p>合众艾特教员信息表</p>
-  <p>注：教员模块满分80分</p>
+  <p>注：教员模块满分100分</p>
   </div>
   <script src="../dist/jquery.min.js"></script>
   <script src="../dist/amazeui.min.js"></script>

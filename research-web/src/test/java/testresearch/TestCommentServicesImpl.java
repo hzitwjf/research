@@ -66,10 +66,11 @@ public class TestCommentServicesImpl {
     @Test
     public void findAllTeacherAvgScore(){
         Date date=new Date();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         String time=simpleDateFormat.format(date);
-        List<Comment> commentList=commentService.findAllTeacherAvgScore("讲师","2017-01-1");
-        commentList.forEach(comment -> System.out.println(comment.toString()));
+        System.out.println(time);
+        //List<Comment> commentList=commentService.findAllTeacherAvgScore("讲师","2017-01-1");
+        //commentList.forEach(comment -> System.out.println(comment.toString()));
     }
     @Test
     public void findAllCommentsByPageAndCdPeople(){

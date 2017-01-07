@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -124,7 +125,23 @@ public class CommentServiceImpl implements CommentService  {
     @Override
     public List<Comment> findAllTeacherAvgScore(String cModule,String ymTime) {
         List<Comment> list=commentMapper.searchCommentBycModule(cModule,ymTime);
-        return list;
+        List<Comment> commentList=new ArrayList<Comment>();
+        for (Comment c : list){
+            Comment comment=new Comment();
+            comment.setCUuid(c.getCUuid());
+            comment.setCTime(c.getCTime());
+            comment.setcModule(c.getcModule());
+            comment.setCdPeople(c.getCdPeople());
+            comment.setcCount(c.getcCount());
+            comment.setCId(c.getCId());
+            comment.setCPeople(c.getCPeople());
+            double d=c.getcScore();
+            BigDecimal b   =   new   BigDecimal(d);
+            double   f  =   b.setScale(2,   BigDecimal.ROUND_HALF_UP).doubleValue();
+            comment.setcScore(f);
+            commentList.add(comment);
+        }
+        return commentList;
     }
 
     @Override
